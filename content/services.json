@@ -1,0 +1,1615 @@
+{
+  "categories": [
+    {
+      "id": "water",
+      "label": "Water & Drainage"
+    },
+    {
+      "id": "structure",
+      "label": "Foundation & Structure"
+    },
+    {
+      "id": "air",
+      "label": "Air & Mold"
+    },
+    {
+      "id": "envelope",
+      "label": "Exterior & Envelope"
+    },
+    {
+      "id": "interior",
+      "label": "Interior & Restoration"
+    }
+  ],
+  "services": [
+    {
+      "slug": "leak-detection",
+      "title": "Leak Detection & Water Intrusion Investigations",
+      "short": "Leak Detection",
+      "cat": "water",
+      "scale": "Diagnostic",
+      "img": "report-thermal-building.jpg",
+      "blurb": "Find the actual source of the water before anyone opens a wall. Thermal imaging, moisture meters and drone survey, inside and out.",
+      "lead": "Most of the money wasted on a water problem is spent guessing. We locate the entry point first, then tell you exactly what it will take to close it.",
+      "signs": [
+        "A stain that comes back after being painted over",
+        "A musty smell in one room and nowhere else",
+        "Bubbling or peeling paint on an interior wall",
+        "A water bill that has climbed for no obvious reason",
+        "Two contractors have already tried and the leak is still there",
+        "Damp at the base of a wall after heavy rain"
+      ],
+      "what": [
+        "A leak almost never shows up where it enters. Water travels along framing, pipe runs and mortar joints, then surfaces at the lowest point it can find. That is why patching the stain does nothing.",
+        "We survey the property with FLIR thermal imaging, pin moisture meters and, where the roofline or stucco is involved, a drone. Thermal shows us the temperature difference wet material creates; the meter confirms it in actual moisture content; the drone shows us the elevation nobody can reach from a ladder.",
+        "You get a written report with photographs, the location of every entry point we found, and a scope of work that prices the repair. If you go ahead with the repair, the inspection fee comes off the job."
+      ],
+      "steps": [
+        {
+          "h": "Interior survey",
+          "p": "Room by room with thermal and moisture meters, working from the visible damage back toward the source."
+        },
+        {
+          "h": "Exterior survey",
+          "p": "Roofline, flashing, stucco, grade and drainage. On foot, and by drone where access requires it."
+        },
+        {
+          "h": "Confirm the source",
+          "p": "Water testing or a controlled probe where the thermal signature is ambiguous, so we are reporting a fact rather than a theory."
+        },
+        {
+          "h": "Written report",
+          "p": "Annotated photographs, findings, and a priced scope of work you can act on with us or with anyone else."
+        }
+      ],
+      "includes": [
+        "FLIR thermal imaging survey",
+        "Pin and pinless moisture readings",
+        "Drone elevation survey where required",
+        "Annotated photo report",
+        "Priced scope of work",
+        "Fee credited against the repair"
+      ],
+      "faq": [
+        {
+          "q": "Why is the inspection paid?",
+          "a": "Because it is the work, not a sales visit. A free estimate is an hour of someone eyeballing your wall. A paid assessment is a technician with thermal equipment producing a document you own and can take to an insurer, a contractor or a settlement table. If you hire us for the repair, the fee comes off the invoice."
+        },
+        {
+          "q": "How long does it take?",
+          "a": "A partial assessment of up to two areas runs about 90 minutes on site. A full property assessment is typically three to four hours, depending on size and access."
+        },
+        {
+          "q": "Will you open the wall?",
+          "a": "Only with your permission, and only where the thermal reading is ambiguous enough that a small inspection opening is the honest way to confirm it. We tell you before we do it."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "water-damage",
+        "french-drains",
+        "stucco-remediation"
+      ]
+    },
+    {
+      "slug": "french-drains",
+      "title": "Drainage Solutions & French Drains",
+      "short": "Drainage & French Drains",
+      "cat": "water",
+      "scale": "Major project",
+      "img": "property-basement.jpg",
+      "blurb": "Move the water away from the building before it ever reaches the foundation. Exterior drainage, regrading and buried drain lines.",
+      "lead": "A basement that floods every spring is not a basement problem. It is a drainage problem that shows up in the basement.",
+      "signs": [
+        "Water across the basement floor after heavy rain, then gone by Tuesday",
+        "Standing puddles against the foundation wall hours after it stops raining",
+        "Soil that has settled into a dish around the building",
+        "A window well that fills up",
+        "Efflorescence, the white chalky residue, along the bottom of the foundation",
+        "Downspouts discharging within a few feet of the wall"
+      ],
+      "what": [
+        "A French drain is a gravel-packed trench with a perforated pipe in it, set below the level you are trying to keep dry, that gives groundwater somewhere easier to go than through your wall.",
+        "The hard part is not the trench. It is working out where the water is actually coming from, where it can legally and practically be discharged to, and what grade the line needs to hold over its whole run. Get that wrong and you have buried an expensive pipe that does nothing.",
+        "We survey the lot, establish the flow, and design the run before anyone puts a shovel in the ground. Depth, fall, outlet and filtration. On most Philadelphia row properties this is combined with regrading, downspout extension and a sump discharge line."
+      ],
+      "steps": [
+        {
+          "h": "Site and water survey",
+          "p": "Where the water arrives, where it pools, where it can be taken to. Elevations shot across the whole run."
+        },
+        {
+          "h": "Design the system",
+          "p": "Depth, fall, pipe size, filter fabric and outlet. Combined with regrading and downspout work where the lot allows it."
+        },
+        {
+          "h": "Excavate and install",
+          "p": "Trench, bed, perforated line, washed stone and fabric. Utilities located and protected before we dig."
+        },
+        {
+          "h": "Discharge and restore",
+          "p": "Outlet to daylight or to a pumped discharge, then backfill, regrade and restore the surface."
+        },
+        {
+          "h": "Water test",
+          "p": "We run water through the finished system and show you it moving before we leave."
+        }
+      ],
+      "includes": [
+        "Lot and elevation survey",
+        "Utility location before excavation",
+        "Perforated drain line, washed stone, filter fabric",
+        "Regrading and downspout tie-in",
+        "Discharge to daylight or pumped outlet",
+        "Surface restoration",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "Interior or exterior drain. Which do I need?",
+          "a": "Exterior drainage stops water before it reaches the wall, which is always the better outcome, but it needs room to excavate and somewhere legal to discharge. Interior drainage with a sump manages water that has already arrived. On a tight city lot the answer is often both, and the assessment is what tells us which."
+        },
+        {
+          "q": "Will you have to dig up the garden?",
+          "a": "Yes. An exterior line is an excavation. We photograph everything first, protect what can be protected, and restore the surface as part of the scope. We will tell you honestly at the assessment what the yard will look like afterward."
+        },
+        {
+          "q": "How long does a French drain take?",
+          "a": "A typical residential run is three to five working days, weather permitting. Longer runs, difficult access and utility conflicts extend that, and we tell you which of those apply before you sign anything."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "sump-pumps",
+        "foundation-repair",
+        "water-damage"
+      ]
+    },
+    {
+      "slug": "sump-pumps",
+      "title": "Sump Pumps & Interior Drainage",
+      "short": "Sump Pumps",
+      "cat": "water",
+      "scale": "Major project",
+      "img": "subfloor-1.jpg",
+      "blurb": "An interior drain line and a pump that keeps up. Sized to your building, fitted with a battery backup, discharged somewhere it will not come back.",
+      "lead": "Every sump pump fails eventually. The question is whether it fails while you are watching, or while you are away for the weekend.",
+      "signs": [
+        "No sump at all in a basement that takes water",
+        "A pump that runs constantly, or cycles every few minutes",
+        "A pit that fills faster than the pump can clear it",
+        "Discharge that dumps right next to the foundation",
+        "No backup for when the power goes out in the storm that needed it",
+        "A pump over seven years old that has never been serviced"
+      ],
+      "what": [
+        "Interior drainage collects the water that has already reached the inside of the footing and routes it to a sealed pit, where a pump lifts it out and discharges it far enough away that it does not simply return.",
+        "Sizing is the part most installations get wrong. A pump has to clear the peak inflow of the worst storm, not the average one, and it has to do that against the real vertical lift and pipe run of your building, not a number off the box.",
+        "We size the pump to measured inflow, seal the pit to keep soil gas and humidity out of the basement, fit a check valve and an alarm, and specify a battery or water-powered backup so the system survives the outage that usually comes with the flood."
+      ],
+      "steps": [
+        {
+          "h": "Measure the inflow",
+          "p": "What the basement actually takes on, and how fast, so the pump is sized to the building rather than the catalogue."
+        },
+        {
+          "h": "Interior drain line",
+          "p": "Channel cut at the footing, piped to the pit, with the slab restored over it."
+        },
+        {
+          "h": "Pit and pump",
+          "p": "Sealed basin, primary pump, check valve, high-water alarm and a discharge run that goes somewhere useful."
+        },
+        {
+          "h": "Backup power",
+          "p": "Battery or water-powered secondary pump, so an outage during a storm is not a flood."
+        },
+        {
+          "h": "Test under load",
+          "p": "We fill it and run it, and show you the alarm working and the backup taking over."
+        }
+      ],
+      "includes": [
+        "Inflow measurement and pump sizing",
+        "Interior perimeter drain where required",
+        "Sealed sump basin and lid",
+        "Primary pump, check valve, high-water alarm",
+        "Battery or water-powered backup",
+        "Discharge line routed clear of the foundation",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "Do I need a backup pump?",
+          "a": "If losing the basement matters to you, yes. The storms that overwhelm a sump are the same storms that take the power out, and a primary pump on a dead circuit is an ornament."
+        },
+        {
+          "q": "Can you put a sump in a finished basement?",
+          "a": "Usually. It means cutting and restoring slab and dealing with the finishes above it, which we scope and price explicitly rather than discovering halfway through."
+        },
+        {
+          "q": "How loud is it?",
+          "a": "A correctly sized pump in a sealed pit is quieter than a dishwasher, and runs for well under a minute at a time. A pump that is loud and constant is a pump that is wrong for the building."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "french-drains",
+        "foundation-repair",
+        "water-damage"
+      ]
+    },
+    {
+      "slug": "water-damage",
+      "title": "Water Damage Restoration",
+      "short": "Water Damage",
+      "cat": "water",
+      "scale": "Major project",
+      "img": "detect-1-raw.jpg",
+      "blurb": "Extraction, structural drying, removal of what cannot be saved, and rebuild. Documented to a standard an insurer will accept.",
+      "lead": "Drying a building is a measured process with an end point, not a case of leaving fans running until it smells better.",
+      "signs": [
+        "A burst pipe, failed appliance or overflow in the last few days",
+        "Flooring that has cupped, buckled or lifted",
+        "A ceiling that is sagging or stained after a leak upstairs",
+        "Carpet or pad that has been wet for more than 24 hours",
+        "A smell that got worse rather than better after it dried on the surface",
+        "An insurance claim that needs documenting properly"
+      ],
+      "what": [
+        "Water that sits for more than a day or two stops being a water problem and becomes a microbial one. The clock matters more than almost anything else, which is why the first call should happen before the first estimate.",
+        "We extract standing water, then dry the structure itself. Framing, subfloor and wall cavities, with equipment placed against measured moisture readings rather than guesswork. We keep taking readings until the materials are back to a documented dry standard.",
+        "What cannot be dried gets removed under containment so the demolition does not spread contamination through the rest of the house. Then we rebuild what we took out. Every stage is photographed and logged, because that record is what makes an insurance claim go smoothly."
+      ],
+      "steps": [
+        {
+          "h": "Stop the source",
+          "p": "There is no point drying a building that is still taking on water. Source first, always."
+        },
+        {
+          "h": "Extract and assess",
+          "p": "Standing water out, moisture mapped across every affected material, category and class established."
+        },
+        {
+          "h": "Structural drying",
+          "p": "Air movers and dehumidification placed against the readings, monitored daily, adjusted as the building dries."
+        },
+        {
+          "h": "Controlled removal",
+          "p": "Unsalvageable material removed under containment with negative air, so demolition does not spread the problem."
+        },
+        {
+          "h": "Rebuild",
+          "p": "Back to pre-loss condition, with the moisture log and photo record handed over for your claim."
+        }
+      ],
+      "includes": [
+        "Emergency water extraction",
+        "Moisture mapping and daily monitoring logs",
+        "Commercial drying and dehumidification",
+        "Containment and negative air during removal",
+        "Antimicrobial treatment where indicated",
+        "Reconstruction to pre-loss condition",
+        "Photo and moisture documentation for insurers"
+      ],
+      "faq": [
+        {
+          "q": "How fast do you need to be here?",
+          "a": "Same day where we can. The difference between a drying job and a mold remediation job is often 48 hours."
+        },
+        {
+          "q": "Will my insurance cover this?",
+          "a": "That depends on your policy and the cause of loss, and we will not pretend to know before we see it. What we can do is document the loss to the standard adjusters expect, which is the part homeowners most often lose money on."
+        },
+        {
+          "q": "Do I have to move out?",
+          "a": "Usually not, though a contained area will be off limits while we work in it. If a job genuinely does require you to be out, we say so at the assessment rather than on the day."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "mold-remediation",
+        "leak-detection",
+        "sump-pumps"
+      ]
+    },
+    {
+      "slug": "foundation-repair",
+      "title": "Foundation Repairs",
+      "short": "Foundation Repairs",
+      "cat": "structure",
+      "scale": "Major project",
+      "img": "report-lumber.jpg",
+      "blurb": "Cracks, movement, failing parging and chronically wet walls. Repaired, then waterproofed so the repair holds.",
+      "lead": "A foundation crack is either cosmetic or structural, and the whole cost of the job depends on which one you have. That is the first thing we establish.",
+      "signs": [
+        "A crack that has visibly widened over a season",
+        "Stair-step cracking through brick or block mortar joints",
+        "Doors or windows that have started to stick on one side of the house",
+        "A wall that bows inward, or a floor that slopes",
+        "Chronic damp or efflorescence across a foundation wall",
+        "Crumbling parging or mortar at or below grade"
+      ],
+      "what": [
+        "Not every crack is a structural problem. Shrinkage cracks in poured concrete are common and often cosmetic. Horizontal cracking, bowing, stair-step patterns through masonry and any crack that is actively widening are a different conversation.",
+        "We measure and document the movement, establish whether water is driving it, and repair accordingly. Crack injection, carbon fibre reinforcement, repointing, rebuilt parging, or underpinning where the footing itself has failed.",
+        "Then we waterproof, because almost every foundation problem in this region is a water problem wearing a structural hat. Repairing the wall without fixing the drainage that damaged it is how people end up paying twice."
+      ],
+      "steps": [
+        {
+          "h": "Assess and measure",
+          "p": "Crack mapping, movement measurement, moisture readings and a look at what the drainage around the building is doing."
+        },
+        {
+          "h": "Establish the cause",
+          "p": "Hydrostatic pressure, poor drainage, settlement or thermal movement. The repair depends entirely on which."
+        },
+        {
+          "h": "Structural repair",
+          "p": "Injection, carbon fibre, repointing, rebuilt parging or underpinning, matched to what we actually found."
+        },
+        {
+          "h": "Waterproof",
+          "p": "Membrane, drainage board and exterior water management so the repaired wall stays dry."
+        },
+        {
+          "h": "Monitor",
+          "p": "Documented readings so movement can be checked against a baseline rather than a memory."
+        }
+      ],
+      "includes": [
+        "Crack mapping and movement documentation",
+        "Structural assessment report",
+        "Injection, carbon fibre or masonry repair as required",
+        "Parging and repointing",
+        "Exterior waterproof membrane and drainage board",
+        "Coordination with a structural engineer where the scope calls for one",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "Do I need a structural engineer?",
+          "a": "Sometimes. If the movement is active, or the repair changes how the building carries load, you want an engineer's letter. We will tell you so, and work to their specification. For most water-driven foundation work, you do not."
+        },
+        {
+          "q": "Is this covered by insurance?",
+          "a": "Foundation movement from long-term settlement or groundwater usually is not. Damage from a sudden event sometimes is. We document either way so you can put the question to your carrier with evidence."
+        },
+        {
+          "q": "Can you just seal the crack from the inside?",
+          "a": "We can, and on a genuinely cosmetic crack that is the right answer. On a wall that is wet because of what is happening outside it, an interior seal moves the problem rather than solving it."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "french-drains",
+        "sump-pumps",
+        "exterior-repairs"
+      ]
+    },
+    {
+      "slug": "mold-remediation",
+      "title": "Mold Remediation",
+      "short": "Mold Remediation",
+      "cat": "air",
+      "scale": "Major project",
+      "img": "containment-1.jpg",
+      "blurb": "Contain, remove, treat and verify, with the moisture source fixed. Remediation without that is just an expensive delay.",
+      "lead": "Mold is not the problem. Mold is the evidence. If the water that fed it is still there it comes back, and we will tell you that before you spend anything.",
+      "signs": [
+        "Visible growth on drywall, framing, tile grout or a ceiling",
+        "A persistent musty smell, strongest in one area",
+        "Symptoms that ease when you leave the house and return when you do",
+        "Growth that has come back after a previous remediation",
+        "Discoloration on a basement wall or inside a closet on an exterior wall",
+        "A purchase inspection that has flagged microbial growth"
+      ],
+      "what": [
+        "Remediation done properly is a containment job. The affected area is isolated with sheeting, put under negative air pressure with HEPA filtration, and worked in a way that keeps spores out of the rest of the building. Unprotected demolition does the opposite.",
+        "Affected porous material comes out. Non-porous surfaces are HEPA vacuumed and treated. Structural timber is cleaned and, where the staining is superficial rather than structural, sealed rather than replaced.",
+        "Then the source gets fixed. Every mold job we take on includes finding the water that caused it, and we would rather lose the job than take money for removing growth we know is going to return."
+      ],
+      "steps": [
+        {
+          "h": "Assess and test",
+          "p": "Extent of growth, moisture source, and air or surface sampling where the situation warrants a laboratory result."
+        },
+        {
+          "h": "Contain",
+          "p": "Sheeting, sealed openings, negative air with HEPA filtration, and protected routes in and out."
+        },
+        {
+          "h": "Remove and treat",
+          "p": "Affected porous material out under containment, non-porous surfaces HEPA vacuumed and treated."
+        },
+        {
+          "h": "Fix the source",
+          "p": "The leak, the drainage, the condensation or the ventilation problem that fed it. This is not optional."
+        },
+        {
+          "h": "Verify and rebuild",
+          "p": "Post-remediation verification, then reconstruction of what was removed."
+        }
+      ],
+      "includes": [
+        "Moisture source investigation",
+        "Containment and negative air with HEPA filtration",
+        "Removal of affected porous materials",
+        "HEPA vacuuming and antimicrobial treatment",
+        "Structural timber cleaning and sealing",
+        "Post-remediation verification",
+        "Reconstruction",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "Do I need a mold test first?",
+          "a": "Not always. If you can see it and smell it, you do not need a laboratory to tell you it is there. You need the moisture source found. Testing earns its keep when the growth is hidden, when a health question is involved, or when a transaction or dispute needs a documented result."
+        },
+        {
+          "q": "Is black mold different?",
+          "a": "'Black mold' is a colour, not a species, and plenty of harmless growth is black. The remediation approach is driven by how much there is, what material it is on, and how wet the building is. Not by the colour."
+        },
+        {
+          "q": "Why won't you remediate without fixing the leak?",
+          "a": "Because it would come back, and you would be entitled to be angry about it. If you genuinely cannot fund both at once, we will scope the source repair first and stage the remediation."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "water-damage",
+        "leak-detection",
+        "air-sealing"
+      ]
+    },
+    {
+      "slug": "air-sealing",
+      "title": "Air Sealing & Insulation",
+      "short": "Air Sealing & Insulation",
+      "cat": "air",
+      "scale": "Major project",
+      "img": "report-hallway-1.jpg",
+      "blurb": "Stop the air leakage that carries moisture into wall and roof cavities. It is the quiet cause behind a great deal of recurring mold.",
+      "lead": "Warm wet air finding a cold surface inside your wall does not look like a leak. It behaves like one, year after year.",
+      "signs": [
+        "Mold in a cavity with no plumbing and no roof above it",
+        "Rooms that never hold temperature no matter what the system does",
+        "Condensation on the inside of windows through the winter",
+        "Ice damming at the eaves",
+        "Attic sheathing that is stained or damp on the underside",
+        "Heating and cooling costs out of proportion to the size of the building"
+      ],
+      "what": [
+        "Buildings leak air through rim joists, top plates, recessed lights, duct chases, attic hatches and every penetration anyone has ever cut. That moving air carries moisture with it, and when it reaches a surface below its dew point, that moisture becomes liquid water inside your structure.",
+        "It is one of the most common reasons mold returns after an otherwise correct remediation. There was never a leak to find, so nobody found one.",
+        "We locate the leakage paths with thermal imaging and, where the scope justifies it, blower door testing. Then we seal them in the right order: air barrier first, then insulation, then ventilation. Insulating a leaky assembly traps the moisture instead of removing it."
+      ],
+      "steps": [
+        {
+          "h": "Thermal and pressure survey",
+          "p": "Where air is moving through the envelope, and in which direction, under real conditions."
+        },
+        {
+          "h": "Map the assembly",
+          "p": "Where the air barrier is supposed to be, where it actually is, and where the cold surfaces sit relative to it."
+        },
+        {
+          "h": "Seal",
+          "p": "Rim joists, top plates, penetrations, chases and hatches. The air barrier made continuous."
+        },
+        {
+          "h": "Insulate and ventilate",
+          "p": "Insulation restored over a sealed assembly, with ventilation sized so the building can still dry."
+        },
+        {
+          "h": "Verify",
+          "p": "Re-scan, and where testing was used, re-test against the baseline number."
+        }
+      ],
+      "includes": [
+        "Thermal envelope survey",
+        "Blower door testing where scoped",
+        "Rim joist and top plate sealing",
+        "Penetration, chase and hatch sealing",
+        "Insulation restoration",
+        "Ventilation assessment",
+        "Before-and-after verification"
+      ],
+      "faq": [
+        {
+          "q": "Is this an energy job or a moisture job?",
+          "a": "Both, and we approach it as a moisture job. The energy saving is real and welcome, but the reason we are usually called is that something keeps growing in a cavity and nobody can find the leak."
+        },
+        {
+          "q": "Can a house be too tight?",
+          "a": "A house can be too tight without adequate ventilation. That is a real failure mode and we design for it. The answer is controlled ventilation, not deliberate leakage."
+        },
+        {
+          "q": "Will this fix my ice dams?",
+          "a": "Usually, yes. Ice damming is heat escaping into the roof cavity and melting snow that refreezes at the cold eave. Sealing and insulating the attic floor addresses the cause."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "mold-remediation",
+        "exterior-repairs",
+        "leak-detection"
+      ]
+    },
+    {
+      "slug": "stucco-remediation",
+      "title": "Stucco Remediation",
+      "short": "Stucco Remediation",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "report-brick.jpg",
+      "blurb": "Failed stucco traps water against the sheathing and rots the frame behind it. Full-wall remediation with the drainage plane rebuilt correctly.",
+      "lead": "The stucco is rarely the failure. The flashing, the drainage plane and the detailing behind it are, and that is what has to be rebuilt.",
+      "signs": [
+        "Staining or streaking below windows and at corners",
+        "Hairline cracking that runs from window corners outward",
+        "Soft or spongy areas when the wall is pressed",
+        "Elevated moisture readings taken through the wall",
+        "Interior damp on an exterior wall with no plumbing in it",
+        "A stucco home built or refinished in the 1990s or 2000s that has never been probed"
+      ],
+      "what": [
+        "Stucco is designed to get wet. What keeps a building dry is the drainage plane behind it: the weather-resistive barrier, the flashing at every penetration, and a path for water to get back out. When those are wrong, the stucco holds water against the sheathing and the frame rots quietly for years.",
+        "We start with invasive moisture probing, because surface inspection on stucco tells you very little. Readings taken through the wall at windows, corners, penetrations and the base of the wall give a map of where the assembly has failed.",
+        "Remediation means removing the failed stucco, replacing rotted sheathing and framing, and rebuilding the barrier and flashing properly before anything goes back on. Where the assessment shows the failure is localised, we scope it that way rather than selling a whole-house job."
+      ],
+      "steps": [
+        {
+          "h": "Invasive moisture probing",
+          "p": "Readings taken through the wall at windows, corners, penetrations and the base. It is the only way to know what is behind it."
+        },
+        {
+          "h": "Map the failure",
+          "p": "Which elevations, which details, how far the damage extends, and whether the frame is involved."
+        },
+        {
+          "h": "Remove and expose",
+          "p": "Failed stucco removed under protection, sheathing and framing condition documented as it is exposed."
+        },
+        {
+          "h": "Rebuild the assembly",
+          "p": "Sheathing and framing repaired, weather-resistive barrier, flashing and drainage plane rebuilt to detail."
+        },
+        {
+          "h": "Refinish",
+          "p": "New stucco or alternative cladding, with a finish matched across the elevation."
+        }
+      ],
+      "includes": [
+        "Invasive moisture probe survey with photo documentation",
+        "Elevation-by-elevation failure map",
+        "Sheathing and framing repair",
+        "Weather-resistive barrier and flashing rebuild",
+        "Window and penetration detailing",
+        "New stucco or alternative cladding",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "Does the whole house have to come off?",
+          "a": "Not always, and we will not tell you it does until the probing says so. Failures often concentrate on one or two elevations and around specific details. The survey is what decides the scope."
+        },
+        {
+          "q": "Why does probing leave holes?",
+          "a": "Because readings taken through the wall are the only reliable way to see behind stucco. The probe holes are small, patched and sealed on the same visit."
+        },
+        {
+          "q": "Is this covered by a builder warranty?",
+          "a": "It sometimes is, and documented probe readings are what makes that claim possible. Bring us in before the warranty window closes if you have any suspicion at all."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "exterior-repairs",
+        "leak-detection",
+        "mold-remediation"
+      ]
+    },
+    {
+      "slug": "exterior-repairs",
+      "title": "Exterior Repairs & Restoration",
+      "short": "Exterior Repairs",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "property-row.jpg",
+      "blurb": "Roofs, flashing, pointing, parapets, decks and coatings. The repairs that stop water getting in, done before anything inside is restored.",
+      "lead": "On a Philadelphia row property, most interior water damage arrives through the roof, the party wall or the parapet. Restoration that skips those is temporary.",
+      "signs": [
+        "A roof deck or coating that is past its service life",
+        "Open mortar joints, spalled brick or a leaning parapet",
+        "Flashing that has lifted at a chimney, wall or skylight",
+        "A shared party wall with a neighbour where the water could come from either side",
+        "Ceiling stains on the top floor after wind-driven rain",
+        "Coping stones that are loose, cracked or missing"
+      ],
+      "what": [
+        "Exterior repair is the step that makes everything else last. We do it first, and we do not begin interior restoration until the building is closed up, because finishing a ceiling under a roof that still leaks is money set on fire.",
+        "On row properties the usual suspects are the roof membrane or coating, the parapet and coping, party wall flashing, and penetrations that were sealed with caulk instead of flashed properly. On detached and stucco-clad buildings it is more often the window and trim detailing.",
+        "We scope the exterior work off the same assessment that found the leak, so the repair addresses the entry point we documented rather than a general list of things that could be improved."
+      ],
+      "steps": [
+        {
+          "h": "Survey the envelope",
+          "p": "Roof, parapet, coping, flashing, pointing and penetrations. On foot, and by drone where the elevation requires it."
+        },
+        {
+          "h": "Prioritise",
+          "p": "What is letting water in now, what will in a year, and what can reasonably wait. Costed separately so you can choose."
+        },
+        {
+          "h": "Close the building",
+          "p": "Membrane, coating, flashing, pointing, parapet and coping work. The repairs that stop the water."
+        },
+        {
+          "h": "Verify",
+          "p": "Water testing where the entry point was ambiguous, so we know it is closed rather than hoping."
+        },
+        {
+          "h": "Restore inside",
+          "p": "Interior work begins once the exterior is proven, not before."
+        }
+      ],
+      "includes": [
+        "Drone and on-foot envelope survey",
+        "Roof membrane, coating and deck repair",
+        "Parapet, coping and party wall work",
+        "Flashing and penetration detailing",
+        "Repointing and masonry repair",
+        "Water testing to verify",
+        "Workmanship guarantee"
+      ],
+      "faq": [
+        {
+          "q": "The leak might be coming from next door. What then?",
+          "a": "That is common on row properties and we document it clearly, with photographs and readings, so you have something credible to take to your neighbour or your insurer. We can only work on a property we have permission to be on."
+        },
+        {
+          "q": "Where does exterior repair stop and a bigger project start?",
+          "a": "We do the repair and restoration work that closes the envelope: pointing, sealant, flashing, render and the openings. Where the survey shows the problem is bigger than that, we say so in the report rather than quoting around it."
+        },
+        {
+          "q": "Can you do the exterior only?",
+          "a": "Yes. Plenty of our work is exterior repair for a client who is handling the interior themselves or through their own contractor."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "stucco-remediation",
+        "leak-detection",
+        "foundation-repair"
+      ]
+    },
+    {
+      "slug": "mold-air-testing",
+      "title": "Mold & Air Quality Testing",
+      "short": "Mold & Air Testing",
+      "cat": "air",
+      "scale": "Diagnostic",
+      "img": "report-thermal-ceiling.jpg",
+      "blurb": "Air and surface sampling with laboratory analysis, for when you need a documented result rather than an opinion.",
+      "lead": "Testing is worth paying for when a decision depends on the number: a transaction, a dispute, a health question. Otherwise, find the water.",
+      "signs": [
+        "A health concern that a doctor has asked you to investigate",
+        "A purchase or sale that needs a documented air quality result",
+        "A dispute with a landlord, builder, insurer or seller",
+        "Growth you can smell but cannot see",
+        "Verification needed after a remediation somebody else performed",
+        "A tenant complaint that needs answering with evidence"
+      ],
+      "what": [
+        "We take air samples indoors and a matched outdoor control, plus surface or tape lift samples where there is something visible to sample, and send them to an independent accredited laboratory.",
+        "The outdoor control is what makes the indoor result mean anything. Spores exist everywhere; what matters is whether the indoor count and species profile differ meaningfully from the air outside the building on the same day.",
+        "You get the laboratory report and our interpretation of what it means in plain language. If it points to a problem, we scope the moisture repair that caused it. If it points to nothing, we tell you that too."
+      ],
+      "steps": [
+        {
+          "h": "Walk the property",
+          "p": "Visual survey, moisture readings and a conversation about what you are experiencing and where."
+        },
+        {
+          "h": "Sample",
+          "p": "Indoor air samples, a matched outdoor control, and surface or tape lifts where there is visible growth."
+        },
+        {
+          "h": "Laboratory analysis",
+          "p": "Independent accredited laboratory. We do not analyse our own samples."
+        },
+        {
+          "h": "Report and interpret",
+          "p": "The laboratory result, plus what it actually means for your building, in language you can act on."
+        }
+      ],
+      "includes": [
+        "Visual and moisture survey",
+        "Indoor air sampling with outdoor control",
+        "Surface and tape lift sampling where indicated",
+        "Independent accredited laboratory analysis",
+        "Written interpretation in plain language",
+        "Remediation scope if one is warranted"
+      ],
+      "faq": [
+        {
+          "q": "Do I need testing before remediation?",
+          "a": "Often not. If growth is visible and the moisture source is findable, testing tells you something you already know. It earns its cost when the growth is hidden, when a health question is live, or when a document is needed for a transaction or a dispute."
+        },
+        {
+          "q": "Who analyses the samples?",
+          "a": "An independent accredited laboratory, not us. A company that both tests and sells remediation should never be marking its own homework."
+        },
+        {
+          "q": "What is post-remediation verification?",
+          "a": "Sampling after the work is finished and the containment is still up, to confirm the area has been returned to a normal condition. We recommend it on any significant remediation, including ones we did not perform."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "mold-remediation",
+        "air-sealing",
+        "leak-detection"
+      ]
+    },
+    {
+      "slug": "fiberglass-deck-repair",
+      "title": "Fiberglass Rooftop Deck Leak Repairs",
+      "short": "Fiberglass Deck Repairs",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "report-hallway-1.jpg",
+      "blurb": "Roof decks started going on Philadelphia homes about twenty years ago. The houses have settled since. The decks have not.",
+      "lead": "A fiberglass deck is a roof you walk on. When it leaks, the water does not stay on the deck, it goes into the floor below and into the wall behind the parapet.",
+      "signs": [
+        "A stain on the ceiling of the room under the deck",
+        "Water tracking down the inside of the pilot house wall",
+        "Hairline cracking in the deck surface, usually at a corner or a seam",
+        "Standing water on the deck a day after it rained",
+        "Flashing lifting away where the deck meets the wall"
+      ],
+      "what": [
+        "This is a newer type of construction in this market and it has not been through a full life cycle yet. The system was installed flat, the house moved, and the fiberglass did not move with it. Most of the failures we see are at the junctions rather than in the middle of the field: the parapet flashing, the door threshold, the drain outlet and the corners.",
+        "We find the entry point before anyone talks about resurfacing. Recoating a deck that is leaking at the threshold just buries the problem under a new finish."
+      ],
+      "steps": [
+        {
+          "h": "Deck survey",
+          "p": "The field, the seams, the drain, the threshold and every junction with the wall, photographed as we go."
+        },
+        {
+          "h": "Trace it below",
+          "p": "Thermal and moisture meters in the room underneath, so we know how far the water has already travelled."
+        },
+        {
+          "h": "Open the junction",
+          "p": "Only where the readings say to. Often one corner tells us everything."
+        },
+        {
+          "h": "Repair and verify",
+          "p": "Rebuild the detail, reseal, then wet test it and prove it is holding."
+        }
+      ],
+      "includes": [
+        "A photo report showing the actual entry point",
+        "Repair of the failed detail, not a blanket recoat",
+        "Moisture readings in the space below, before and after",
+        "A wet test you can watch",
+        "An honest opinion on whether repair or replacement is the better spend"
+      ],
+      "faq": [
+        {
+          "q": "Can you just recoat the whole deck?",
+          "a": "We can, but if the water is coming in at the threshold or the parapet, a new coating over the top of it changes nothing. We find the entry first and tell you what it actually needs."
+        },
+        {
+          "q": "How do I know it is the deck and not the roof?",
+          "a": "Readings. A deck leak and a roof leak show up in different places on a thermal image, and the moisture pattern below runs in a different direction."
+        },
+        {
+          "q": "Is this covered by the deck installer?",
+          "a": "Sometimes, if it is recent. We document the findings either way, which is what you need if you are going back to them."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "exterior-repairs",
+        "water-damage",
+        "leak-detection"
+      ]
+    },
+    {
+      "slug": "fiberglass-deck-replacement",
+      "title": "Fiberglass Deck Replacement",
+      "short": "Fiberglass Deck Replacement",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "job-2.jpg",
+      "blurb": "When the system has failed rather than cracked, a replacement done properly costs less than repairing the same deck twice.",
+      "lead": "There is a point where patching a fiberglass deck stops being economical. We will tell you when you have reached it, and we will tell you when you have not.",
+      "signs": [
+        "Repairs that have already been done twice and failed twice",
+        "Water getting in at more than one junction",
+        "Soft spots underfoot, which means the substrate has gone",
+        "A deck that was laid without a fall, so water sits on it",
+        "Visible delamination across the field"
+      ],
+      "what": [
+        "A replacement is a chance to correct what was wrong the first time. Most of the decks we take up were laid flat, without an adequate fall to the outlet, and with the parapet detail finished after the deck rather than tied into it. We correct the fall, rebuild the substrate where it has gone, and detail the junctions so the system is continuous.",
+        "We survey, design the detail, and give you a priced scope before anything is lifted. On a job this size you should know what you are buying."
+      ],
+      "steps": [
+        {
+          "h": "Survey and readings",
+          "p": "What is wrong, how far the damage goes into the structure, and what is salvageable."
+        },
+        {
+          "h": "Scope and price",
+          "p": "A written scope with the detail drawings for the junctions, priced, yours to keep."
+        },
+        {
+          "h": "Strip and rebuild",
+          "p": "Lift the old system, repair the substrate, correct the fall."
+        },
+        {
+          "h": "Lay and test",
+          "p": "New system laid continuous through the junctions, then wet tested."
+        }
+      ],
+      "includes": [
+        "A full survey of the substrate before any price is given",
+        "Correction of the fall to the outlet",
+        "Parapet and threshold details tied into the new system",
+        "Repair of water damaged framing found underneath",
+        "A wet test and a photo record of the build up"
+      ],
+      "faq": [
+        {
+          "q": "How long does a replacement take?",
+          "a": "Most residential decks are a week to ten days, weather allowing. We will give you a date range in the scope and tell you early if it moves."
+        },
+        {
+          "q": "Can you do it in winter?",
+          "a": "The system has temperature limits for laying and curing. We will tell you honestly whether the window is open rather than take the booking and hope."
+        },
+        {
+          "q": "Will you find more damage once it is up?",
+          "a": "Sometimes. That is why we survey first and why the scope says what happens, and what it costs, if the substrate underneath is worse than the readings suggested."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "fiberglass-deck-repair",
+        "exterior-repairs",
+        "interior-repairs"
+      ]
+    },
+    {
+      "slug": "basement-waterproofing",
+      "title": "Basement Waterproofing",
+      "short": "Basement Waterproofing",
+      "cat": "water",
+      "scale": "Major project",
+      "img": "property-basement.jpg",
+      "blurb": "Keeping water out of a basement is a drainage problem before it is a sealing problem. Paint on the wall is not waterproofing.",
+      "lead": "Most basements that flood are not failing because the wall is porous. They are failing because water is being delivered to the wall faster than the ground can take it away.",
+      "signs": [
+        "Water across the floor after heavy rain",
+        "A tide mark on the wall at a consistent height",
+        "White powdery deposit on the blockwork",
+        "Damp smell that is worse after rain",
+        "Paint or render blowing off the lower part of the wall"
+      ],
+      "what": [
+        "We start outside. Where is the water coming from, where is the ground falling, and where are the downspouts putting it. Fixing that is often most of the job and it is always the cheapest part of it.",
+        "Then inside: an interior perimeter drain to a correctly sized pit and pump where the water table or the construction makes that necessary, and tanking only where tanking is actually the answer."
+      ],
+      "steps": [
+        {
+          "h": "Find the water",
+          "p": "Outside first. Grading, downspouts, gullies and any buried line that is no longer working."
+        },
+        {
+          "h": "Survey inside",
+          "p": "Readings on the walls and floor, and where the water is actually entering."
+        },
+        {
+          "h": "Priced scope",
+          "p": "What we would do, in what order, and what each part buys you."
+        },
+        {
+          "h": "Install and prove",
+          "p": "The work, then a hose test, then the readings again."
+        }
+      ],
+      "includes": [
+        "Exterior drainage and grading assessment",
+        "Interior perimeter drainage where it is needed",
+        "A correctly sized pump with battery backup",
+        "Treatment of the moisture source, not the symptom",
+        "A hose test before we leave"
+      ],
+      "faq": [
+        {
+          "q": "Will sealant paint fix my basement?",
+          "a": "Not if water is being driven at the wall under pressure. It will hold back damp air and it will fail against standing water. We will tell you which one you have."
+        },
+        {
+          "q": "Do I need an interior drain or exterior work?",
+          "a": "Often both, sometimes only the exterior. The survey decides it, not the price list."
+        },
+        {
+          "q": "How long before I know it worked?",
+          "a": "The first heavy rain. We hose test on completion so you do not have to wait to find out it is wrong."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "french-drains",
+        "sump-pumps",
+        "foundation-repair"
+      ]
+    },
+    {
+      "slug": "masonry-pointing",
+      "title": "Masonry Restoration, Brick & Stone Pointing",
+      "short": "Masonry & Pointing",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "report-brick.jpg",
+      "blurb": "Failed pointing is a water entry point across a whole elevation, not a cosmetic problem.",
+      "lead": "When the mortar joints go, the wall stops shedding water and starts holding it. On a Philadelphia row home the front envelope is often the whole story.",
+      "signs": [
+        "Mortar you can rake out with a key",
+        "Open joints you can see daylight or sky through",
+        "Damp on an internal wall with no plumbing behind it",
+        "Spalling brick faces, which means water has been freezing inside them",
+        "White deposit running down the face of the wall"
+      ],
+      "what": [
+        "Repointing is not filling the gap. It is cutting the failed mortar back to sound material and replacing it with a mix compatible with the brick. Too hard a mix and the brick face spalls instead of the mortar, which turns a joint problem into a brick replacement problem.",
+        "Weather matters here. Repointing needs the wall above freezing and protected from drying out too fast, which is why this work has a season and we will tell you when the window has closed."
+      ],
+      "steps": [
+        {
+          "h": "Elevation survey",
+          "p": "Joint by joint, photographed, with the failed areas marked up."
+        },
+        {
+          "h": "Mix and match",
+          "p": "Mortar specified to suit the existing brick, and a sample panel where the finish matters."
+        },
+        {
+          "h": "Cut out and repoint",
+          "p": "Raked back to sound material, not skimmed over the top."
+        },
+        {
+          "h": "Seal the openings",
+          "p": "Window and door perimeters resealed while the elevation is up."
+        }
+      ],
+      "includes": [
+        "A marked up survey of the elevation",
+        "Mortar specified to the existing masonry",
+        "Raking back to sound material",
+        "Perimeter sealant at openings on the same elevation",
+        "Brick replacement where faces have spalled through"
+      ],
+      "faq": [
+        {
+          "q": "Can you do this in winter?",
+          "a": "Repointing needs suitable wall temperatures and protection from freezing. We will tell you honestly if the window has closed rather than take your money and risk the work."
+        },
+        {
+          "q": "Why not just use a stronger mortar?",
+          "a": "Because a mortar harder than the brick makes the brick fail instead of the joint. The mix is specified to the wall, not to the bag."
+        },
+        {
+          "q": "Will it match?",
+          "a": "We match as closely as the existing material allows and we will show you a sample panel first on anything visible."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "stucco-repair",
+        "exterior-repairs",
+        "historic-preservation"
+      ]
+    },
+    {
+      "slug": "stucco-repair",
+      "title": "Stucco Repair and Replacement",
+      "short": "Stucco Repair",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "report-brick.jpg",
+      "blurb": "Remediation finds and fixes the water. Repair and replacement puts the elevation back so it stays fixed.",
+      "lead": "Once the water entry is dealt with, the finish has to go back in a way that drains. A lot of the stucco we remove failed because it was installed with nowhere for water to go.",
+      "signs": [
+        "Cracking that follows the line of a window or a floor level",
+        "Bulging or hollow sounding areas when tapped",
+        "Staining below windows and at the base of the wall",
+        "Previous patch repairs that have cracked again",
+        "No visible weep or drainage at the bottom of the elevation"
+      ],
+      "what": [
+        "The difference between a repair that lasts and one that does not is almost always the drainage plane and the flashing at the openings. Stucco is not a waterproof layer. It is a finish that will let some water through, and the system behind it has to take that water back out.",
+        "We rebuild the sheathing and framing where it has gone, install a proper drainage plane and flashing, then re render to match."
+      ],
+      "steps": [
+        {
+          "h": "Probe and survey",
+          "p": "Moisture readings behind the render across the elevation, and probe holes where we need certainty."
+        },
+        {
+          "h": "Scope and price",
+          "p": "What comes off, what gets replaced behind it, and what the finish will be."
+        },
+        {
+          "h": "Strip and rebuild",
+          "p": "Sheathing, framing and flashing corrected before anything is re rendered."
+        },
+        {
+          "h": "Re render and verify",
+          "p": "Finish applied to match, drainage proved at the base."
+        }
+      ],
+      "includes": [
+        "Moisture readings across the elevation before pricing",
+        "Replacement of water damaged sheathing and framing",
+        "A drainage plane and flashing at every opening",
+        "Finish matched to the existing elevation",
+        "A photo record of what was behind the render"
+      ],
+      "faq": [
+        {
+          "q": "Can you repair a patch rather than a whole elevation?",
+          "a": "Sometimes. It depends whether the drainage plane behind it is intact. The probe readings decide it, and we will show you them."
+        },
+        {
+          "q": "How is this different from stucco remediation?",
+          "a": "Remediation is finding and stopping the water. Repair and replacement is putting the wall back. Most jobs need both, in that order."
+        },
+        {
+          "q": "Will the new section match?",
+          "a": "On a full elevation, yes. On a patch, a match is harder and we will be straight with you about how it will look."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "stucco-remediation",
+        "masonry-pointing",
+        "exterior-repairs"
+      ]
+    },
+    {
+      "slug": "concrete-repair",
+      "title": "Concrete Repair & Replacement",
+      "short": "Concrete Repair",
+      "cat": "structure",
+      "scale": "Major project",
+      "img": "property-street.jpg",
+      "blurb": "Cracked and sunken concrete sends water toward the building instead of away from it.",
+      "lead": "A slab that has settled back toward the house is a drainage fault with a hard surface on it. So is a cracked step, a failed area well and a patio with no fall.",
+      "signs": [
+        "A path or patio that falls back toward the wall",
+        "Cracks that have opened wide enough to take water",
+        "Steps pulling away from the house",
+        "Sunken slabs with a lip at the joint",
+        "Water pooling against the foundation after rain"
+      ],
+      "what": [
+        "We look at where the water goes before we look at the concrete. A beautifully poured slab that still falls toward the house has not solved anything, so the levels come first.",
+        "Then placement and curing, which have their own weather limits. We will tell you when the conditions are wrong rather than pour and hope."
+      ],
+      "steps": [
+        {
+          "h": "Level survey",
+          "p": "Where the water currently goes, and where it needs to go."
+        },
+        {
+          "h": "Break out and prepare",
+          "p": "Remove the failed slab, correct the sub base and the falls."
+        },
+        {
+          "h": "Place and cure",
+          "p": "Poured in suitable conditions, with the joints where they belong."
+        },
+        {
+          "h": "Check the fall",
+          "p": "Hose tested so you can see the water leaving."
+        }
+      ],
+      "includes": [
+        "A level survey before the price",
+        "Correction of falls away from the building",
+        "Sub base preparation, not a pour over the old slab",
+        "Joints and reinforcement where they are needed",
+        "A hose test on completion"
+      ],
+      "faq": [
+        {
+          "q": "Can you lift the slab instead of replacing it?",
+          "a": "Sometimes, depending on the cause and the condition. We will tell you if it is an option and what it is likely to buy you."
+        },
+        {
+          "q": "Can you pour in winter?",
+          "a": "Placement and curing need suitable conditions. We will tell you when the window is open rather than take the booking."
+        },
+        {
+          "q": "Do I need drainage as well?",
+          "a": "Often the concrete was the symptom. If water is still being delivered to that spot, correcting the slab alone will not hold."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "french-drains",
+        "foundation-repair",
+        "basement-waterproofing"
+      ]
+    },
+    {
+      "slug": "historic-preservation",
+      "title": "Historic Preservation & Restoration",
+      "short": "Historic Preservation",
+      "cat": "envelope",
+      "scale": "Major project",
+      "img": "property-row.jpg",
+      "blurb": "Older buildings fail differently, and they fail faster when they are repaired with modern materials.",
+      "lead": "A historic wall was built to breathe. Seal it with the wrong product and the water that used to leave through the joint starts leaving through the brick face instead.",
+      "signs": [
+        "Spalling brick faces on an older elevation",
+        "Previous repairs in cement mortar that are now causing damage",
+        "Damp inside a solid wall building with no cavity",
+        "Failed or inappropriate coatings on historic masonry",
+        "A property with approvals or consents attached to the work"
+      ],
+      "what": [
+        "The approach is conservative. Minimum intervention, materials compatible with what is already there, and a documented record of what was done and why. On a building with approvals attached, that record is part of the job.",
+        "These projects run on a longer timescale because surveys, specification and approvals all take time. We plan them months ahead rather than weeks."
+      ],
+      "steps": [
+        {
+          "h": "Condition survey",
+          "p": "Material by material, with the failure mechanisms identified and photographed."
+        },
+        {
+          "h": "Specification",
+          "p": "Materials and methods compatible with the original construction, written up."
+        },
+        {
+          "h": "Approvals and sequencing",
+          "p": "Time allowed for consents where they apply, and the work sequenced around them."
+        },
+        {
+          "h": "Execute and record",
+          "p": "The work, with a documented record of what was done."
+        }
+      ],
+      "includes": [
+        "A condition survey with failure mechanisms identified",
+        "Materials specified to suit the original construction",
+        "Sample panels before committing to a finish",
+        "A documented record for your file or your consent",
+        "Removal of previous inappropriate repairs where they are causing harm"
+      ],
+      "faq": [
+        {
+          "q": "How far ahead should we start?",
+          "a": "Months, not weeks. Survey, specification and any approvals all take real time, and the exterior work has a season."
+        },
+        {
+          "q": "Do you work with approvals and consents?",
+          "a": "Yes. We allow for the time in the programme and we document the work to the standard the consent needs."
+        },
+        {
+          "q": "Is this more expensive than a normal repair?",
+          "a": "Usually, because the materials and the method are specified rather than standard. It is also the repair that does not have to be done again in five years."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "masonry-pointing",
+        "stucco-repair",
+        "exterior-repairs"
+      ]
+    },
+    {
+      "slug": "winterization",
+      "title": "Winterization Inspections & Frozen-Pipe Prevention",
+      "short": "Winterization",
+      "cat": "structure",
+      "scale": "Diagnostic",
+      "img": "report-thermal-building.jpg",
+      "blurb": "A burst pipe is the most expensive preventable thing that happens to a house, and it happens overnight.",
+      "lead": "Pipes freeze where the heat does not reach: an unheated run against an exterior wall, a crawl space, an uninsulated loft. The inspection finds those before the first cold snap does.",
+      "signs": [
+        "Pipework running through an unheated space",
+        "A room that has always been colder than the rest",
+        "A property that stands empty over winter",
+        "A pipe that has frozen before",
+        "Draughts you can feel at the window seams"
+      ],
+      "what": [
+        "We survey the building for the two things that matter: where the pipe runs are vulnerable, and where the cold air is getting in. Those are usually the same places, because an opening that lets cold air in is an opening that stops the heat reaching the pipe.",
+        "You get a list ordered by what would cost you the most if it failed, not by what is easiest to sell."
+      ],
+      "steps": [
+        {
+          "h": "Thermal survey",
+          "p": "Where the heat is leaving and where the cold is arriving, room by room."
+        },
+        {
+          "h": "Trace the vulnerable runs",
+          "p": "Pipework in unheated or poorly insulated spaces, identified and photographed."
+        },
+        {
+          "h": "Prioritised list",
+          "p": "Ordered by consequence, with what each item would cost to put right."
+        },
+        {
+          "h": "Protect",
+          "p": "Insulation, sealing and heat trace where it is warranted."
+        }
+      ],
+      "includes": [
+        "A thermal survey of the building",
+        "Identification of vulnerable pipe runs",
+        "A prioritised list by consequence, not by price",
+        "Sealing of the openings that are chilling those runs",
+        "Guidance on what to do if you are leaving the property empty"
+      ],
+      "faq": [
+        {
+          "q": "When should I book this?",
+          "a": "Before the first cold spell, so late summer through autumn. Booking it in January is still worth doing but you are already exposed."
+        },
+        {
+          "q": "Is this the same as air sealing?",
+          "a": "It overlaps. Winterization is the inspection and the priority list. Air sealing is one of the things it usually recommends."
+        },
+        {
+          "q": "What if a pipe has already burst?",
+          "a": "Call us. That is water damage restoration and the clock matters more than the inspection does."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "air-sealing",
+        "interior-repairs",
+        "water-damage"
+      ]
+    },
+    {
+      "slug": "efflorescence",
+      "title": "Efflorescence Treatment",
+      "short": "Efflorescence",
+      "cat": "structure",
+      "scale": "Diagnostic",
+      "img": "report-remediation.jpg",
+      "blurb": "The white deposit on your wall is not the problem. It is the receipt for a water problem you have not found yet.",
+      "lead": "Efflorescence is salt left behind when water moves through masonry and evaporates out of the face. Cleaning it off treats the evidence and leaves the cause running.",
+      "signs": [
+        "White powdery or crystalline deposit on brick or block",
+        "It returns within weeks of being cleaned off",
+        "It is worse in one area than the rest of the wall",
+        "Damp or a musty smell in the same space",
+        "A basement or retaining wall where it keeps coming back"
+      ],
+      "what": [
+        "We treat efflorescence as a symptom and investigate accordingly. Where is the water entering, how is it moving through the wall, and where is it evaporating. Answer that and the deposit stops returning on its own.",
+        "We will clean and treat the surface once the source is dealt with, not before, because doing it the other way round just means doing it again."
+      ],
+      "steps": [
+        {
+          "h": "Map the deposit",
+          "p": "Where it is, where it is worst, and what that tells us about the water path."
+        },
+        {
+          "h": "Find the source",
+          "p": "Readings through the wall and outside it, to find where water is getting in."
+        },
+        {
+          "h": "Fix the cause",
+          "p": "Drainage, pointing, sealing or tanking, whatever the survey points at."
+        },
+        {
+          "h": "Clean and treat",
+          "p": "Surface cleaned and treated once the water is dealt with."
+        }
+      ],
+      "includes": [
+        "A survey that treats the deposit as evidence",
+        "Identification of the actual water path",
+        "The source repair, quoted separately so you can see what is what",
+        "Surface cleaning and treatment after the cause is fixed",
+        "Readings to show the wall is drying"
+      ],
+      "faq": [
+        {
+          "q": "Can you just clean it off?",
+          "a": "We can, and it will come back. We would rather find out why it is there first and let you decide."
+        },
+        {
+          "q": "Is efflorescence dangerous?",
+          "a": "The deposit itself is not. What it tells you about water moving through the structure can be, which is the reason to look."
+        },
+        {
+          "q": "How long until it stops coming back?",
+          "a": "Once the water source is dealt with, the wall has to dry out. That takes weeks, sometimes longer on a thick wall."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "basement-waterproofing",
+        "masonry-pointing",
+        "mold-remediation"
+      ]
+    },
+    {
+      "slug": "odor-investigation",
+      "title": "Odor Investigations & Treatment",
+      "short": "Odor Investigations",
+      "cat": "air",
+      "scale": "Diagnostic",
+      "img": "containment-2.jpg",
+      "blurb": "An odour nobody can place is usually water somewhere nobody has looked.",
+      "lead": "A smell in one room and nowhere else is a strong signal. It means something is wet in a place with no airflow, and it has been wet long enough to start breaking down.",
+      "signs": [
+        "A musty smell in one room that nobody can locate",
+        "It is stronger after rain or when the heating comes on",
+        "It comes back after cleaning and airing",
+        "A smell behind or under a built in unit",
+        "Guests notice it and you have stopped noticing it"
+      ],
+      "what": [
+        "We treat an odour as a locating problem. Thermal and moisture meters narrow it down, and we work from the strongest reading back toward the source rather than guessing and opening walls.",
+        "Masking an odour with a treatment is the one thing we will not do without finding the cause first. If something is wet behind a wall, a fragrance does not change that."
+      ],
+      "steps": [
+        {
+          "h": "Narrow it down",
+          "p": "Room by room, with readings, to find where the odour is strongest and why."
+        },
+        {
+          "h": "Find the moisture",
+          "p": "Thermal and meters through the suspect area, including under and behind fixed units."
+        },
+        {
+          "h": "Open and confirm",
+          "p": "One small opening where the readings are clear, not exploratory demolition."
+        },
+        {
+          "h": "Treat and fix",
+          "p": "The source repaired, the affected material dealt with, then treatment."
+        }
+      ],
+      "includes": [
+        "A located source, not a guess",
+        "Thermal and moisture readings through the suspect area",
+        "Minimum opening up to confirm",
+        "Repair of the moisture source",
+        "Treatment of affected materials once the cause is fixed"
+      ],
+      "faq": [
+        {
+          "q": "Could it be something other than water?",
+          "a": "Yes, and we will tell you if the readings say so. Most of the ones we are called to turn out to be moisture related, which is why we are the ones called."
+        },
+        {
+          "q": "Will you need to open walls?",
+          "a": "Usually one small opening where the readings are already clear. We do not go looking by taking the room apart."
+        },
+        {
+          "q": "Can you just treat the smell?",
+          "a": "Not on its own. If something is wet behind the wall, a treatment buys you a few weeks and the problem keeps going."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "mold-remediation",
+        "leak-detection",
+        "mold-air-testing"
+      ]
+    },
+    {
+      "slug": "interior-repairs",
+      "title": "Interior Repairs & Restoration",
+      "short": "Interior Repairs",
+      "cat": "interior",
+      "scale": "Major project",
+      "img": "wall-clean.jpg",
+      "blurb": "Putting the room back is part of the job, not a separate contractor you have to go and find.",
+      "lead": "Most of our work ends with a hole in something. Drywall, plaster, trim, paint and flooring go back so that the only evidence left is the report.",
+      "signs": [
+        "A room that has been opened up for a leak or a remediation",
+        "Water damaged drywall, plaster or trim",
+        "A ceiling that has been cut and never closed",
+        "Staining that keeps coming back through paint",
+        "Work left unfinished by someone else"
+      ],
+      "what": [
+        "We finish what we open. On most jobs the restoration is quoted at the same time as the repair so you know the whole number before anything starts, rather than finding out afterwards that putting the room back is someone else's problem.",
+        "Winter is usually the best time for this work. The exterior season is closed, our crews are available, and nothing about interior restoration depends on the weather."
+      ],
+      "steps": [
+        {
+          "h": "Scope the make good",
+          "p": "What was opened, what was damaged, and what it takes to put back."
+        },
+        {
+          "h": "Confirm it is dry",
+          "p": "Readings before anything is closed up, because closing up wet material is how this comes back."
+        },
+        {
+          "h": "Rebuild",
+          "p": "Framing, insulation, board, plaster, trim."
+        },
+        {
+          "h": "Finish",
+          "p": "Paint and flooring to match what was there."
+        }
+      ],
+      "includes": [
+        "Readings to prove the area is dry before closing",
+        "Framing and insulation replaced where it was damaged",
+        "Board, plaster, trim and paint",
+        "Flooring made good or replaced",
+        "Quoted alongside the repair so you see the whole number"
+      ],
+      "faq": [
+        {
+          "q": "Do you do the restoration or just the repair?",
+          "a": "Both. The restoration is quoted with the repair so there is no gap at the end where you have to find someone else."
+        },
+        {
+          "q": "Will the paint and finish match?",
+          "a": "On a patch we match as closely as the existing finish allows. Where it cannot be matched we will tell you up front and price taking it to a natural break instead."
+        },
+        {
+          "q": "Can this be done in winter?",
+          "a": "Yes, and winter is often the best time for it. None of this work depends on the weather."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "flooring",
+        "water-damage",
+        "mold-remediation"
+      ]
+    },
+    {
+      "slug": "flooring",
+      "title": "Flooring Installation",
+      "short": "Flooring",
+      "cat": "interior",
+      "scale": "Major project",
+      "img": "subfloor-2.jpg",
+      "blurb": "Floors are usually the last thing a water job touches and the first thing anyone looks at afterwards.",
+      "lead": "We lift floors to get at subfloors, and we put floors back. On a water damaged room, laying a new floor over a substrate that is still wet is the most common way a job fails.",
+      "signs": [
+        "Flooring lifted or cut during a leak investigation",
+        "Buckling, cupping or lifting boards",
+        "A floor that was laid over a damp substrate",
+        "Staining or soft spots underfoot",
+        "A room being put back after remediation"
+      ],
+      "what": [
+        "The substrate decides everything. We take readings before anything is laid, and we will not lay over a subfloor that has not come down to an acceptable moisture content, even if that means waiting.",
+        "Where the subfloor or the framing below has gone, that gets replaced first and it is in the scope before we start."
+      ],
+      "steps": [
+        {
+          "h": "Substrate readings",
+          "p": "Moisture content measured and recorded before anything is specified."
+        },
+        {
+          "h": "Repair below",
+          "p": "Subfloor and framing replaced where the readings or the damage require it."
+        },
+        {
+          "h": "Prepare",
+          "p": "Levelling and any membrane the substrate calls for."
+        },
+        {
+          "h": "Lay",
+          "p": "Installed to the manufacturer's requirements, with the readings on file."
+        }
+      ],
+      "includes": [
+        "Moisture readings on the substrate before laying",
+        "Subfloor and framing repair where it is needed",
+        "Levelling and membrane where the substrate requires it",
+        "Installation to the manufacturer's requirements",
+        "The readings kept on file in case of a later claim"
+      ],
+      "faq": [
+        {
+          "q": "How long before you can lay after a water job?",
+          "a": "As long as the substrate takes to come down to an acceptable reading. We measure it rather than guess, and we will tell you where it is."
+        },
+        {
+          "q": "Can you match the existing floor?",
+          "a": "Often. Where the product is discontinued we will tell you and suggest taking it to a natural break instead of a visible join."
+        },
+        {
+          "q": "Do you do the whole room or just the damaged part?",
+          "a": "Whichever makes sense. We will price both and tell you which one we would do."
+        }
+      ],
+      "start": "project",
+      "related": [
+        "interior-repairs",
+        "water-damage",
+        "basement-waterproofing"
+      ]
+    },
+    {
+      "slug": "emergency-cleanup",
+      "title": "Emergency Cleanup",
+      "short": "Emergency Cleanup",
+      "cat": "water",
+      "scale": "Diagnostic",
+      "img": "floor-buckling.jpg",
+      "blurb": "When water is moving right now, the first few hours decide what the job costs.",
+      "lead": "Extraction, containment and stabilisation, so that what you are dealing with tomorrow is a repair rather than a much bigger repair.",
+      "signs": [
+        "Standing water in the property right now",
+        "A burst or failed pipe that has been running",
+        "Water coming through a ceiling",
+        "A failed sump pump during heavy rain",
+        "A property you cannot safely occupy"
+      ],
+      "what": [
+        "The priority is stopping the spread and getting the water out. Extraction, containment of the affected area, and drying equipment in place, documented from the moment we arrive because that record is what an insurer will ask for.",
+        "What caused it gets investigated once the water has stopped moving. Both matter, but not in the same hour."
+      ],
+      "steps": [
+        {
+          "h": "Make safe and stop the spread",
+          "p": "Containment up, affected area isolated, water stopped where we can stop it."
+        },
+        {
+          "h": "Extract",
+          "p": "Standing water removed and the affected materials assessed."
+        },
+        {
+          "h": "Stabilise",
+          "p": "Drying equipment placed and monitored, with readings logged daily."
+        },
+        {
+          "h": "Then investigate",
+          "p": "Once it is stable, we find out why it happened."
+        }
+      ],
+      "includes": [
+        "Documented from arrival, for your insurer",
+        "Extraction and containment",
+        "Drying equipment with daily logged readings",
+        "An assessment of what can be saved and what cannot",
+        "Investigation of the cause once the water has stopped"
+      ],
+      "faq": [
+        {
+          "q": "How quickly can you get here?",
+          "a": "Call the number rather than filling in a form. We will tell you honestly what our actual availability is rather than promise an hour we cannot hold."
+        },
+        {
+          "q": "Do you deal with the insurance company?",
+          "a": "We document to the standard adjusters expect: moisture logs, photographs, category and class. What your policy covers is between you and your carrier."
+        },
+        {
+          "q": "What should I do before you arrive?",
+          "a": "Stop the water at the stopcock if you can reach it safely, and turn off power to the affected area. Do not start pulling things up."
+        }
+      ],
+      "start": "inspection",
+      "related": [
+        "water-damage",
+        "leak-detection",
+        "interior-repairs"
+      ]
+    }
+  ]
+}

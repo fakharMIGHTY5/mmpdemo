@@ -1,0 +1,368 @@
+{
+  "commercial": {
+    "lead": "Property managers, facilities teams and building owners. The same diagnostics, on a schedule, with documentation your insurer and your board will accept.",
+    "plans": [
+      {
+        "name": "Commercial Service Plan",
+        "tag": "Ongoing cover",
+        "blurb": "A standing relationship rather than a call-out. Scheduled inspections across your portfolio, priority response, and a single point of contact who already knows your buildings.",
+        "points": [
+          "Scheduled thermal and moisture inspections",
+          "Priority scheduling ahead of general call-outs",
+          "One account contact across every property",
+          "Documented findings after every visit",
+          "Agreed rates for repair work"
+        ]
+      },
+      {
+        "name": "Preventive Maintenance",
+        "tag": "Before it costs you",
+        "blurb": "Envelope, roof and drainage checked on a cycle so small failures are found while they are still small. The cheapest water damage is the kind that never happens.",
+        "points": [
+          "Roof, parapet, coping and flashing survey",
+          "Drainage and grade checks before each wet season",
+          "Sealant and pointing condition reporting",
+          "Prioritised works list with costs",
+          "Year-on-year condition tracking"
+        ]
+      },
+      {
+        "name": "Emergency Readiness",
+        "tag": "When it does happen",
+        "blurb": "A plan agreed before the burst, not during it. We already hold your building details, your shut-offs and your escalation contacts, so the first hour is not spent gathering them.",
+        "points": [
+          "Priority emergency response",
+          "Building details and shut-offs held on file",
+          "Agreed escalation and approval chain",
+          "Extraction and structural drying",
+          "Insurer-ready moisture logs and photography"
+        ]
+      }
+    ],
+    "sectors": [
+      "Apartment and condo buildings",
+      "Property management portfolios",
+      "Offices and mixed use",
+      "Retail and hospitality",
+      "Schools and institutions",
+      "Healthcare and care homes"
+    ]
+  },
+  "faq": [
+    {
+      "q": "Why do you charge for an inspection when others are free?",
+      "a": "Because it is different work. A free estimate is a salesperson looking at your wall so they can quote you. A paid assessment is a technician with thermal imaging and moisture meters producing a document with photographs, findings and a priced scope. You own it, and you can take it to an insurer, an engineer or a competitor. If you hire us for the repair, the fee comes off the invoice."
+    },
+    {
+      "q": "How much does an assessment cost?",
+      "a": "Partial assessments covering up to two areas start at $500. A full property assessment starts at $750. Multi-unit properties are assessed per unit. The fee is credited against the repair if you go ahead with us."
+    },
+    {
+      "q": "How long does the guarantee last?",
+      "a": "Three years on workmanship, covering the labour on exterior repairs and installations we carry out. If something comes up under it we respond within 48 hours."
+    },
+    {
+      "q": "Do you work on commercial property?",
+      "a": "Yes. Alongside one-off commercial work we run three ongoing plans: a Commercial Service Plan, Preventive Maintenance, and Emergency Readiness. Property managers tend to want a schedule and a named contact rather than a phone number to call in a crisis."
+    },
+    {
+      "q": "How quickly can you get to an emergency?",
+      "a": "Same day where we can. If water is moving through the building right now, call rather than filling in a form. The difference between a drying job and a mold remediation job is often 48 hours."
+    },
+    {
+      "q": "Do I need a mold test before remediation?",
+      "a": "Often not. If you can see it and smell it, a laboratory will only confirm what you already know. Testing earns its cost when the growth is hidden, when a health question is live, or when a transaction or dispute needs a documented result."
+    },
+    {
+      "q": "Will you remediate mold without fixing the leak?",
+      "a": "No. It would come back and you would be entitled to be angry about it. If you cannot fund both at once we will scope the source repair first and stage the remediation."
+    },
+    {
+      "q": "Will my insurance cover this?",
+      "a": "That depends on your policy and the cause of loss, and we will not guess before seeing it. What we can do is document the loss to the standard adjusters expect, which is where homeowners most often lose money."
+    },
+    {
+      "q": "What technology do you actually use?",
+      "a": "FLIR thermal imaging to find the temperature difference wet material creates, pin and pinless moisture meters to confirm it in real numbers, drone survey for roofs and upper elevations, and invasive probing on stucco where surface inspection tells you nothing."
+    },
+    {
+      "q": "Do you work outside Philadelphia?",
+      "a": "We cover Philadelphia, the surrounding suburbs and northern Delaware. Florida is opening soon. Enter your ZIP anywhere on the site and we will tell you straight away."
+    }
+  ],
+  "team": [
+    {
+      "name": "Joshua",
+      "role": "Founder",
+      "note": "Runs assessments himself. Clients keep writing the same line in reviews: he did not try to sell up."
+    },
+    {
+      "name": "Eric",
+      "role": "Field technician",
+      "note": "On the tools for repair and remediation. Named repeatedly in reviews for letting people know before the noisy parts start."
+    },
+    {
+      "name": "Promise",
+      "role": "Client liaison",
+      "note": "Keeps jobs moving and owners informed, including advocating with utilities when a job stalls."
+    },
+    {
+      "name": "Quennie",
+      "role": "Operations",
+      "note": "Service plans, scheduling and the paperwork that makes a claim go smoothly."
+    }
+  ],
+  "quiz": {
+    "intro": "Eight questions, about sixty seconds. You get a read on how urgent it looks before anyone asks you for anything.",
+    "questions": [
+      {
+        "key": "situation",
+        "ask": "What best describes your situation?",
+        "opts": [
+          [
+            "I have noticed a specific issue",
+            3
+          ],
+          [
+            "Something feels off but I am unsure",
+            2
+          ],
+          [
+            "Multiple areas affected",
+            4
+          ],
+          [
+            "I am buying a property",
+            1
+          ],
+          [
+            "I manage a building or portfolio",
+            2
+          ],
+          [
+            "None of the above",
+            0
+          ]
+        ]
+      },
+      {
+        "key": "property",
+        "ask": "What type of property is this?",
+        "opts": [
+          [
+            "Single family",
+            0
+          ],
+          [
+            "Townhome",
+            0
+          ],
+          [
+            "Multi-family",
+            0
+          ],
+          [
+            "Condo",
+            0
+          ],
+          [
+            "Apartment",
+            0
+          ],
+          [
+            "Commercial",
+            0
+          ]
+        ]
+      },
+      {
+        "key": "goal",
+        "ask": "What are you trying to accomplish?",
+        "opts": [
+          [
+            "Fix an issue",
+            3
+          ],
+          [
+            "Prevent issues",
+            1
+          ],
+          [
+            "Evaluate before buying",
+            1
+          ],
+          [
+            "Learn what to look for",
+            0
+          ]
+        ]
+      },
+      {
+        "key": "symptom",
+        "ask": "What are you experiencing?",
+        "opts": [
+          [
+            "Water stains",
+            3
+          ],
+          [
+            "Musty odor",
+            3
+          ],
+          [
+            "Visible mold",
+            4
+          ],
+          [
+            "Discoloration",
+            3
+          ],
+          [
+            "Warping",
+            4
+          ],
+          [
+            "No visible issue",
+            0
+          ],
+          [
+            "Not sure",
+            1
+          ]
+        ]
+      },
+      {
+        "key": "where",
+        "ask": "Where is it?",
+        "opts": [
+          [
+            "Ceiling",
+            3
+          ],
+          [
+            "Wall",
+            2
+          ],
+          [
+            "Basement",
+            3
+          ],
+          [
+            "Bathroom",
+            2
+          ],
+          [
+            "Windows or doors",
+            2
+          ],
+          [
+            "Multiple areas",
+            4
+          ],
+          [
+            "Not sure",
+            1
+          ]
+        ]
+      },
+      {
+        "key": "extent",
+        "ask": "How widespread is it?",
+        "opts": [
+          [
+            "Small",
+            1
+          ],
+          [
+            "Multiple areas",
+            3
+          ],
+          [
+            "Whole property",
+            4
+          ],
+          [
+            "Not sure",
+            2
+          ]
+        ]
+      },
+      {
+        "key": "when",
+        "ask": "When does it happen?",
+        "opts": [
+          [
+            "After rain",
+            3
+          ],
+          [
+            "During plumbing use",
+            3
+          ],
+          [
+            "Wind-driven rain",
+            3
+          ],
+          [
+            "Constant",
+            4
+          ],
+          [
+            "Occasionally",
+            2
+          ],
+          [
+            "Not sure",
+            1
+          ]
+        ]
+      },
+      {
+        "key": "duration",
+        "ask": "How long has this been happening?",
+        "opts": [
+          [
+            "Just started",
+            1
+          ],
+          [
+            "Weeks",
+            2
+          ],
+          [
+            "Months",
+            3
+          ],
+          [
+            "Over a year",
+            4
+          ],
+          [
+            "Not sure",
+            2
+          ]
+        ]
+      }
+    ],
+    "bands": [
+      {
+        "max": 32,
+        "name": "Low risk",
+        "head": "Nothing here looks urgent.",
+        "body": "What you have described reads as low risk. That does not mean nothing is happening, only that there is no sign of it moving fast. A video consultation is the cheapest way to be sure before you spend anything."
+      },
+      {
+        "max": 66,
+        "name": "Moderate risk",
+        "head": "There are signs of moisture getting in.",
+        "body": "This pattern usually means intermittent leaks or dampness building behind a wall or ceiling. It rarely feels urgent at this stage, which is exactly why it gets expensive. An assessment will tell you where it is coming from."
+      },
+      {
+        "max": 101,
+        "name": "High risk",
+        "head": "This needs looking at soon.",
+        "body": "Several answers point to active, spreading water. At this stage the difference between a drying job and a full remediation is often days, not weeks. Book an assessment, or call us if water is moving right now."
+      }
+    ]
+  }
+}
