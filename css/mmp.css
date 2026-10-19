@@ -420,14 +420,15 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
    THE MOLD TEST — the interactive bit
    Two rounds: scrub it off, then find what was feeding it.
    ============================================================ */
-.game{ max-width:980px; margin-inline:auto; }
+.game{ max-width:1000px; margin-inline:auto; }
 .game-card{
-  background:var(--white); border:1px solid var(--line); border-radius:clamp(20px,2.2vw,30px);
-  overflow:hidden; box-shadow:0 40px 90px -60px rgba(10,31,61,.5);
+  background:var(--white); border:1px solid var(--line); border-radius:26px;
+  overflow:hidden;
 }
 .game-stage{
-  position:relative; aspect-ratio:16/10; overflow:hidden;
-  background:linear-gradient(170deg,#F2EFE9 0%,#E8E4DC 55%,#DCD7CD 100%);
+  position:relative; aspect-ratio:16/8.2; overflow:hidden;
+  background:linear-gradient(168deg,#EFEDE8 0%,#E4E0D8 52%,#D5CFC4 100%);
+  box-shadow:inset 0 0 90px -20px rgba(60,50,38,.22);
   /* pan-y, not none: a horizontal drag scrubs, a vertical swipe still scrolls
      the page. Trapping scroll over a block this tall is unusable on a phone. */
   touch-action:pan-y;
@@ -535,19 +536,31 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 
 /* the strip under the stage */
 .game-ui{
-  display:flex; align-items:center; gap:clamp(14px,2vw,24px); flex-wrap:wrap;
-  padding:clamp(18px,2.2vw,26px) clamp(20px,2.6vw,32px); border-top:1px solid var(--line);
+  display:flex; align-items:center; gap:clamp(16px,2.4vw,28px); flex-wrap:wrap;
+  padding:clamp(20px,2.4vw,28px) clamp(22px,2.8vw,34px);
+  border-top:1px solid var(--line); background:var(--paper);
 }
 .game-ui .lb{
-  font-family:var(--fm); font-size:.56rem; letter-spacing:.18em; text-transform:uppercase;
+  font-family:var(--fm); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase;
   color:var(--ink-3); flex:none;
 }
-.game-ui .lb b{ color:var(--ink); font-weight:500; }
-.game-track{ flex:1; min-width:140px; height:5px; border-radius:5px; background:var(--blue-pale); overflow:hidden; }
-.game-track i{ display:block; height:100%; width:0; border-radius:5px; background:var(--blue); transition:width .2s linear; }
+.game-ui .lb b{
+  color:var(--blue); font-weight:500;
+  font-size:1.35rem; letter-spacing:-.02em; font-variant-numeric:tabular-nums;
+}
+.game-track{
+  flex:1; min-width:140px; height:6px; border-radius:6px;
+  background:var(--line); overflow:hidden;
+}
+.game-track i{
+  display:block; height:100%; width:0; border-radius:6px;
+  background:linear-gradient(90deg,var(--blue-lift),var(--blue));
+  transition:width .2s linear;
+}
 .game-hint{
-  padding:0 clamp(20px,2.6vw,32px) clamp(14px,1.8vw,18px);
-  font-size:.9rem; line-height:1.55; color:var(--ink-2); margin:0;
+  padding:clamp(16px,2vw,20px) clamp(22px,2.8vw,34px) clamp(18px,2.2vw,24px);
+  font-size:.92rem; line-height:1.6; color:var(--ink-2); margin:0;
+  border-top:1px solid var(--line);
 }
 .game-hint b{ color:var(--ink); font-weight:600; }
 .game-legend{

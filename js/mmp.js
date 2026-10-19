@@ -398,7 +398,7 @@
     function endRoundOne() {
       stage.classList.remove('live');
       report(1);
-      if (roundEl) roundEl.textContent = 'Round 1 complete';
+      if (roundEl) roundEl.textContent = 'Step 1 complete';
 
       // It grows back. That is the whole point of the exercise.
       var t0 = performance.now();
@@ -496,7 +496,7 @@
       say.classList.remove('on');
       cut.classList.add('on');
       stage.classList.remove('live');
-      if (roundEl) roundEl.textContent = 'Round 2 \u00B7 find the source';
+      if (roundEl) roundEl.textContent = 'Step 2 \u00B7 find the source';
       if (bar) bar.style.width = '0%';
       if (pctEl) pctEl.textContent = '';
       if (hint) hint.innerHTML = hint.getAttribute('data-two') || hint.innerHTML;
@@ -542,7 +542,7 @@
       say.classList.remove('on');
       cut.classList.remove('on', 'won');
       if (area) area.classList.remove('live');
-      if (roundEl) roundEl.textContent = 'Round 1 · clean the wall';
+      if (roundEl) roundEl.textContent = 'Step 1 · clean the wall';
       if (hint) hint.innerHTML = hint.getAttribute('data-one') || '';
       paintMold(); ink0 = ink(); report(0);
     }
