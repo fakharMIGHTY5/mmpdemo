@@ -814,29 +814,29 @@
     function build() {
       // Icicles hang off the top run and off the two horizontal returns.
       icicles = [];
-      for (var i = 0; i < 26; i++) {
+      for (var i = 0; i < 54; i++) {
         icicles.push({
-          x: rand(P + 26, W - P - 26),
-          len: rand(14, 54),
-          w: rand(3.5, 8),
+          x: rand(P - R, W - P + R),
+          len: rand(18, 86),
+          w: rand(4, 11),
           born: rand(0, 0.7),
           ph: rand(0, 6.28)
         });
       }
 
       frost = [];
-      for (var f = 0; f < 86; f++) {
+      for (var f = 0; f < 130; f++) {
         var onTop = Math.random() < 0.42;
         var out = Math.random() < 0.5 ? -1 : 1;
         if (onTop) {
           frost.push({ x: rand(P, W - P), y: TOP + out * R,
-                       ang: out > 0 ? 0 : Math.PI, len: rand(5, 15), born: rand(0, 1) });
+                       ang: out > 0 ? 0 : Math.PI, len: rand(8, 26), born: rand(0, 1) });
         } else {
           var left = Math.random() < 0.5;
           var px = left ? P : W - P;
           frost.push({ x: px + out * R, y: rand(TOP + 40, H),
                        ang: out > 0 ? Math.PI / 2 : -Math.PI / 2,
-                       len: rand(5, 15), born: rand(0, 1) });
+                       len: rand(8, 26), born: rand(0, 1) });
         }
       }
 
@@ -943,16 +943,67 @@
       coupling(W - P, TOP + (H - TOP) * 0.4, true);
     }
 
+    /* The thing that makes it read as frozen rather than as plumbing:
+       a lumpy sheath of ice over the metal, thicker where the frost has
+       had longer to build. */
+    function drawIceCrust(reach) {
+      var bulge = function (i) { return Math.sin(i * 1.7) * 3 + Math.sin(i * 0.6) * 4; };
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(214,240,255,.88)';
+      ctx.strokeStyle = 'rgba(255,255,255,.95)';
+      ctx.lineWidth = 1;
+
+      // top run
+      var span = (W - P * 2) * reach;
+      ctx.beginPath();
+      ctx.moveTo(P, TOP - R);
+      for (var x = P; x <= P + span; x += 10) {
+        ctx.lineTo(x, TOP - R - 3 - Math.abs(bulge(x * 0.05)));
+      }
+      for (var x2 = P + span; x2 >= P; x2 -= 10) {
+        ctx.lineTo(x2, TOP + R + 3 + Math.abs(bulge(x2 * 0.045 + 2)));
+      }
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+
+      // the two side runs, freezing downward from the corner
+      [P, W - P].forEach(function (px, n) {
+        var drop = (H - TOP) * reach;
+        ctx.beginPath();
+        ctx.moveTo(px - R, TOP);
+        for (var y = TOP; y <= TOP + drop; y += 10) {
+          ctx.lineTo(px - R - 3 - Math.abs(bulge(y * 0.05 + n * 3)), y);
+        }
+        for (var y2 = TOP + drop; y2 >= TOP; y2 -= 10) {
+          ctx.lineTo(px + R + 3 + Math.abs(bulge(y2 * 0.042 + n)), y2);
+        }
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      });
+      ctx.restore();
+
+      // a cold haze sitting around the frozen runs
+      ctx.save();
+      ctx.globalAlpha = 0.5;
+      var hz = ctx.createLinearGradient(0, TOP - 40, 0, TOP + 40);
+      hz.addColorStop(0, 'rgba(168,214,250,0)');
+      hz.addColorStop(.5, 'rgba(168,214,250,.4)');
+      hz.addColorStop(1, 'rgba(168,214,250,0)');
+      ctx.fillStyle = hz;
+      ctx.fillRect(P - 40, TOP - 40, span + 80, 80);
+      ctx.restore();
+    }
+
     function draw() {
       ctx.clearRect(0, 0, W, H);
 
-      var reach = 0.5 + Math.sin(t * 0.2) * 0.5;      // the freeze, breathing
+      var reach = 0.8 + Math.sin(t * 0.18) * 0.2;      // stays frozen, breathes
 
       drawPipeFrame();
+      drawIceCrust(reach);
 
       // ---- frost crusting along the runs
-      ctx.strokeStyle = 'rgba(190,228,250,.95)';
-      ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+      ctx.strokeStyle = 'rgba(132,196,240,.95)';
+      ctx.lineWidth = 2; ctx.lineCap = 'round';
       frost.forEach(function (fr) {
         if (reach < fr.born * 0.9) return;
         var g = Math.min(1, (reach - fr.born * 0.9) * 2.4);
@@ -979,8 +1030,9 @@
         var w = ic.w * (0.6 + g * 0.4);
         var sway = Math.sin(t * 0.7 + ic.ph) * 0.9;
         var grd = ctx.createLinearGradient(0, TOP + R, 0, TOP + R + len);
-        grd.addColorStop(0, 'rgba(176,220,248,.95)');
-        grd.addColorStop(1, 'rgba(230,246,255,.35)');
+        grd.addColorStop(0, 'rgba(150,208,245,.98)');
+        grd.addColorStop(.6, 'rgba(196,230,252,.85)');
+        grd.addColorStop(1, 'rgba(236,249,255,.5)');
         ctx.fillStyle = grd;
         ctx.beginPath();
         ctx.moveTo(ic.x - w, TOP + R - 2);
@@ -988,6 +1040,8 @@
         ctx.lineTo(ic.x + sway, TOP + R + len);
         ctx.closePath();
         ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,.8)';
+        ctx.lineWidth = 1; ctx.stroke();
       });
 
       // ---- the split, and what comes out of it
