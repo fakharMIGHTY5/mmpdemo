@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "75"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "78"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -523,9 +523,12 @@ def cases_block(limit=None, compact=False, depth=0):
                      f'alt="{html.escape(c["alt"])}" loading="lazy"></div>')
 
         if compact:
+            # on the home row every card uses the plain crop, so the three line up
+            flat = (f'<div class="fig"><img src="{rel(depth, c["raw"])}" '
+                    f'alt="{html.escape(c["alt"])}" loading="lazy"></div>')
             out.append(f"""
-      <a class="cs-mini" href="{rel(depth,'case-studies.html')}#{c['id']}" data-r>
-        {media}
+      <a class="cs-mini" href="{rel(depth,'case-studies.html')}" data-r>
+        {flat}
         <span class="cs-mini-tag">{html.escape(c['sector'])} &middot; {html.escape(c['service'])}</span>
         <h3>{html.escape(c['title'])}</h3>
         <span class="lnk">Read the file {icon('arrow')}</span>
@@ -819,7 +822,7 @@ def main():
         "book.html": ("Get Started | Moisture Master Pros",
                       "Check your ZIP code, then discuss a repair project, book a paid inspection, or schedule a video consultation.", "book"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
-                              "Six jobs start to finish. What the caller described, what we actually found, what it took to put right, and what it cost.", "case-studies"),
+                              "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
                             "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and northern Delaware.", "contact"),
         "contact.html": ("Free Moisture Assessment | Moisture Master Pros",
