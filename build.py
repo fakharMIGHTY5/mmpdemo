@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "68"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "70"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -125,7 +125,7 @@ def nav(depth, active=""):
       <a href="{rel(depth,'case-studies.html')}"{cur('case-studies')}>Case Studies</a>
       <a href="{rel(depth,'process.html')}"{cur('process')}>How It Works</a>
       <a href="{rel(depth,'about.html')}"{cur('about')}>About</a>
-      <a href="{rel(depth,'contact.html')}"{cur('contact')}>Contact</a>
+      <a href="{rel(depth,'contact-us.html')}"{cur('contact')}>Contact</a>
       <a class="nav-tel" href="tel:{SITE['tel_href']}">{SITE['tel']}</a>
       <a class="b" href="{rel(depth,'book.html')}">Get started</a>
     </nav>
@@ -172,7 +172,9 @@ def foot(depth):
         <a href="{rel(depth,'process.html')}">How it works</a>
         <a href="{rel(depth,'about.html')}">About</a>
         <a href="{rel(depth,'book.html')}">Get started</a>
-        <a href="{rel(depth,'contact.html')}">Contact</a>
+        <a href="{rel(depth,'contact-us.html')}">Contact us</a>
+        <a href="{rel(depth,'contact-us.html')}#faq">Questions</a>
+        <a href="{rel(depth,'contact.html')}">Free assessment</a>
       </div>
     </div>
     <div class="foot-base">
@@ -812,8 +814,6 @@ def main():
                           "Leak detection, mold remediation, water damage, French drains, sump pumps, foundation repair, air sealing, stucco and exterior repair, explained plainly.", "services"),
         "commercial.html": ("Commercial Property Services | Moisture Master Pros",
                             "Service plans, preventive maintenance and emergency readiness for property managers, facilities teams and building owners across Greater Philadelphia.", "commercial"),
-        "faq.html": ("Questions & Answers | Moisture Master Pros",
-                     "What an assessment costs, how the guarantee works, what technology we use, and where we work.", "faq"),
         "work.html": ("Our Work | Moisture Master Pros",
                       "Real assessments, real remediation, real repairs. See what our findings, containment and rebuild work actually look like.", "work"),
         "process.html": ("How It Works | Moisture Master Pros",
@@ -824,6 +824,8 @@ def main():
                       "Check your ZIP code, then discuss a repair project, book a paid inspection, or schedule a video consultation.", "book"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Six jobs start to finish. What the caller described, what we actually found, what it took to put right, and what it cost.", "case-studies"),
+        "contact-us.html": ("Contact Us | Moisture Master Pros",
+                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and northern Delaware.", "contact"),
         "contact.html": ("Free Moisture Assessment | Moisture Master Pros",
                          "Eight questions, about sixty seconds, and a read on how urgent your moisture problem looks before anyone asks you for anything.", "contact"),
     }
@@ -834,6 +836,8 @@ def main():
             print("  ! missing src/%s, skipped" % fn)
             continue
         ld = [LOCAL_BUSINESS]
+        if fn == "contact-us.html":
+            ld.append(faq_schema(SITE_CONTENT["faq"]))
         write(fn, title, desc, body_of(fn), depth=0, active=active, jsonld=ld)
 
     for s in SERVICES:

@@ -1011,6 +1011,73 @@
   })();
 
   /* =========================================================
+     SERVICE DRAW-IN
+     Each drawing builds itself stroke by stroke as the row comes
+     into view, staggered across the grid. Path lengths are
+     measured rather than guessed, because a fixed dasharray
+     makes the short strokes crawl and the long ones snap.
+     ========================================================= */
+  (function initDrawIn() {
+    var grid = $('[data-fl-grid]') || $('.fl-grid');
+    if (!grid) return;
+
+    var cards = $$('.fl', grid);
+    if (!cards.length) return;
+
+    // Measure once, up front, while everything is still hidden.
+    cards.forEach(function (card) {
+      var svg = $('svg', card);
+      if (!svg) return;
+      $$('path, line, polyline, rect, circle, ellipse', svg).forEach(function (el) {
+        var filled = el.getAttribute('class') &&
+                     /\bzf\b|\bzhot\b|\bzlvl\b|\bzpool\b|\bzseal\b|\bzpan\b|\bzslot\b/.test(el.getAttribute('class'));
+        if (filled) { el.classList.add('is-fill'); return; }
+        var len = 0;
+        try { len = el.getTotalLength(); } catch (e) { len = 0; }
+        if (!len || !isFinite(len)) { el.classList.add('is-fill'); return; }
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        el.dataset.len = len;
+      });
+    });
+
+    grid.classList.add('ready');
+
+    function run(card, i) {
+      var svg = $('svg', card);
+      card.classList.add('in');
+      if (!svg) return;
+      var strokes = $$('[data-len]', svg);
+      var base = i * 90;
+      strokes.forEach(function (el, k) {
+        el.style.transition = 'stroke-dashoffset .72s cubic-bezier(.22,.9,.3,1) ' +
+                              (base + k * 55) + 'ms';
+        el.style.strokeDashoffset = '0';
+      });
+      $$('.is-fill', svg).forEach(function (el, k) {
+        el.style.transition = 'opacity .5s ease ' + (base + 260 + k * 70) + 'ms';
+        el.style.opacity = '';
+      });
+    }
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      cards.forEach(function (c, i) { run(c, 0); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var i = cards.indexOf(en.target);
+        run(en.target, i % 5);
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.3, rootMargin: '0px 0px -8% 0px' });
+
+    cards.forEach(function (c) { io.observe(c); });
+  })();
+
+  /* =========================================================
      SIXTEEN GALLONS
      1.6 gallons per improperly sealed opening, per storm. The
      jugs are the point: the number on its own means nothing.

@@ -2039,3 +2039,14 @@ a.cu-line:hover b{ color:var(--blue); }
 @media (prefers-reduced-motion:reduce){
   .fl-scene,.fl-shadow{ animation:none; }
 }
+
+/* the row holds still until the script has measured every stroke */
+.fl-grid.ready .fl{ opacity:0; transform:translateY(22px); }
+.fl-grid.ready .fl.in{
+  opacity:1; transform:none;
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.fl-grid.ready .fl .is-fill{ opacity:0; }
+.fl-grid.ready .fl.in .fl-shadow{ animation-delay:calc(var(--i) * -0.8s); }
+.fl-grid.ready .fl:not(.in) .fl-scene,
+.fl-grid.ready .fl:not(.in) .fl-shadow{ animation:none; }
