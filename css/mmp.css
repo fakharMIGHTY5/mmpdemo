@@ -2227,3 +2227,40 @@ a.cu-line:hover b{ color:var(--blue); }
 .soon-list span{
   font:500 11px/1.6 var(--fm); letter-spacing:.14em; color:var(--blue); flex:none;
 }
+
+/* Service page head: the drawing, not a borrowed photograph.
+   Every new service was wearing an image from another job. */
+.phead-art{
+  display:grid; place-items:center; aspect-ratio:4/3;
+  border:1px solid var(--line); border-radius:22px; background:var(--paper);
+  overflow:hidden;
+}
+.phead-scene{ display:block; width:80%; color:var(--blue-deep); }
+.phead-scene svg{ width:100%; height:auto; display:block; overflow:visible; }
+.phead-scene .zk{ stroke:currentColor; }
+.phead-scene .zt{ opacity:.3; stroke-width:1.6; }
+.phead-scene .zq{ opacity:.58; }
+.phead-scene .zf{ fill:currentColor; stroke:none; }
+.phead-scene .zhot{ fill:var(--red); stroke:none; }
+.phead-scene .zlvl,.phead-scene .zpool{ fill:var(--blue); opacity:.14; stroke:none; }
+.phead-scene .zseal,.phead-scene .zpan{ fill:var(--blue); opacity:.16; stroke:none; }
+.phead-scene .zslot{ fill:var(--paper); stroke:none; }
+.phead-scene .zband{ stroke:var(--blue); stroke-width:4; fill:none; }
+
+/* Home case study teaser: titles only until the write ups and the
+   photographs that go with them are signed off. */
+.cs-teaser{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(28px,4vw,72px);
+}
+.cs-teaser li{
+  display:flex; align-items:baseline; gap:16px;
+  padding:clamp(16px,2vh,22px) 2px; border-bottom:1px solid var(--line);
+  color:var(--ink); font:600 clamp(15px,1.25vw,17.5px)/1.4 var(--fd);
+  letter-spacing:-.012em;
+}
+.cs-teaser span{
+  font:500 11px/1.6 var(--fm); letter-spacing:.14em; color:var(--blue); flex:none;
+}
+@media (max-width:760px){ .cs-teaser{ grid-template-columns:1fr; } }

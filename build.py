@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "78"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "82"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -172,7 +172,6 @@ def foot(depth):
         <a href="{rel(depth,'book.html')}">Get started</a>
         <a href="{rel(depth,'contact-us.html')}">Contact us</a>
         <a href="{rel(depth,'contact-us.html')}#faq">Questions</a>
-        <a href="{rel(depth,'contact.html')}">Free assessment</a>
       </div>
     </div>
     <div class="foot-base">
@@ -688,13 +687,15 @@ def build_service(s):
         </div>"""
         for f in s["faq"]
     )
+    # Related work uses the same icon card as the services page, so no
+    # service page carries a photograph from a different job.
     rel_cards = "".join(
-        f"""<a class="svc" href="{BY_SLUG[r]['slug']}.html" data-r>
-          <div class="svc-fig"><img src="{rel(d,'assets/img/%s' % BY_SLUG[r]['img'])}" alt="{html.escape(BY_SLUG[r]['title'])}" loading="lazy" width="800" height="500">
-          <span class="tagn">{html.escape(BY_SLUG[r]['scale'])}</span></div>
-          <div class="svc-body"><h3>{html.escape(BY_SLUG[r]['title'])}</h3>
+        f"""<a class="svc" data-cat="{BY_SLUG[r]['cat']}" href="{BY_SLUG[r]['slug']}.html" data-r>
+          <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{SVC_ICON.get(BY_SLUG[r]['slug'], SVC_ICON['leak-detection'])}</svg></span>
+          <span class="svc-tag">{html.escape(BY_SLUG[r]['scale'])}</span>
+          <h3>{html.escape(BY_SLUG[r]['title'])}</h3>
           <p>{html.escape(BY_SLUG[r]['blurb'])}</p>
-          <span class="lnk">What we fix {icon('arrow')}</span></div>
+          <span class="lnk">What we fix {icon('arrow')}</span>
         </a>"""
         for r in s["related"] if r in BY_SLUG
     )
@@ -718,7 +719,9 @@ def build_service(s):
         <a class="b b-ghost" href="tel:{SITE['tel_href']}">{icon('phone')} {SITE['tel']}</a>
       </div>
     </div>
-    <figure class="phead-fig"><img src="{rel(d,'assets/img/%s' % s['img'])}" alt="{html.escape(s['title'])}" width="1200" height="900"></figure>
+    <figure class="phead-fig phead-art">
+      <span class="phead-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="{html.escape(s['title'])}">{SVC_SCENE.get(s['slug'], SVC_SCENE[CAT_SCENE[s['cat']]])}</svg></span>
+    </figure>
   </div>
 </section>
 
@@ -825,8 +828,6 @@ def main():
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
                             "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and northern Delaware.", "contact"),
-        "contact.html": ("Free Moisture Assessment | Moisture Master Pros",
-                         "Eight questions, about sixty seconds, and a read on how urgent your moisture problem looks before anyone asks you for anything.", "contact"),
     }
 
     for fn, (title, desc, active) in PAGE_META.items():
