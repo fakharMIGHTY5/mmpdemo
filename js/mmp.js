@@ -148,11 +148,16 @@
 
     // Services dropdown: hover on a pointer device, click everywhere.
     $$('.drop', nav).forEach(function (drop) {
-      var btn = $('button', drop);
+      var btn = $('a[aria-haspopup], button', drop);
       if (!btn) return;
       var fine = matchMedia('(hover:hover) and (min-width:1001px)').matches;
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
+        // With a pointer the menu is already open on hover, so the click
+        // should do what the link says and go to the services page. Without
+        // one there is no hover, so the first tap has to open the menu.
+        if (fine) return;
+        e.preventDefault();
         drop.setAttribute('data-open', drop.getAttribute('data-open') === 'true' ? 'false' : 'true');
       });
       if (fine) {
@@ -240,6 +245,9 @@
     var seed = 20260915;
     function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
 
+    /* A colony is three things, and the old version only drew the first:
+       soft mass, a ragged perimeter of lobes, and the filaments that
+       actually make it read as growth rather than as a stain. */
     var COL = [];
     for (var i = 0; i < 6; i++) {
       var blobs = [], n = 20 + Math.floor(rnd() * 14);
@@ -247,10 +255,33 @@
         var a = rnd() * 6.283, d = Math.pow(rnd(), 0.65);
         blobs.push({ x: Math.cos(a) * d, y: Math.sin(a) * d * 0.78, r: 0.22 + rnd() * 0.8, o: 0.3 + rnd() * 0.55 });
       }
-      COL.push({ cx: 0.14 + rnd() * 0.72, cy: 0.18 + rnd() * 0.58, R: 0.05 + rnd() * 0.075, blobs: blobs });
+      /* Fuzz, not spokes. These start out at the rim of the mass and run a
+         short way past it, so the colony gets a ragged edge. Long threads
+         from the centre read as a spider, which is what the first pass did. */
+      var fil = [], fn = 60 + Math.floor(rnd() * 40);
+      for (var f = 0; f < fn; f++) {
+        var fa = rnd() * 6.283;
+        var from = 0.45 + rnd() * 0.55;          // start somewhere in the mass
+        fil.push({
+          a: fa,
+          from: from,
+          len: 0.12 + rnd() * 0.34,
+          bend: (rnd() - 0.5) * 0.5,
+          w: 0.35 + rnd() * 0.5,
+          o: 0.12 + rnd() * 0.3
+        });
+      }
+      COL.push({
+        cx: 0.14 + rnd() * 0.72, cy: 0.18 + rnd() * 0.58,
+        R: 0.05 + rnd() * 0.075, blobs: blobs, fil: fil,
+        damp: 0.5 + rnd() * 0.9
+      });
     }
     var SPECK = [];
-    for (var k = 0; k < 220; k++) SPECK.push({ x: 0.06 + rnd() * 0.88, y: 0.08 + rnd() * 0.84, r: rnd(), o: rnd() });
+    for (var k = 0; k < 260; k++) {
+      SPECK.push({ x: 0.06 + rnd() * 0.88, y: 0.08 + rnd() * 0.84,
+                   r: rnd(), o: rnd(), rust: rnd() < 0.12 });
+    }
 
     // A small offscreen copy is all the coverage maths needs, and reading
     // 80x50 pixels is cheap enough to do while the pointer is moving.
@@ -269,8 +300,36 @@
       ctx.globalAlpha = alpha == null ? 1 : alpha;
       var S = Math.min(W, H);
 
+      // The damp the growth is living on. Drawn first and wide, so the
+      // colonies sit in a stain rather than floating on clean plaster.
+      COL.forEach(function (c) {
+        var x = c.cx * W, y = c.cy * H, R = c.R * S * 3.4 * c.damp;
+        var dg = ctx.createRadialGradient(x, y, 0, x, y, R);
+        dg.addColorStop(0, 'rgba(104,96,70,.34)');
+        dg.addColorStop(0.55, 'rgba(120,112,84,.16)');
+        dg.addColorStop(1, 'rgba(132,124,96,0)');
+        ctx.fillStyle = dg;
+        ctx.beginPath(); ctx.ellipse(x, y, R, R * 0.82, 0, 0, 6.283); ctx.fill();
+      });
+
       COL.forEach(function (c) {
         var R = c.R * S;
+
+        // edge fuzz, drawn under the mass so the roots vanish into it
+        ctx.lineCap = 'round';
+        c.fil.forEach(function (fl) {
+          var x0 = c.cx * W + Math.cos(fl.a) * fl.from * R * 1.9;
+          var y0 = c.cy * H + Math.sin(fl.a) * fl.from * R * 1.5;
+          var x1 = c.cx * W + Math.cos(fl.a + fl.bend) * (fl.from + fl.len) * R * 1.9;
+          var y1 = c.cy * H + Math.sin(fl.a + fl.bend) * (fl.from + fl.len) * R * 1.5;
+          ctx.strokeStyle = 'rgba(40,46,28,' + fl.o + ')';
+          ctx.lineWidth = fl.w;
+          ctx.beginPath();
+          ctx.moveTo(x0, y0);
+          ctx.quadraticCurveTo((x0 + x1) / 2 + fl.bend * 6, (y0 + y1) / 2, x1, y1);
+          ctx.stroke();
+        });
+
         c.blobs.forEach(function (b) {
           var x = c.cx * W + b.x * R * 1.9;
           var y = c.cy * H + b.y * R * 1.9;
@@ -293,7 +352,9 @@
       });
 
       SPECK.forEach(function (p) {
-        ctx.fillStyle = 'rgba(30,34,20,' + (0.14 + p.o * 0.38) + ')';
+        ctx.fillStyle = p.rust
+          ? 'rgba(96,58,30,' + (0.2 + p.o * 0.4) + ')'
+          : 'rgba(30,34,20,' + (0.14 + p.o * 0.38) + ')';
         ctx.beginPath();
         ctx.arc(p.x * W, p.y * H, 0.6 + p.r * 1.8, 0, 6.283);
         ctx.fill();

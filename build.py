@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "85"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "89"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -116,7 +116,7 @@ def nav(depth, active=""):
     <button class="burger" aria-expanded="false" aria-label="Menu"><i></i><i></i><i></i></button>
     <nav class="links">
       <div class="drop" data-open="false">
-        <button type="button" aria-haspopup="true">Services {icon('chev')}</button>
+        <a href="{rel(depth,'services.html')}" aria-haspopup="true"{cur('services')}>Services {icon('chev')}</a>
         <div class="drop-menu">{''.join(items)}
           <a href="{rel(depth,'services.html')}"><b>All services</b><span>See everything we fix</span></a>
         </div>
