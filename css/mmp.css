@@ -1474,6 +1474,76 @@ figcaption{
 @media (prefers-reduced-motion:reduce){ .bld-pt circle.p{ animation:none; } }
 
 /* ===========================================================
+   CONTACT  page head above the funnel
+   =========================================================== */
+.cu-top{
+  padding:calc(var(--nav-h) + clamp(44px,7vh,80px)) var(--gut) clamp(34px,5vh,54px);
+  background:var(--white); text-align:center;
+}
+.cu-top-in{ max-width:720px; margin-inline:auto; }
+.cu-top .d2{ margin:14px auto clamp(18px,2.4vh,24px); max-width:18ch; }
+.cu-top-lead{
+  margin:0 auto; max-width:50ch; font-size:clamp(15px,1.2vw,17.5px);
+  line-height:1.68; color:var(--ink-2);
+}
+.cu-top-alt{
+  margin:clamp(18px,2.4vh,26px) 0 0; font:500 11px/1.7 var(--fm);
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+}
+.cu-top-alt a{ color:var(--blue); border-bottom:1px solid currentColor; }
+
+/* ===========================================================
+   BUILDING DIAGRAM  commercial
+   =========================================================== */
+.bld-head{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(24px,4vw,64px);
+  align-items:end; margin-bottom:clamp(36px,5vh,64px); }
+.bld-lede{ color:rgba(255,255,255,.66); font-size:clamp(15px,1.15vw,17px);
+  line-height:1.7; max-width:44ch; }
+
+.bld{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,4vw,64px); align-items:start; }
+.bld-fig{ position:sticky; top:calc(var(--navh,72px) + 28px);
+  border:1px solid rgba(255,255,255,.14); border-radius:24px;
+  background:rgba(255,255,255,.04); padding:clamp(18px,2.4vw,30px); color:#fff; }
+.bld-fig svg{ width:100%; height:auto; display:block; overflow:visible; }
+.bld .zbl{ stroke:rgba(255,255,255,.92); }
+.bld .zbt{ stroke:rgba(255,255,255,.3); stroke-width:1.4; }
+
+.bld-pt{ transform:translate(var(--x),var(--y)); cursor:pointer; }
+.bld-pt circle{ fill:var(--navy); stroke:rgba(255,255,255,.55); stroke-width:2;
+  r:7; transition:r .4s var(--ease), fill .4s var(--ease), stroke .4s var(--ease); }
+.bld-pt circle.p{ fill:none; stroke:var(--sky); opacity:0; }
+.bld-pt.on circle{ fill:var(--sky); stroke:var(--sky); r:8; }
+@keyframes bld-ping{ 0%{ r:8; opacity:.75 } 100%{ r:26; opacity:0 } }
+.bld-pt.on circle.p{ animation:bld-ping 1.9s ease-out infinite; }
+
+.bld-list{ list-style:none; margin:0; padding:0; border-top:1px solid rgba(255,255,255,.14); }
+.bld-list li{ border-bottom:1px solid rgba(255,255,255,.14); }
+.bld-row{ width:100%; text-align:left; background:none; border:0; cursor:pointer;
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,1.6vw,22px);
+  padding:clamp(16px,2vw,22px) 0; color:inherit; font:inherit;
+  transition:padding .4s var(--ease); }
+.bld-row .n{ font:500 12px/1.9 var(--fm); letter-spacing:.14em;
+  color:rgba(255,255,255,.4); transition:color .4s var(--ease); }
+.bld-row b{ display:block; font:700 clamp(16px,1.4vw,20px)/1.3 var(--fd);
+  letter-spacing:-.015em; color:rgba(255,255,255,.72);
+  transition:color .4s var(--ease); }
+.bld-row em{ display:block; font-style:normal; color:rgba(255,255,255,.56);
+  font-size:15px; line-height:1.65; max-width:50ch; opacity:0; max-height:0;
+  overflow:hidden; transition:opacity .4s var(--ease), max-height .5s var(--ease),
+  margin .4s var(--ease); }
+.bld-row.on .n{ color:var(--sky); }
+.bld-row.on b{ color:#fff; }
+.bld-row.on em{ opacity:1; max-height:140px; margin-top:9px; }
+
+@media (max-width:980px){
+  .bld-head{ grid-template-columns:1fr; align-items:start; gap:18px; }
+  .bld{ grid-template-columns:1fr; gap:24px; }
+  .bld-fig{ position:relative; top:0; }
+}
+@media (prefers-reduced-motion:reduce){ .bld-pt circle.p{ animation:none; } }
+
+/* ===========================================================
    CONTACT  a wizard, not a wall of fields
    One question per screen, answers banked underneath, and the
    name and number asked last, once they have invested four taps.
@@ -1494,80 +1564,148 @@ figcaption{
 }
 .cu-top-alt a{ color:var(--blue); border-bottom:1px solid currentColor; }
 
-.wiz{
-  background:var(--white); border:1px solid var(--line); border-radius:26px;
-  padding:clamp(26px,3.4vw,46px);
-}
-.wiz-bar{ height:3px; border-radius:3px; background:var(--line); overflow:hidden; }
-.wiz-bar i{
-  display:block; height:100%; width:20%; border-radius:3px; background:var(--blue);
-  transition:width .5s var(--ease);
-}
-.wiz-count{
-  margin:14px 0 clamp(24px,3.4vh,34px);
-  font:500 10px/1.7 var(--fm); letter-spacing:.18em; text-transform:uppercase;
-  color:var(--ink-3);
-}
-.wiz-count b{ color:var(--blue); font-weight:500; }
+/* ===========================================================
+   BUILDING DIAGRAM  commercial
+   =========================================================== */
+.bld-head{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(24px,4vw,64px);
+  align-items:end; margin-bottom:clamp(36px,5vh,64px); }
+.bld-lede{ color:rgba(255,255,255,.66); font-size:clamp(15px,1.15vw,17px);
+  line-height:1.7; max-width:44ch; }
 
-.wiz-stage{ display:grid; }
-.wq{
-  grid-area:1/1; opacity:0; pointer-events:none; transform:translateY(12px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease);
-}
-.wq.on{ opacity:1; pointer-events:auto; transform:none; }
-.wq-ask{
-  margin:0 0 clamp(20px,2.8vh,28px);
-  font:700 clamp(1.4rem,2.6vw,2.1rem)/1.2 var(--fd); letter-spacing:-.028em; color:var(--ink);
-}
-.wq-sub{ margin:-14px 0 clamp(22px,3vh,30px); color:var(--muted); font-size:15px; line-height:1.6; }
+.bld{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,4vw,64px); align-items:start; }
+.bld-fig{ position:sticky; top:calc(var(--navh,72px) + 28px);
+  border:1px solid rgba(255,255,255,.14); border-radius:24px;
+  background:rgba(255,255,255,.04); padding:clamp(18px,2.4vw,30px); color:#fff; }
+.bld-fig svg{ width:100%; height:auto; display:block; overflow:visible; }
+.bld .zbl{ stroke:rgba(255,255,255,.92); }
+.bld .zbt{ stroke:rgba(255,255,255,.3); stroke-width:1.4; }
 
-.wq-opts{ display:grid; gap:10px; }
-.wq-opt{
-  text-align:left; width:100%; cursor:pointer;
-  padding:16px 18px; border-radius:14px;
-  border:1px solid var(--line); background:var(--white);
-  font:500 15.5px/1.4 var(--f); color:var(--ink);
-  transition:border-color .25s var(--ease), background .25s var(--ease),
-             transform .25s var(--ease);
-}
-.wq-opt:hover{ border-color:var(--blue); background:var(--blue-pale); transform:translateX(3px); }
+.bld-pt{ transform:translate(var(--x),var(--y)); cursor:pointer; }
+.bld-pt circle{ fill:var(--navy); stroke:rgba(255,255,255,.55); stroke-width:2;
+  r:7; transition:r .4s var(--ease), fill .4s var(--ease), stroke .4s var(--ease); }
+.bld-pt circle.p{ fill:none; stroke:var(--sky); opacity:0; }
+.bld-pt.on circle{ fill:var(--sky); stroke:var(--sky); r:8; }
+@keyframes bld-ping{ 0%{ r:8; opacity:.75 } 100%{ r:26; opacity:0 } }
+.bld-pt.on circle.p{ animation:bld-ping 1.9s ease-out infinite; }
 
-.wq-final .form{ margin-top:4px; }
-.cu-form,.cu-side,.cu-card,.cu-line{ all:unset; }
-.wiz .two-f{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-.wiz .two-f > div,.wiz .form > div{ display:flex; flex-direction:column; gap:7px; min-width:0; }
-.wiz .form button[type=submit]{ align-self:flex-start; margin-top:6px; }
-.wiz .form label .opt{
-  font:500 9px/1 var(--fm); letter-spacing:.14em; color:var(--ink-3); margin-left:7px;
-}
+.bld-list{ list-style:none; margin:0; padding:0; border-top:1px solid rgba(255,255,255,.14); }
+.bld-list li{ border-bottom:1px solid rgba(255,255,255,.14); }
+.bld-row{ width:100%; text-align:left; background:none; border:0; cursor:pointer;
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,1.6vw,22px);
+  padding:clamp(16px,2vw,22px) 0; color:inherit; font:inherit;
+  transition:padding .4s var(--ease); }
+.bld-row .n{ font:500 12px/1.9 var(--fm); letter-spacing:.14em;
+  color:rgba(255,255,255,.4); transition:color .4s var(--ease); }
+.bld-row b{ display:block; font:700 clamp(16px,1.4vw,20px)/1.3 var(--fd);
+  letter-spacing:-.015em; color:rgba(255,255,255,.72);
+  transition:color .4s var(--ease); }
+.bld-row em{ display:block; font-style:normal; color:rgba(255,255,255,.56);
+  font-size:15px; line-height:1.65; max-width:50ch; opacity:0; max-height:0;
+  overflow:hidden; transition:opacity .4s var(--ease), max-height .5s var(--ease),
+  margin .4s var(--ease); }
+.bld-row.on .n{ color:var(--sky); }
+.bld-row.on b{ color:#fff; }
+.bld-row.on em{ opacity:1; max-height:140px; margin-top:9px; }
 
-.wiz-foot{
-  display:flex; align-items:center; justify-content:space-between; gap:18px;
-  flex-wrap:wrap; margin-top:clamp(24px,3.4vh,34px);
-  padding-top:clamp(18px,2.4vh,24px); border-top:1px solid var(--line);
-  min-height:30px;
+@media (max-width:980px){
+  .bld-head{ grid-template-columns:1fr; align-items:start; gap:18px; }
+  .bld{ grid-template-columns:1fr; gap:24px; }
+  .bld-fig{ position:relative; top:0; }
 }
-.wiz-back{
-  cursor:pointer; background:none; border:0; padding:0;
-  font:500 13px/1 var(--f); color:var(--ink-3);
-  border-bottom:1px solid var(--line); padding-bottom:3px;
-  transition:color .25s var(--ease), border-color .25s var(--ease);
-}
-.wiz-back:hover{ color:var(--blue); border-color:var(--blue); }
-.wiz-answers{
-  list-style:none; display:flex; flex-wrap:wrap; gap:7px; margin:0; padding:0;
-  justify-content:flex-end; flex:1;
-}
-.wiz-answers li{
-  padding:5px 11px; border-radius:999px; background:var(--blue-pale);
-  font:500 11.5px/1.4 var(--f); color:var(--blue-deep);
-}
+@media (prefers-reduced-motion:reduce){ .bld-pt circle.p{ animation:none; } }
 
-@media (max-width:640px){
-  .wiz .two-f{ grid-template-columns:1fr; }
-  .wiz-answers{ justify-content:flex-start; }
+/* ===========================================================
+   CONTACT  page head above the funnel
+   =========================================================== */
+.cu-top{
+  padding:calc(var(--nav-h) + clamp(44px,7vh,80px)) var(--gut) clamp(34px,5vh,54px);
+  background:var(--white); text-align:center;
 }
+.cu-top-in{ max-width:720px; margin-inline:auto; }
+.cu-top .d2{ margin:14px auto clamp(18px,2.4vh,24px); max-width:18ch; }
+.cu-top-lead{
+  margin:0 auto; max-width:50ch; font-size:clamp(15px,1.2vw,17.5px);
+  line-height:1.68; color:var(--ink-2);
+}
+.cu-top-alt{
+  margin:clamp(18px,2.4vh,26px) 0 0; font:500 11px/1.7 var(--fm);
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+}
+.cu-top-alt a{ color:var(--blue); border-bottom:1px solid currentColor; }
+
+/* ===========================================================
+   BUILDING DIAGRAM  commercial
+   =========================================================== */
+.bld-head{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(24px,4vw,64px);
+  align-items:end; margin-bottom:clamp(36px,5vh,64px); }
+.bld-lede{ color:rgba(255,255,255,.66); font-size:clamp(15px,1.15vw,17px);
+  line-height:1.7; max-width:44ch; }
+
+.bld{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,4vw,64px); align-items:start; }
+.bld-fig{ position:sticky; top:calc(var(--navh,72px) + 28px);
+  border:1px solid rgba(255,255,255,.14); border-radius:24px;
+  background:rgba(255,255,255,.04); padding:clamp(18px,2.4vw,30px); color:#fff; }
+.bld-fig svg{ width:100%; height:auto; display:block; overflow:visible; }
+.bld .zbl{ stroke:rgba(255,255,255,.92); }
+.bld .zbt{ stroke:rgba(255,255,255,.3); stroke-width:1.4; }
+
+.bld-pt{ transform:translate(var(--x),var(--y)); cursor:pointer; }
+.bld-pt circle{ fill:var(--navy); stroke:rgba(255,255,255,.55); stroke-width:2;
+  r:7; transition:r .4s var(--ease), fill .4s var(--ease), stroke .4s var(--ease); }
+.bld-pt circle.p{ fill:none; stroke:var(--sky); opacity:0; }
+.bld-pt.on circle{ fill:var(--sky); stroke:var(--sky); r:8; }
+@keyframes bld-ping{ 0%{ r:8; opacity:.75 } 100%{ r:26; opacity:0 } }
+.bld-pt.on circle.p{ animation:bld-ping 1.9s ease-out infinite; }
+
+.bld-list{ list-style:none; margin:0; padding:0; border-top:1px solid rgba(255,255,255,.14); }
+.bld-list li{ border-bottom:1px solid rgba(255,255,255,.14); }
+.bld-row{ width:100%; text-align:left; background:none; border:0; cursor:pointer;
+  display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,1.6vw,22px);
+  padding:clamp(16px,2vw,22px) 0; color:inherit; font:inherit;
+  transition:padding .4s var(--ease); }
+.bld-row .n{ font:500 12px/1.9 var(--fm); letter-spacing:.14em;
+  color:rgba(255,255,255,.4); transition:color .4s var(--ease); }
+.bld-row b{ display:block; font:700 clamp(16px,1.4vw,20px)/1.3 var(--fd);
+  letter-spacing:-.015em; color:rgba(255,255,255,.72);
+  transition:color .4s var(--ease); }
+.bld-row em{ display:block; font-style:normal; color:rgba(255,255,255,.56);
+  font-size:15px; line-height:1.65; max-width:50ch; opacity:0; max-height:0;
+  overflow:hidden; transition:opacity .4s var(--ease), max-height .5s var(--ease),
+  margin .4s var(--ease); }
+.bld-row.on .n{ color:var(--sky); }
+.bld-row.on b{ color:#fff; }
+.bld-row.on em{ opacity:1; max-height:140px; margin-top:9px; }
+
+@media (max-width:980px){
+  .bld-head{ grid-template-columns:1fr; align-items:start; gap:18px; }
+  .bld{ grid-template-columns:1fr; gap:24px; }
+  .bld-fig{ position:relative; top:0; }
+}
+@media (prefers-reduced-motion:reduce){ .bld-pt circle.p{ animation:none; } }
+
+/* ===========================================================
+   CONTACT  a wizard, not a wall of fields
+   One question per screen, answers banked underneath, and the
+   name and number asked last, once they have invested four taps.
+   =========================================================== */
+.cu-top{
+  padding:calc(var(--nav-h) + clamp(44px,7vh,80px)) var(--gut) clamp(34px,5vh,54px);
+  background:var(--white); text-align:center;
+}
+.cu-top-in{ max-width:720px; margin-inline:auto; }
+.cu-top .d2{ margin:14px 0 clamp(18px,2.4vh,24px); max-width:17ch; margin-inline:auto; }
+.cu-top-lead{
+  margin:0 auto; max-width:48ch; font-size:clamp(15px,1.2vw,17.5px);
+  line-height:1.68; color:var(--ink-2);
+}
+.cu-top-alt{
+  margin:clamp(18px,2.4vh,26px) 0 0; font:500 11px/1.7 var(--fm);
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+}
+.cu-top-alt a{ color:var(--blue); border-bottom:1px solid currentColor; }
+
 
 /* ===========================================================
    BUILDING DIAGRAM  commercial

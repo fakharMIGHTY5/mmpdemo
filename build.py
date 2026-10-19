@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "83"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "85"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -125,14 +125,14 @@ def nav(depth, active=""):
       <a href="{rel(depth,'about.html')}"{cur('about')}>About</a>
       <a href="{rel(depth,'contact-us.html')}"{cur('contact')}>Contact</a>
       <a class="nav-tel" href="tel:{SITE['tel_href']}">{SITE['tel']}</a>
-      <a class="b" href="{rel(depth,'book.html')}">Get started</a>
+      <a class="b" href="{rel(depth,'contact-us.html')}">Get started</a>
     </nav>
   </div>
 </header>
 
 <div class="callbar">
   <a class="c1" href="tel:{SITE['tel_href']}">{icon('phone')} Call now</a>
-  <a class="c2" href="{rel(depth,'book.html')}">Get started</a>
+  <a class="c2" href="{rel(depth,'contact-us.html')}">Get started</a>
 </div>
 """
 
@@ -169,7 +169,7 @@ def foot(depth):
         <a href="{rel(depth,'work.html')}">Photo reports</a>
         <a href="{rel(depth,'commercial.html')}">Commercial</a>
         <a href="{rel(depth,'about.html')}">About</a>
-        <a href="{rel(depth,'book.html')}">Get started</a>
+        <a href="{rel(depth,'contact-us.html')}">Get started</a>
         <a href="{rel(depth,'contact-us.html')}">Contact us</a>
         <a href="{rel(depth,'contact-us.html')}#faq">Questions</a>
       </div>
@@ -715,7 +715,7 @@ def build_service(s):
       <h1 class="d2" style="margin:20px 0 22px;max-width:16ch">{html.escape(s['title'])}</h1>
       <p class="t1" style="max-width:52ch">{html.escape(s['lead'])}</p>
       <div class="row" style="margin-top:32px">
-        <a class="b" href="{rel(d,'book.html')}?path={s['start']}">{start_label}</a>
+        <a class="b" href="{rel(d,'contact-us.html')}?path={s['start']}">{start_label}</a>
         <a class="b b-ghost" href="tel:{SITE['tel_href']}">{icon('phone')} {SITE['tel']}</a>
       </div>
     </div>
@@ -783,7 +783,7 @@ def build_service(s):
       <h2 class="d2" style="margin-bottom:20px">Start with your ZIP code.</h2>
       <p class="t1" style="margin-bottom:clamp(28px,4vh,40px)">We will tell you straight away whether this is something we can take on at your address.</p>
     </div>
-    <div class="zip" data-zip data-zip-next="{rel(d,'book.html')}" data-r data-d="1">
+    <div class="zip" data-zip data-zip-next="{rel(d,'contact-us.html')}" data-r data-d="1">
       <form class="zip-form">
         <input type="text" inputmode="numeric" placeholder="Property ZIP code" aria-label="Property ZIP code" maxlength="5">
         <button class="b" type="submit">Check</button>
@@ -822,8 +822,6 @@ def main():
                       "Real assessments, real remediation, real repairs. See what our findings, containment and rebuild work actually look like.", "work"),
         "about.html": ("About Moisture Master Pros",
                        "Founded by Joshua Haynes. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia.", "about"),
-        "book.html": ("Get Started | Moisture Master Pros",
-                      "Check your ZIP code, then discuss a repair project, book a paid inspection, or schedule a video consultation.", "book"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
