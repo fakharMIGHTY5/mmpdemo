@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/mmp.css?v=60">
+<link rel="stylesheet" href="css/mmp.css?v=68">
 <script type="application/ld+json">{
 "@context": "https://schema.org",
 "@type": "HomeAndConstructionBusiness",
@@ -84,21 +84,23 @@
   <a class="c1" href="tel:+18334664788"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.1 5.1l1.4-1.9 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.6 15.6 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg> Call now</a>
   <a class="c2" href="book.html">Get started</a>
 </div>
-<!-- ============ HERO INTRO ============ -->
-<div class="intro" data-intro aria-hidden="true">
-  <video muted playsinline preload="none" src="assets/video/hero-open.mp4"></video>
-  <img class="intro-mark" src="assets/ui/mark-white.png" alt="">
-  <button type="button" class="intro-skip">Skip</button>
-</div>
-
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-in">
-    <p class="kicker" data-r>Greater Philadelphia &middot; Florida coming soon</p>
-    <h1 class="d1" data-r data-d="1">We find the water.<br>Then we repair <em>the damage.</em></h1>
-    <p class="hero-lead" data-r data-d="2">Leak detection, mold remediation and major moisture repair for homes across Greater Philadelphia.</p>
+<section class="hero" data-hero data-nav="navy">
+  <canvas class="hero-cv" data-frost aria-hidden="true"></canvas>
+  <div class="hero-grain" aria-hidden="true"></div>
 
-    <div class="zip light" data-zip data-zip-next="book.html" data-r data-d="3">
+  <div class="hero-in">
+    <p class="hero-season"><i></i> October in Philadelphia &middot; freeze season starts now</p>
+
+    <h1 class="hero-h1">
+      <span class="l1">It is going to</span>
+      <span class="l2">freeze<em data-ice>&nbsp;</em></span>
+      <span class="l3">before you are ready.</span>
+    </h1>
+
+    <p class="hero-lead">A pipe splits at three in the morning and nobody hears it. By the time you do, the water has been running for six hours and it is not a plumbing job any more.</p>
+
+    <div class="zip" data-zip data-zip-next="book.html">
       <form class="zip-form">
         <input type="text" inputmode="numeric" placeholder="Enter your property ZIP code" aria-label="Property ZIP code" maxlength="5">
         <button class="b" type="submit">Check my area</button>
@@ -107,12 +109,14 @@
       <p class="zip-note">One field. We answer before anything else.</p>
     </div>
 
-    <div class="hero-trust" data-r data-d="4">
+    <div class="hero-trust">
       <span><i></i> 2,000+ properties</span>
       <span>4.8 across 200+ reviews</span>
       <span>3 year workmanship guarantee</span>
     </div>
   </div>
+
+  <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
 </section>
 
 <!-- ============ THE MOLD TEST ============ -->
@@ -233,62 +237,64 @@
 </section>
 
 <!-- ============ WHAT WE FIX ============ -->
-<section class="panel panel-auto" id="gallons">
-  <div class="inner">
-    <div class="gal-head" data-r>
-      <div>
-        <p class="kicker">The cheapest thing you will ever do</p>
-        <h2 class="d2">One unsealed window<br>lets in <em>1.6 gallons.</em><br>Every storm.</h2>
-      </div>
-      <p class="gal-lede">If cold air can get in, water can get in. The seams around your windows and doors are the same openings that make a room feel chilly in January. Most people look at them every day and never once think of them as a way in.</p>
+<section class="gal-wrap" id="gallons" data-nav="navy">
+  <div class="gal-in">
+
+    <div class="gal-top">
+      <p class="kicker">The cheapest thing you will ever do</p>
+      <h2 class="gal-h2">This is what one storm<br>puts inside your walls.</h2>
     </div>
 
     <div class="gal" data-gallons>
-      <div class="gal-stage">
+      <div class="gal-figure">
         <div class="gal-jugs" data-jugs aria-hidden="true"></div>
-        <p class="gal-cap"><b data-out="jugCount">16</b> gallon jugs, sitting in your walls</p>
+        <div class="gal-person" aria-hidden="true">
+          <svg viewBox="0 0 60 170" fill="currentColor"><circle cx="30" cy="16" r="13"/><path d="M30 32c-11 0-19 7-19 17v40h7l3 79h8l2-56h-2l4-1 4 1h-2l2 56h8l3-79h7V49c0-10-8-17-19-17Z"/></svg>
+          <span>6 ft</span>
+        </div>
+        <div class="gal-floor" aria-hidden="true"></div>
       </div>
 
-      <div class="gal-panel">
+      <div class="gal-side">
+        <div class="gal-count">
+          <b data-out="gallons">16.0</b>
+          <span>gallons, every time it rains hard</span>
+        </div>
+
         <div class="gal-ctl">
           <div class="gal-row">
-            <span class="gal-lbl">Windows and doors on your home</span>
+            <span class="gal-lbl">Windows and doors</span>
             <div class="stepper">
-              <button type="button" data-step="windows" data-d="-1" aria-label="Fewer windows">&minus;</button>
-              <b data-out="windows">9</b>
-              <button type="button" data-step="windows" data-d="1" aria-label="More windows">+</button>
+              <button type="button" data-step="windows" data-d="-1" aria-label="Fewer">&minus;</button>
+              <b data-out="windows">10</b>
+              <button type="button" data-step="windows" data-d="1" aria-label="More">+</button>
             </div>
           </div>
           <div class="gal-row">
             <span class="gal-lbl">Storms with driving rain</span>
             <div class="stepper">
-              <button type="button" data-step="storms" data-d="-1" aria-label="Fewer storms">&minus;</button>
+              <button type="button" data-step="storms" data-d="-1" aria-label="Fewer">&minus;</button>
               <b data-out="storms">1</b>
-              <button type="button" data-step="storms" data-d="1" aria-label="More storms">+</button>
+              <button type="button" data-step="storms" data-d="1" aria-label="More">+</button>
             </div>
           </div>
         </div>
 
-        <div class="gal-big">
-          <b data-out="gallons">14.4</b>
-          <span>gallons of water into the structure</span>
+        <div class="gal-money">
+          <div class="gal-m seal">
+            <span class="gal-m-lbl">Seal the openings</span>
+            <b data-out="sealCost">$340</b>
+            <i class="gal-m-bar" data-seg="seal"></i>
+          </div>
+          <div class="gal-m fix">
+            <span class="gal-m-lbl">Remediate and restore after</span>
+            <b>$6,000</b>
+            <i class="gal-m-bar" data-seg="fix"></i>
+          </div>
+          <p class="gal-note">A real job we quoted: $2,600 to remediate, $2,900 to restore. The caulking that would have prevented it was three hundred dollars. <b data-out="multiple">18x</b> the cost, for leaving it.</p>
         </div>
 
-        <div class="gal-cost">
-          <div class="gal-bar" aria-hidden="true">
-            <span class="gal-seg seal" data-seg="seal"></span>
-            <span class="gal-seg fix" data-seg="fix"></span>
-          </div>
-          <div class="gal-key">
-            <div><span class="dot seal"></span><b data-out="sealCost">$340</b><i>Sealing the openings</i></div>
-            <div><span class="dot fix"></span><b>$6,000</b><i>Remediation and restoration after</i></div>
-          </div>
-          <p class="gal-note">A real job we quoted: $2,600 to remediate, $2,900 to restore. The caulking that would have prevented it was three hundred dollars. <b data-out="multiple">20x</b> the cost, for leaving it.</p>
-        </div>
-
-        <div class="row" style="margin-top:clamp(24px,3vh,32px)">
-          <a class="b" href="contact.html">Find out what yours is doing</a>
-        </div>
+        <a class="b" href="contact.html">Find out what yours is doing</a>
       </div>
     </div>
 
@@ -296,56 +302,104 @@
       <li data-ch><span class="chain-n">01</span><b>The seam opens</b><p>Caulk perishes, the frame moves, the material transition splits.</p></li>
       <li data-ch><span class="chain-n">02</span><b>Water goes in</b><p>Wind drives rain into the gap. Nothing shows on the outside.</p></li>
       <li data-ch><span class="chain-n">03</span><b>It runs behind the wall</b><p>Down the cavity, into the sheathing and the framing, out of sight.</p></li>
-      <li data-ch><span class="chain-n">04</span><b>You smell it</b><p>An odour in one room that nobody can place. That is the first symptom most people get.</p></li>
+      <li data-ch><span class="chain-n">04</span><b>You smell it</b><p>An odour in one room nobody can place. That is the first symptom most people get.</p></li>
       <li data-ch><span class="chain-n">05</span><b>Mold</b><p>By the time it is visible, the repair is no longer the window.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="panel panel-auto paper">
+<section class="panel panel-auto wide-pad">
   <div class="inner">
-    <div class="sx-head" data-r>
-      <div>
-        <p class="kicker">What we fix</p>
-        <h2 class="d2">The calls we get,<br>in the order we get them.</h2>
-      </div>
-      <p class="sx-lede">Some of these are a morning. Some are a week with an excavator in the garden. Either way you get told which one it is before anything starts.</p>
+    <div class="fl-head" data-r>
+      <p class="kicker">Everything that lets water in</p>
+      <h2 class="d2">We do not guess.<br>We find it, then we fix it.</h2>
+      <p class="fl-lede">Ten of the twenty two things we are called out for. Each one starts the same way, with a reading rather than an opinion.</p>
     </div>
-    <div class="sx" data-svcx><div class="sx-stage" aria-hidden="true"><div class="sx-scene on" data-scene="0"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Mold Remediation">
+
+    <div class="fl-grid">
+      <a class="fl" href="services/mold-remediation.html" style="--i:0">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <rect class="zk" x="70" y="52" width="260" height="200" rx="14"/>
 <path class="zk zq" d="M70 96h260"/>
 <g class="zspore"><circle class="zf" cx="146" cy="160" r="22"/><circle class="zf zd1" cx="196" cy="140" r="15"/><circle class="zf zd2" cx="188" cy="192" r="18"/><circle class="zf zd3" cx="240" cy="172" r="13"/><circle class="zf zd1" cx="238" cy="126" r="9"/></g>
 <path class="zk zwipe" d="M70 52v200"/>
 <path class="zk zt" d="M100 74h32M148 74h16"/>
-</svg></div><div class="sx-scene" data-scene="1"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Fiberglass Rooftop Deck Leak Repairs">
-<path class="zk" d="M96 44h56v220H96z"/>
-<path class="zk" d="M164 44h56v220h-56z"/>
-<path class="zk zq" d="M232 44h72v220h-72z"/>
-<path class="zk zt" d="M232 88h72M232 132h72M232 176h72M232 220h72"/>
-<g class="ztrace"><path class="zk zq" d="M124 52v208"/></g>
-<g class="zdrip"><path class="zk" d="M124 76c0 0-10 12-10 19a10 10 0 0 0 20 0c0-7-10-19-10-19Z"/></g>
-<path class="zk zarr" d="M124 274v18m-9-9 9 9 9-9"/>
-</svg></div><div class="sx-scene" data-scene="2"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Foundation Repairs">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Mold Remediation</h3>
+        <p>Contain, remove, treat and verify, with the moisture source fixed. Remediation without that is just an expensive delay.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/fiberglass-deck-repair.html" style="--i:1">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<path class="zk" d="M70 150h260v16H70z"/>
+<path class="zk zt" d="M70 166v96h260v-96"/>
+<path class="zk" d="M70 150V96M330 150V96M70 96h260"/>
+<path class="zk zt" d="M118 150V96M166 150V96M214 150V96M262 150V96M310 150V96"/>
+<path class="zk zcrack" d="M196 150c-6 4 4 8 0 12"/>
+<g class="zdrip"><path class="zk" d="M198 176c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<g class="zdrip zd2"><path class="zk" d="M232 182c0 0-8 10-8 16a8 8 0 0 0 16 0c0-6-8-16-8-16Z"/></g>
+<path class="zk zt" d="M96 262v-40h52v40"/>
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Fiberglass Deck Repairs</h3>
+        <p>Roof decks started going on Philadelphia homes about twenty years ago. The houses have settled since. The decks have not.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/foundation-repair.html" style="--i:2">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <path class="zk" d="M84 54h232v186H84z"/>
 <path class="zk zt" d="M84 110h232M84 166h232M148 54v56M252 54v56M116 110v56M200 110v56M284 110v56M148 166v74M252 166v74"/>
 <path class="zk zcrack" d="M200 54c-8 28 12 34 4 60-8 26 14 34 6 60-6 20 6 30 2 66"/>
 <rect class="zseal" x="176" y="54" width="48" height="186" rx="10"/>
 <path class="zk" d="M60 240h280v22H60z"/>
-</svg></div><div class="sx-scene" data-scene="3"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Leak Detection &amp; Water Intrusion Investigations">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Foundation Repairs</h3>
+        <p>Cracks, movement, failing parging and chronically wet walls. Repaired, then waterproofed so the repair holds.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/leak-detection.html" style="--i:3">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <rect class="zk" x="58" y="46" width="284" height="208" rx="12"/>
 <path class="zk zq" d="M58 104h96a26 26 0 0 1 26 26v124"/>
 <path class="zk zq" d="M342 104h-70"/>
 <circle class="zhot" cx="180" cy="130" r="8"/>
 <circle class="zhot zd1" cx="272" cy="104" r="6"/>
 <g class="zsweep"><circle class="zk" cx="132" cy="160" r="36"/><path class="zk" d="m157 185 24 24"/><path class="zk zt" d="M120 160h24M132 148v24"/></g>
-</svg></div><div class="sx-scene" data-scene="4"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Air Sealing &amp; Insulation">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Leak Detection</h3>
+        <p>Find the actual source of the water before anyone opens a wall. Thermal imaging, moisture meters and drone survey, inside and out.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/air-sealing.html" style="--i:4">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <path class="zk" d="M200 46 62 132v126h276V132Z"/>
 <path class="zk zt" d="M152 258v-72h96v72"/>
 <g class="zleak"><path class="zk" d="M104 150h-42m32-11-12 11 12 11"/></g>
 <g class="zleak zd2"><path class="zk" d="M296 150h42m-32-11 12 11-12 11"/></g>
 <g class="zleak zd1"><path class="zk" d="M200 108V70m-11 28 11-11 11 11"/></g>
 <path class="zband" d="M200 46 62 132v126h276V132Z"/>
-</svg></div><div class="sx-scene" data-scene="5"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Stucco Remediation">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Air Sealing &amp; Insulation</h3>
+        <p>Stop the air leakage that carries moisture into wall and roof cavities. It is the quiet cause behind a great deal of recurring mold.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/stucco-remediation.html" style="--i:5">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <path class="zk" d="M96 44h56v220H96z"/>
 <path class="zk" d="M164 44h56v220h-56z"/>
 <path class="zk zq" d="M232 44h72v220h-72z"/>
@@ -353,7 +407,52 @@
 <g class="ztrace"><path class="zk zq" d="M124 52v208"/></g>
 <g class="zdrip"><path class="zk" d="M124 76c0 0-10 12-10 19a10 10 0 0 0 20 0c0-7-10-19-10-19Z"/></g>
 <path class="zk zarr" d="M124 274v18m-9-9 9 9 9-9"/>
-</svg></div><div class="sx-scene" data-scene="6"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Basement Waterproofing">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Stucco Remediation</h3>
+        <p>Failed stucco traps water against the sheathing and rots the frame behind it. Full-wall remediation with the drainage plane rebuilt correctly.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/basement-waterproofing.html" style="--i:6">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<path class="zk" d="M96 54 200 22l104 32"/>
+<path class="zk" d="M118 54v70h164V54"/>
+<path class="zk" d="M96 124h208v134H96z"/>
+<path class="zk zt" d="M60 124h36M304 124h36"/>
+<rect class="zlvl" x="104" y="196" width="192" height="54" rx="4"/>
+<path class="zk zq zflow" d="M96 240h208"/>
+<g class="zdrip"><path class="zk" d="M142 142c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<g class="zdrip zd1"><path class="zk" d="M258 150c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<path class="zk zarr" d="M200 272v18m-9-9 9 9 9-9"/>
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Basement Waterproofing</h3>
+        <p>Keeping water out of a basement is a drainage problem before it is a sealing problem. Paint on the wall is not waterproofing.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/water-damage.html" style="--i:7">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<path class="zk" d="M52 210h296"/>
+<rect class="zpool" x="120" y="176" width="160" height="34" rx="8"/>
+<g class="zfan"><circle class="zk" cx="104" cy="176" r="30"/><path class="zk" d="M104 152c14 6 14 18 0 24-14-6-14-18 0-24Z"/></g>
+<g class="zfan zd2"><circle class="zk" cx="296" cy="176" r="30"/><path class="zk" d="M296 152c14 6 14 18 0 24-14-6-14-18 0-24Z"/></g>
+<path class="zk" d="M104 206h-16v22h32v-22Z"/>
+<path class="zk" d="M296 206h-16v22h32v-22Z"/>
+<path class="zk zt zvap" d="M162 148c0-14 16-14 16-28M200 140c0-14 16-14 16-28M238 148c0-14 16-14 16-28"/>
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Water Damage</h3>
+        <p>Extraction, structural drying, removal of what cannot be saved, and rebuild. Documented to a standard an insurer will accept.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/french-drains.html" style="--i:8">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
 <path class="zk" d="M40 96h92v158H40z"/>
 <path class="zk zt" d="M62 124h48M62 152h48"/>
 <path class="zk" d="M132 186c48-14 104-14 168 4"/>
@@ -363,104 +462,35 @@
 <g class="zdrip"><path class="zk" d="M164 108c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
 <g class="zdrip zd2"><path class="zk" d="M222 96c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
 <g class="zdrip zd1"><path class="zk" d="M278 114c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
-</svg></div><div class="sx-scene" data-scene="7"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Water Damage Restoration">
-<path class="zk" d="M52 210h296"/>
-<rect class="zpool" x="120" y="176" width="160" height="34" rx="8"/>
-<g class="zfan"><circle class="zk" cx="104" cy="176" r="30"/><path class="zk" d="M104 152c14 6 14 18 0 24-14-6-14-18 0-24Z"/></g>
-<g class="zfan zd2"><circle class="zk" cx="296" cy="176" r="30"/><path class="zk" d="M296 152c14 6 14 18 0 24-14-6-14-18 0-24Z"/></g>
-<path class="zk" d="M104 206h-16v22h32v-22Z"/>
-<path class="zk" d="M296 206h-16v22h32v-22Z"/>
-<path class="zk zt zvap" d="M162 148c0-14 16-14 16-28M200 140c0-14 16-14 16-28M238 148c0-14 16-14 16-28"/>
-</svg></div></div><ol class="sx-list">
-      <li>
-        <a class="sx-row on" data-row="0" href="services/mold-remediation.html">
-          <span class="sx-n">01</span>
-          <span class="sx-main">
-            <span class="sx-t">Mold Remediation</span>
-            <span class="sx-d">Contain, remove, treat and verify, with the moisture source fixed. Remediation without that is just an expensive delay.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="1" href="services/fiberglass-deck-repair.html">
-          <span class="sx-n">02</span>
-          <span class="sx-main">
-            <span class="sx-t">Fiberglass Rooftop Deck Leak Repairs</span>
-            <span class="sx-d">Roof decks started going on Philadelphia homes about twenty years ago. The houses have settled since. The decks have not.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="2" href="services/foundation-repair.html">
-          <span class="sx-n">03</span>
-          <span class="sx-main">
-            <span class="sx-t">Foundation Repairs</span>
-            <span class="sx-d">Cracks, movement, failing parging and chronically wet walls. Repaired, then waterproofed so the repair holds.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="3" href="services/leak-detection.html">
-          <span class="sx-n">04</span>
-          <span class="sx-main">
-            <span class="sx-t">Leak Detection &amp; Water Intrusion Investigations</span>
-            <span class="sx-d">Find the actual source of the water before anyone opens a wall. Thermal imaging, moisture meters and drone survey, inside and out.</span>
-          </span>
-          <span class="sx-scale">Diagnostic</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="4" href="services/air-sealing.html">
-          <span class="sx-n">05</span>
-          <span class="sx-main">
-            <span class="sx-t">Air Sealing &amp; Insulation</span>
-            <span class="sx-d">Stop the air leakage that carries moisture into wall and roof cavities. It is the quiet cause behind a great deal of recurring mold.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="5" href="services/stucco-remediation.html">
-          <span class="sx-n">06</span>
-          <span class="sx-main">
-            <span class="sx-t">Stucco Remediation</span>
-            <span class="sx-d">Failed stucco traps water against the sheathing and rots the frame behind it. Full-wall remediation with the drainage plane rebuilt correctly.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="6" href="services/basement-waterproofing.html">
-          <span class="sx-n">07</span>
-          <span class="sx-main">
-            <span class="sx-t">Basement Waterproofing</span>
-            <span class="sx-d">Keeping water out of a basement is a drainage problem before it is a sealing problem. Paint on the wall is not waterproofing.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li>
-      <li>
-        <a class="sx-row" data-row="7" href="services/water-damage.html">
-          <span class="sx-n">08</span>
-          <span class="sx-main">
-            <span class="sx-t">Water Damage Restoration</span>
-            <span class="sx-d">Extraction, structural drying, removal of what cannot be saved, and rebuild. Documented to a standard an insurer will accept.</span>
-          </span>
-          <span class="sx-scale">Major project</span>
-          <span class="sx-ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </li></ol></div>
-    <div class="row mid" style="margin-top:clamp(36px,5vh,56px)">
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Drainage &amp; French Drains</h3>
+        <p>Move the water away from the building before it ever reaches the foundation. Exterior drainage, regrading and buried drain lines.</p>
+        <span class="fl-go">Explore</span>
+      </a>
+      <a class="fl" href="services/winterization.html" style="--i:9">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<path class="zk" d="M48 150h304"/>
+<path class="zk" d="M48 134h304M48 166h304"/>
+<path class="zk" d="M132 128v44M268 128v44"/>
+<g class="zk zt"><path d="M176 150v-34M176 124l-10-10M176 124l10-10M224 150v34M224 176l-10 10M224 176l10 10"/></g>
+<path class="zk zcrack" d="M194 134c-7 6 5 10-2 16 7 6-4 10 3 16"/>
+<g class="zdrip"><path class="zk" d="M200 176c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<path class="zk" d="M312 84v-26M300 70l12-12 12 12"/>
+<circle class="zk" cx="312" cy="222" r="18"/>
+<path class="zk" d="M312 204v-74"/>
+<circle class="zf zhot" cx="312" cy="222" r="9"/>
+</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>Winterization</h3>
+        <p>A burst pipe is the most expensive preventable thing that happens to a house, and it happens overnight.</p>
+        <span class="fl-go">Explore</span>
+      </a></div>
+
+    <div class="row mid" style="margin-top:clamp(44px,6vh,72px)">
       <a class="b b-ghost" href="services.html">See all 22 services</a>
     </div>
   </div>
@@ -626,6 +656,6 @@
   </div>
 </footer>
 
-<script src="js/mmp.js?v=60"></script>
+<script src="js/mmp.js?v=68"></script>
 </body>
 </html>

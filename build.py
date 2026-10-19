@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "60"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "68"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -354,6 +354,39 @@ SVC_SCENE = {
 <path class="zk zt" d="M240 68h22M240 82h22"/>
 <g class="zmote"><circle class="zf" cx="300" cy="118" r="5"/><circle class="zf zd1" cx="320" cy="150" r="4"/><circle class="zf zd2" cx="288" cy="176" r="6"/><circle class="zf zd3" cx="326" cy="206" r="4"/></g>
 """,
+"fiberglass-deck-repair": """
+<path class="zk" d="M70 150h260v16H70z"/>
+<path class="zk zt" d="M70 166v96h260v-96"/>
+<path class="zk" d="M70 150V96M330 150V96M70 96h260"/>
+<path class="zk zt" d="M118 150V96M166 150V96M214 150V96M262 150V96M310 150V96"/>
+<path class="zk zcrack" d="M196 150c-6 4 4 8 0 12"/>
+<g class="zdrip"><path class="zk" d="M198 176c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<g class="zdrip zd2"><path class="zk" d="M232 182c0 0-8 10-8 16a8 8 0 0 0 16 0c0-6-8-16-8-16Z"/></g>
+<path class="zk zt" d="M96 262v-40h52v40"/>
+""",
+"basement-waterproofing": """
+<path class="zk" d="M96 54 200 22l104 32"/>
+<path class="zk" d="M118 54v70h164V54"/>
+<path class="zk" d="M96 124h208v134H96z"/>
+<path class="zk zt" d="M60 124h36M304 124h36"/>
+<rect class="zlvl" x="104" y="196" width="192" height="54" rx="4"/>
+<path class="zk zq zflow" d="M96 240h208"/>
+<g class="zdrip"><path class="zk" d="M142 142c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<g class="zdrip zd1"><path class="zk" d="M258 150c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<path class="zk zarr" d="M200 272v18m-9-9 9 9 9-9"/>
+""",
+"winterization": """
+<path class="zk" d="M48 150h304"/>
+<path class="zk" d="M48 134h304M48 166h304"/>
+<path class="zk" d="M132 128v44M268 128v44"/>
+<g class="zk zt"><path d="M176 150v-34M176 124l-10-10M176 124l10-10M224 150v34M224 176l-10 10M224 176l10 10"/></g>
+<path class="zk zcrack" d="M194 134c-7 6 5 10-2 16 7 6-4 10 3 16"/>
+<g class="zdrip"><path class="zk" d="M200 176c0 0-9 11-9 17a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/></g>
+<path class="zk" d="M312 84v-26M300 70l12-12 12 12"/>
+<circle class="zk" cx="312" cy="222" r="18"/>
+<path class="zk" d="M312 204v-74"/>
+<circle class="zf zhot" cx="312" cy="222" r="9"/>
+""",
 }
 
 
@@ -402,11 +435,41 @@ def svc_index(depth=0, limit=None, order=None):
             '<ol class="sx-list">%s</ol></div>' % ("".join(stages), "".join(rows)))
 
 
+def svc_float(depth=0, limit=10, order=None):
+    """Home page services: each one floats above its own shadow, the way the
+    reference deck does it. The drawings are the same scenes the index uses,
+    so there is one set of artwork to maintain."""
+    items = SERVICES
+    if order:
+        rank = {slug: i for i, slug in enumerate(order)}
+        items = sorted(items, key=lambda x: rank.get(x["slug"], len(rank)))
+    items = items[:limit]
+
+    out = []
+    for i, s in enumerate(items):
+        scene = SVC_SCENE.get(s["slug"], SVC_SCENE[CAT_SCENE[s["cat"]]])
+        out.append(f"""
+      <a class="fl" href="{rel(depth,'services/%s.html' % s['slug'])}" style="--i:{i}">
+        <span class="fl-art" aria-hidden="true">
+          <span class="fl-scene"><svg viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">{scene}</svg></span>
+          <span class="fl-shadow"></span>
+        </span>
+        <h3>{html.escape(s['short'])}</h3>
+        <p>{html.escape(s['blurb'])}</p>
+        <span class="fl-go">Explore</span>
+      </a>""")
+    return '<div class="fl-grid">%s</div>' % "".join(out)
+
+
 def body_of(name):
     """Read a page body fragment and expand the {{tokens}} it may use."""
     with open(os.path.join(SRC, name)) as f:
         t = f.read()
     t = t.replace("{{TEL}}", SITE["tel"]).replace("{{TEL_HREF}}", SITE["tel_href"])
+    t = t.replace("{{SVC_FLOAT}}", svc_float(limit=10, order=[
+        "mold-remediation", "fiberglass-deck-repair", "foundation-repair",
+        "leak-detection", "air-sealing", "stucco-remediation",
+        "basement-waterproofing", "water-damage", "french-drains", "winterization"]))
     t = t.replace("{{SVC_INDEX}}", svc_index(limit=8, order=[
         "mold-remediation", "fiberglass-deck-repair", "foundation-repair",
         "leak-detection", "air-sealing", "stucco-remediation",

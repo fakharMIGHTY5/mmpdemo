@@ -1,18 +1,20 @@
-<!-- ============ HERO INTRO ============ -->
-<div class="intro" data-intro aria-hidden="true">
-  <video muted playsinline preload="none" src="assets/video/hero-open.mp4"></video>
-  <img class="intro-mark" src="assets/ui/mark-white.png" alt="">
-  <button type="button" class="intro-skip">Skip</button>
-</div>
-
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-in">
-    <p class="kicker" data-r>Greater Philadelphia &middot; Florida coming soon</p>
-    <h1 class="d1" data-r data-d="1">We find the water.<br>Then we repair <em>the damage.</em></h1>
-    <p class="hero-lead" data-r data-d="2">Leak detection, mold remediation and major moisture repair for homes across Greater Philadelphia.</p>
+<section class="hero" data-hero data-nav="navy">
+  <canvas class="hero-cv" data-frost aria-hidden="true"></canvas>
+  <div class="hero-grain" aria-hidden="true"></div>
 
-    <div class="zip light" data-zip data-zip-next="book.html" data-r data-d="3">
+  <div class="hero-in">
+    <p class="hero-season"><i></i> October in Philadelphia &middot; freeze season starts now</p>
+
+    <h1 class="hero-h1">
+      <span class="l1">It is going to</span>
+      <span class="l2">freeze<em data-ice>&nbsp;</em></span>
+      <span class="l3">before you are ready.</span>
+    </h1>
+
+    <p class="hero-lead">A pipe splits at three in the morning and nobody hears it. By the time you do, the water has been running for six hours and it is not a plumbing job any more.</p>
+
+    <div class="zip" data-zip data-zip-next="book.html">
       <form class="zip-form">
         <input type="text" inputmode="numeric" placeholder="Enter your property ZIP code" aria-label="Property ZIP code" maxlength="5">
         <button class="b" type="submit">Check my area</button>
@@ -21,12 +23,14 @@
       <p class="zip-note">One field. We answer before anything else.</p>
     </div>
 
-    <div class="hero-trust" data-r data-d="4">
+    <div class="hero-trust">
       <span><i></i> 2,000+ properties</span>
       <span>4.8 across 200+ reviews</span>
       <span>3 year workmanship guarantee</span>
     </div>
   </div>
+
+  <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
 </section>
 
 <!-- ============ THE MOLD TEST ============ -->
@@ -147,62 +151,64 @@
 </section>
 
 <!-- ============ WHAT WE FIX ============ -->
-<section class="panel panel-auto" id="gallons">
-  <div class="inner">
-    <div class="gal-head" data-r>
-      <div>
-        <p class="kicker">The cheapest thing you will ever do</p>
-        <h2 class="d2">One unsealed window<br>lets in <em>1.6 gallons.</em><br>Every storm.</h2>
-      </div>
-      <p class="gal-lede">If cold air can get in, water can get in. The seams around your windows and doors are the same openings that make a room feel chilly in January. Most people look at them every day and never once think of them as a way in.</p>
+<section class="gal-wrap" id="gallons" data-nav="navy">
+  <div class="gal-in">
+
+    <div class="gal-top">
+      <p class="kicker">The cheapest thing you will ever do</p>
+      <h2 class="gal-h2">This is what one storm<br>puts inside your walls.</h2>
     </div>
 
     <div class="gal" data-gallons>
-      <div class="gal-stage">
+      <div class="gal-figure">
         <div class="gal-jugs" data-jugs aria-hidden="true"></div>
-        <p class="gal-cap"><b data-out="jugCount">16</b> gallon jugs, sitting in your walls</p>
+        <div class="gal-person" aria-hidden="true">
+          <svg viewBox="0 0 60 170" fill="currentColor"><circle cx="30" cy="16" r="13"/><path d="M30 32c-11 0-19 7-19 17v40h7l3 79h8l2-56h-2l4-1 4 1h-2l2 56h8l3-79h7V49c0-10-8-17-19-17Z"/></svg>
+          <span>6 ft</span>
+        </div>
+        <div class="gal-floor" aria-hidden="true"></div>
       </div>
 
-      <div class="gal-panel">
+      <div class="gal-side">
+        <div class="gal-count">
+          <b data-out="gallons">16.0</b>
+          <span>gallons, every time it rains hard</span>
+        </div>
+
         <div class="gal-ctl">
           <div class="gal-row">
-            <span class="gal-lbl">Windows and doors on your home</span>
+            <span class="gal-lbl">Windows and doors</span>
             <div class="stepper">
-              <button type="button" data-step="windows" data-d="-1" aria-label="Fewer windows">&minus;</button>
-              <b data-out="windows">9</b>
-              <button type="button" data-step="windows" data-d="1" aria-label="More windows">+</button>
+              <button type="button" data-step="windows" data-d="-1" aria-label="Fewer">&minus;</button>
+              <b data-out="windows">10</b>
+              <button type="button" data-step="windows" data-d="1" aria-label="More">+</button>
             </div>
           </div>
           <div class="gal-row">
             <span class="gal-lbl">Storms with driving rain</span>
             <div class="stepper">
-              <button type="button" data-step="storms" data-d="-1" aria-label="Fewer storms">&minus;</button>
+              <button type="button" data-step="storms" data-d="-1" aria-label="Fewer">&minus;</button>
               <b data-out="storms">1</b>
-              <button type="button" data-step="storms" data-d="1" aria-label="More storms">+</button>
+              <button type="button" data-step="storms" data-d="1" aria-label="More">+</button>
             </div>
           </div>
         </div>
 
-        <div class="gal-big">
-          <b data-out="gallons">14.4</b>
-          <span>gallons of water into the structure</span>
+        <div class="gal-money">
+          <div class="gal-m seal">
+            <span class="gal-m-lbl">Seal the openings</span>
+            <b data-out="sealCost">$340</b>
+            <i class="gal-m-bar" data-seg="seal"></i>
+          </div>
+          <div class="gal-m fix">
+            <span class="gal-m-lbl">Remediate and restore after</span>
+            <b>$6,000</b>
+            <i class="gal-m-bar" data-seg="fix"></i>
+          </div>
+          <p class="gal-note">A real job we quoted: $2,600 to remediate, $2,900 to restore. The caulking that would have prevented it was three hundred dollars. <b data-out="multiple">18x</b> the cost, for leaving it.</p>
         </div>
 
-        <div class="gal-cost">
-          <div class="gal-bar" aria-hidden="true">
-            <span class="gal-seg seal" data-seg="seal"></span>
-            <span class="gal-seg fix" data-seg="fix"></span>
-          </div>
-          <div class="gal-key">
-            <div><span class="dot seal"></span><b data-out="sealCost">$340</b><i>Sealing the openings</i></div>
-            <div><span class="dot fix"></span><b>$6,000</b><i>Remediation and restoration after</i></div>
-          </div>
-          <p class="gal-note">A real job we quoted: $2,600 to remediate, $2,900 to restore. The caulking that would have prevented it was three hundred dollars. <b data-out="multiple">20x</b> the cost, for leaving it.</p>
-        </div>
-
-        <div class="row" style="margin-top:clamp(24px,3vh,32px)">
-          <a class="b" href="contact.html">Find out what yours is doing</a>
-        </div>
+        <a class="b" href="contact.html">Find out what yours is doing</a>
       </div>
     </div>
 
@@ -210,23 +216,23 @@
       <li data-ch><span class="chain-n">01</span><b>The seam opens</b><p>Caulk perishes, the frame moves, the material transition splits.</p></li>
       <li data-ch><span class="chain-n">02</span><b>Water goes in</b><p>Wind drives rain into the gap. Nothing shows on the outside.</p></li>
       <li data-ch><span class="chain-n">03</span><b>It runs behind the wall</b><p>Down the cavity, into the sheathing and the framing, out of sight.</p></li>
-      <li data-ch><span class="chain-n">04</span><b>You smell it</b><p>An odour in one room that nobody can place. That is the first symptom most people get.</p></li>
+      <li data-ch><span class="chain-n">04</span><b>You smell it</b><p>An odour in one room nobody can place. That is the first symptom most people get.</p></li>
       <li data-ch><span class="chain-n">05</span><b>Mold</b><p>By the time it is visible, the repair is no longer the window.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="panel panel-auto paper">
+<section class="panel panel-auto wide-pad">
   <div class="inner">
-    <div class="sx-head" data-r>
-      <div>
-        <p class="kicker">What we fix</p>
-        <h2 class="d2">The calls we get,<br>in the order we get them.</h2>
-      </div>
-      <p class="sx-lede">Some of these are a morning. Some are a week with an excavator in the garden. Either way you get told which one it is before anything starts.</p>
+    <div class="fl-head" data-r>
+      <p class="kicker">Everything that lets water in</p>
+      <h2 class="d2">We do not guess.<br>We find it, then we fix it.</h2>
+      <p class="fl-lede">Ten of the twenty two things we are called out for. Each one starts the same way, with a reading rather than an opinion.</p>
     </div>
-    {{SVC_INDEX}}
-    <div class="row mid" style="margin-top:clamp(36px,5vh,56px)">
+
+    {{SVC_FLOAT}}
+
+    <div class="row mid" style="margin-top:clamp(44px,6vh,72px)">
       <a class="b b-ghost" href="services.html">See all 22 services</a>
     </div>
   </div>

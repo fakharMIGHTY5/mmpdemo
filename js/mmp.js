@@ -126,79 +126,6 @@
   });
 
   /* =========================================================
-     HERO INTRO
-     Layered over a hero that is already painted, so it can never
-     delay content. Shown once per visit, skipped on small screens,
-     reduced motion, and metered connections.
-     ========================================================= */
-  (function () {
-    var intro = $('[data-intro]');
-    if (!intro) return;
-
-    var seen = false;
-    try { seen = sessionStorage.getItem('mmp-intro') === '1'; } catch (e) {}
-    var small = matchMedia('(max-width:760px)').matches;
-    var conn = navigator.connection || {};
-    var thrifty = conn.saveData === true || /2g/.test(conn.effectiveType || '');
-
-    if (seen || small || reduced || thrifty) { intro.remove(); return; }
-
-    var vid = $('video', intro);
-    var done = false;
-    function finish() {
-      if (done) return;
-      done = true;
-      try { sessionStorage.setItem('mmp-intro', '1'); } catch (e) {}
-      intro.classList.remove('in');
-      setTimeout(function () { intro.remove(); }, 950);
-    }
-
-    // Any sign the visitor wants to get on with it ends the intro.
-    intro.addEventListener('click', finish);
-    addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === ' ') finish(); });
-    addEventListener('wheel', finish, { passive: true, once: true });
-    addEventListener('touchstart', finish, { passive: true, once: true });
-
-    /* Fail closed. The overlay is only ever revealed once playback has
-       genuinely STARTED (the 'playing' event), never merely because the file
-       is buffered. A browser that refuses to autoplay, or a tab opened in the
-       background, therefore shows the plain hero instead of a frozen frame. */
-    var bail = setTimeout(finish, 1800);
-
-    vid.muted = true;
-    vid.defaultMuted = true;
-    vid.playsInline = true;
-
-    vid.addEventListener('canplay', function () {
-      if (done) return;
-      var p = vid.play();
-      if (p && p.catch) p.catch(finish);
-    }, { once: true });
-
-    vid.addEventListener('playing', function () {
-      if (done) return;
-      clearTimeout(bail);
-      intro.classList.add('in');
-
-      /* 'playing' can fire in a throttled or unfocused window without the
-         frames ever advancing. Confirm real movement, or get out of the way
-         rather than parking a frozen still over the page. */
-      var mark = vid.currentTime;
-      setTimeout(function () {
-        if (!done && vid.currentTime <= mark + 0.05) finish();
-      }, 900);
-
-      var ms = isFinite(vid.duration) && vid.duration > 1 ? vid.duration * 1000 - 600 : 4200;
-      setTimeout(finish, Math.max(1500, ms));
-    }, { once: true });
-
-    vid.addEventListener('ended', finish);
-    vid.addEventListener('error', finish);
-    vid.addEventListener('stalled', finish);
-    vid.load();
-  })();
-
-  /* =========================================================
      NAV
      ========================================================= */
   var nav = $('.nav');
@@ -840,6 +767,249 @@
     pick();
   })();
 
+
+  /* =========================================================
+     FROZEN HERO
+     A pipe across a cold night. Frost creeps along it, ice
+     crystals grow off it, a split opens, and the bats drift
+     through because we are launching the week of Halloween.
+     Canvas because a hundred crystals as DOM nodes is a jank
+     machine, and it degrades to a still scene without JS.
+     ========================================================= */
+  (function initFrost() {
+    var cv = $('[data-frost]');
+    if (!cv) return;
+
+    var ctx = cv.getContext('2d');
+    var W = 0, H = 0, dpr = 1;
+    var t = 0, raf = null, running = false;
+    var crystals = [], bats = [], flakes = [], drips = [];
+    var pipeY = 0;
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pipeY = H * 0.90;
+      build();
+    }
+
+    function build() {
+      crystals = [];
+      // Ice grows off the pipe, denser toward the split.
+      for (var i = 0; i < 90; i++) {
+        var x = rand(-40, W + 40);
+        var near = 1 - Math.min(Math.abs(x - W * 0.58) / (W * 0.5), 1);
+        crystals.push({
+          x: x,
+          up: Math.random() < 0.55,
+          len: rand(6, 19) * (0.5 + near),
+          w: rand(0.6, 2.2),
+          ang: rand(-0.5, 0.5),
+          born: rand(0, 1),            // staggers the grow-in
+          sway: rand(0, 6.28)
+        });
+      }
+
+      flakes = [];
+      for (var f = 0; f < 70; f++) {
+        flakes.push({
+          x: rand(0, W), y: rand(0, H),
+          r: rand(0.6, 2.1), vy: rand(6, 20), vx: rand(-6, 6),
+          a: rand(0.18, 0.6), ph: rand(0, 6.28)
+        });
+      }
+
+      bats = [];
+      for (var b = 0; b < 7; b++) {
+        bats.push({
+          x: rand(-0.3, 1.3), y: rand(0.06, 0.42),
+          sp: rand(0.012, 0.034), sc: rand(0.5, 1.15),
+          ph: rand(0, 6.28), bob: rand(10, 28)
+        });
+      }
+
+      drips = [];
+      for (var d = 0; d < 3; d++) {
+        drips.push({ x: W * (0.54 + d * 0.035), off: rand(0, 1), sp: rand(0.22, 0.4) });
+      }
+    }
+
+    function bat(x, y, s, flap) {
+      // One wing drawn and mirrored, so the flap always matches.
+      ctx.save();
+      ctx.translate(x, y); ctx.scale(s, s);
+      var f = Math.sin(flap);
+      var tipY = -5 - f * 9;
+      var midY = 2 - f * 4;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      for (var sgn = -1; sgn <= 1; sgn += 2) {
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(7 * sgn, midY - 5, 15 * sgn, tipY);
+        ctx.quadraticCurveTo(12 * sgn, midY + 2, 9 * sgn, midY + 1);
+        ctx.quadraticCurveTo(7 * sgn, midY + 5, 4 * sgn, midY + 2);
+        ctx.lineTo(0, 3);
+        ctx.closePath();
+      }
+      ctx.fill();
+      ctx.beginPath(); ctx.ellipse(0, 0, 2.6, 3.6, 0, 0, 6.3); ctx.fill();
+      ctx.restore();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // ---- moon, low and cold
+      var mx = W * 0.82, my = H * 0.2, mr = Math.min(W, H) * 0.075;
+      var glow = ctx.createRadialGradient(mx, my, mr * 0.4, mx, my, mr * 5);
+      glow.addColorStop(0, 'rgba(190,225,255,.22)');
+      glow.addColorStop(1, 'rgba(190,225,255,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(mx - mr * 5, my - mr * 5, mr * 10, mr * 10);
+      ctx.fillStyle = 'rgba(226,240,255,.9)';
+      ctx.beginPath(); ctx.arc(mx, my, mr, 0, 6.3); ctx.fill();
+      ctx.fillStyle = 'rgba(150,190,230,.25)';
+      ctx.beginPath(); ctx.arc(mx - mr * .3, my - mr * .25, mr * .18, 0, 6.3); ctx.fill();
+      ctx.beginPath(); ctx.arc(mx + mr * .25, my + mr * .3, mr * .12, 0, 6.3); ctx.fill();
+
+      // ---- falling flakes behind the pipe
+      flakes.forEach(function (fl) {
+        var y = (fl.y + t * fl.vy) % (H + 20);
+        var x = fl.x + Math.sin(t * 0.6 + fl.ph) * 14 + t * fl.vx * 0.2;
+        x = ((x % (W + 40)) + W + 40) % (W + 40) - 20;
+        ctx.fillStyle = 'rgba(214,236,255,' + fl.a + ')';
+        ctx.beginPath(); ctx.arc(x, y, fl.r, 0, 6.3); ctx.fill();
+      });
+
+      // ---- bats
+      ctx.fillStyle = 'rgba(8,16,30,.82)';
+      bats.forEach(function (b) {
+        b.x += b.sp * 0.016;
+        if (b.x > 1.35) { b.x = -0.35; b.y = rand(0.06, 0.42); }
+        var bx = b.x * W;
+        var by = b.y * H + Math.sin(t * 1.6 + b.ph) * b.bob;
+        bat(bx, by, b.sc, t * 9 + b.ph);
+      });
+
+      // ---- the pipe
+      var pg = ctx.createLinearGradient(0, pipeY - 13, 0, pipeY + 13);
+      pg.addColorStop(0, '#5d6a7d');
+      pg.addColorStop(0.35, '#93a3b6');
+      pg.addColorStop(0.6, '#44505f');
+      pg.addColorStop(1, '#2b3442');
+      ctx.fillStyle = pg;
+      ctx.fillRect(-10, pipeY - 13, W + 20, 26);
+
+      // couplings
+      ctx.fillStyle = '#6d7b8d';
+      [0.2, 0.86].forEach(function (p) { ctx.fillRect(W * p - 9, pipeY - 17, 18, 34); });
+      ctx.fillStyle = 'rgba(255,255,255,.14)';
+      [0.2, 0.86].forEach(function (p) { ctx.fillRect(W * p - 9, pipeY - 17, 18, 4); });
+
+      // ---- frost sheet creeping in from the right
+      var reach = 0.5 + Math.sin(t * 0.22) * 0.5;      // 0 to 1, slow breath
+      var edge = W * (1.08 - reach * 1.16);
+      var fg = ctx.createLinearGradient(edge, 0, W, 0);
+      fg.addColorStop(0, 'rgba(226,244,255,0)');
+      fg.addColorStop(0.35, 'rgba(226,244,255,.55)');
+      fg.addColorStop(1, 'rgba(240,250,255,.92)');
+      ctx.save();
+      ctx.beginPath(); ctx.rect(-10, pipeY - 13, W + 20, 26); ctx.clip();
+      ctx.fillStyle = fg; ctx.fillRect(edge, pipeY - 13, W - edge + 10, 26);
+      ctx.restore();
+
+      // ---- ice crystals off the pipe
+      crystals.forEach(function (c) {
+        var local = (c.x - edge) / (W * 0.45);
+        var grow = Math.max(0, Math.min(1, local - c.born * 0.5));
+        if (grow <= 0) return;
+        var len = c.len * grow;
+        var dir = c.up ? -1 : 1;
+        var sway = Math.sin(t * 0.9 + c.sway) * 0.06;
+        ctx.save();
+        ctx.translate(c.x, pipeY + dir * 12);
+        ctx.rotate(c.ang + sway);
+        ctx.strokeStyle = 'rgba(224,244,255,' + (0.3 + grow * 0.55) + ')';
+        ctx.lineWidth = c.w; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, dir * len); ctx.stroke();
+        // two barbs, which is what makes it read as ice and not a hair
+        ctx.beginPath();
+        ctx.moveTo(0, dir * len * 0.45);
+        ctx.lineTo(-len * 0.3, dir * len * 0.68);
+        ctx.moveTo(0, dir * len * 0.45);
+        ctx.lineTo(len * 0.3, dir * len * 0.68);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // ---- the split, opening and closing with the freeze
+      var sx = W * 0.58;
+      var open = Math.max(0, reach - 0.55) * 2.6;
+      if (open > 0.02) {
+        ctx.strokeStyle = 'rgba(10,18,32,' + Math.min(open, .85) + ')';
+        ctx.lineWidth = 1 + open * 2.6; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(sx - 26, pipeY - 9);
+        ctx.lineTo(sx - 8, pipeY - 1);
+        ctx.lineTo(sx + 10, pipeY - 7);
+        ctx.lineTo(sx + 30, pipeY + 2);
+        ctx.stroke();
+
+        drips.forEach(function (d) {
+          var p = ((t * d.sp + d.off) % 1);
+          var y = pipeY + 13 + p * (H - pipeY - 20);
+          var a = (1 - p) * open;
+          if (a <= 0.02) return;
+          ctx.fillStyle = 'rgba(120,200,255,' + a + ')';
+          ctx.beginPath();
+          ctx.ellipse(d.x, y, 2.1, 3.4 + p * 2, 0, 0, 6.3);
+          ctx.fill();
+        });
+      }
+    }
+
+    var last = 0;
+    function loop(now) {
+      if (!running) return;
+      if (!last) last = now;
+      var dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      t += dt;
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    function start() {
+      if (running || reduced) return;
+      running = true; last = 0; raf = requestAnimationFrame(loop);
+    }
+    function stop() {
+      running = false; last = 0;
+      if (raf) cancelAnimationFrame(raf);
+    }
+
+    resize();
+    draw();                                   // paint once even if we never animate
+
+    var ro = window.ResizeObserver ? new ResizeObserver(function () { resize(); draw(); }) : null;
+    if (ro) ro.observe(cv); else window.addEventListener('resize', function () { resize(); draw(); });
+
+    // Only burn frames while the hero is actually on screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.02 }).observe(cv);
+    } else { start(); }
+
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? stop() : start();
+    });
+  })();
+
   /* =========================================================
      SIXTEEN GALLONS
      1.6 gallons per improperly sealed opening, per storm. The
@@ -853,18 +1023,30 @@
     var SEAL_EACH = 34;      // roughly what one opening costs to put right
     var FIX_COST = 6000;     // the job Josh quoted: 2,600 remediation + 2,900 restoration
     var LIMITS = { windows: [4, 20], storms: [1, 20] };
+    var MAX_JUGS = 64;       // past this the floor is full and the point is made
     var state = { windows: 10, storms: 1 };
 
     var jugs = $('[data-jugs]', root);
-    var sealSeg = $('[data-seg="seal"]', root);
-    var fixSeg = $('[data-seg="fix"]', root);
+    var sealBar = $('[data-seg="seal"]', root);
+    var fixBar = $('[data-seg="fix"]', root);
 
     function out(name, value) {
       var el = $('[data-out="' + name + '"]', root);
       if (el) el.textContent = value;
     }
-
     function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+    function jug(delay, part) {
+      var j = document.createElement('span');
+      j.className = 'jug' + (part ? ' part' : '');
+      j.style.animationDelay = delay + 'ms';
+      j.innerHTML =
+        '<span class="jug-neck"></span>' +
+        '<span class="jug-body"><span class="jug-fill" style="animation-delay:' +
+        (delay + 160) + 'ms"></span></span>' +
+        '<span class="jug-gloss"></span>';
+      return j;
+    }
 
     function paint() {
       var gallons = state.windows * PER_OPENING * state.storms;
@@ -877,38 +1059,27 @@
       out('sealCost', money(sealCost));
       out('multiple', multiple + 'x');
 
-      // one jug per whole gallon, with a part filled one for the remainder
       var whole = Math.floor(gallons);
       var part = gallons - whole > 0.08;
-      var capped = Math.min(whole, 60);
-      out('jugCount', capped + (whole > capped ? '+' : ''));
+      var capped = Math.min(whole, MAX_JUGS);
 
       jugs.textContent = '';
       for (var i = 0; i < capped; i++) {
-        var j = document.createElement('span');
-        j.className = 'jug';
-        j.style.animationDelay = Math.min(i * 28, 1200) + 'ms';
-        j.innerHTML = '<i style="animation-delay:' + (Math.min(i * 28, 1200) + 180) + 'ms"></i>';
-        jugs.appendChild(j);
+        jugs.appendChild(jug(Math.min(i * 26, 1100), false));
       }
       if (part && capped === whole) {
-        var p = document.createElement('span');
-        p.className = 'jug part';
-        p.style.animationDelay = Math.min(capped * 28, 1200) + 'ms';
-        p.innerHTML = '<i style="animation-delay:' + (Math.min(capped * 28, 1200) + 180) + 'ms"></i>';
-        jugs.appendChild(p);
+        jugs.appendChild(jug(Math.min(capped * 26, 1100), true));
       }
 
-      // the bar is the argument: sealing against what it costs to not seal
-      if (sealSeg && fixSeg) {
-        sealSeg.style.flexGrow = '1';
-        fixSeg.style.flexGrow = String(Math.max(multiple, 2));
+      // the bars are the argument: sealing against what not sealing costs
+      if (sealBar && fixBar) {
+        sealBar.style.width = Math.max(100 / multiple, 3) + '%';
+        fixBar.style.width = '100%';
       }
 
       $$('[data-step]', root).forEach(function (b) {
         var key = b.getAttribute('data-step');
-        var dir = Number(b.getAttribute('data-d'));
-        var next = state[key] + dir;
+        var next = state[key] + Number(b.getAttribute('data-d'));
         b.disabled = next < LIMITS[key][0] || next > LIMITS[key][1];
       });
     }
