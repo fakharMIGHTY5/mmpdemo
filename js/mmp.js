@@ -770,21 +770,24 @@
 
   /* =========================================================
      FROZEN HERO
-     A pipe across a cold night. Frost creeps along it, ice
-     crystals grow off it, a split opens, and the bats drift
-     through because we are launching the week of Halloween.
-     Canvas because a hundred crystals as DOM nodes is a jank
-     machine, and it degrades to a still scene without JS.
+     A frame of pipework around the edge of an otherwise empty
+     page. Frost spreads along it, icicles grow down, a split
+     opens and drips, and the bats hang off it because we are
+     launching the week of Halloween. Canvas, because a few
+     hundred crystals as DOM nodes is a jank machine.
      ========================================================= */
   (function initFrost() {
     var cv = $('[data-frost]');
     if (!cv) return;
 
     var ctx = cv.getContext('2d');
-    var W = 0, H = 0, dpr = 1;
-    var t = 0, raf = null, running = false;
-    var crystals = [], bats = [], flakes = [], drips = [];
-    var pipeY = 0;
+    var W = 0, H = 0, dpr = 1, t = 0, raf = null, running = false;
+    var P = 0;                               // side runs, inset from the edge
+    var TOP = 0;                             // top run, clear of the fixed nav
+    var R = 14;                              // pipe radius
+    var icicles = [], hangers = [], fliers = [], drips = [], frost = [];
+
+    var INK = '#1d2b3e', LINE = '#33465f', ICE = '#9fd4f7', DEEP = '#0a5fd0';
 
     function rand(a, b) { return a + Math.random() * (b - a); }
 
@@ -793,221 +796,272 @@
       W = cv.clientWidth; H = cv.clientHeight;
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      pipeY = H * 0.90;
+      P = Math.max(30, Math.min(W, H) * 0.055);
+      var nav = document.querySelector('.nav');
+      TOP = (nav ? nav.offsetHeight : 76) + Math.max(26, H * 0.045);
       build();
     }
 
     function build() {
-      crystals = [];
-      // Ice grows off the pipe, denser toward the split.
-      for (var i = 0; i < 90; i++) {
-        var x = rand(-40, W + 40);
-        var near = 1 - Math.min(Math.abs(x - W * 0.58) / (W * 0.5), 1);
-        crystals.push({
-          x: x,
-          up: Math.random() < 0.55,
-          len: rand(6, 19) * (0.5 + near),
-          w: rand(0.6, 2.2),
-          ang: rand(-0.5, 0.5),
-          born: rand(0, 1),            // staggers the grow-in
-          sway: rand(0, 6.28)
+      // Icicles hang off the top run and off the two horizontal returns.
+      icicles = [];
+      for (var i = 0; i < 26; i++) {
+        icicles.push({
+          x: rand(P + 26, W - P - 26),
+          len: rand(14, 54),
+          w: rand(3.5, 8),
+          born: rand(0, 0.7),
+          ph: rand(0, 6.28)
         });
       }
 
-      flakes = [];
-      for (var f = 0; f < 70; f++) {
-        flakes.push({
-          x: rand(0, W), y: rand(0, H),
-          r: rand(0.6, 2.1), vy: rand(6, 20), vx: rand(-6, 6),
-          a: rand(0.18, 0.6), ph: rand(0, 6.28)
+      frost = [];
+      for (var f = 0; f < 86; f++) {
+        var onTop = Math.random() < 0.42;
+        var out = Math.random() < 0.5 ? -1 : 1;
+        if (onTop) {
+          frost.push({ x: rand(P, W - P), y: TOP + out * R,
+                       ang: out > 0 ? 0 : Math.PI, len: rand(5, 15), born: rand(0, 1) });
+        } else {
+          var left = Math.random() < 0.5;
+          var px = left ? P : W - P;
+          frost.push({ x: px + out * R, y: rand(TOP + 40, H),
+                       ang: out > 0 ? Math.PI / 2 : -Math.PI / 2,
+                       len: rand(5, 15), born: rand(0, 1) });
+        }
+      }
+
+      // Bats hanging upside down off the top pipe, the way they actually roost.
+      hangers = [];
+      var slots = Math.max(3, Math.round(W / 320));
+      for (var h = 0; h < slots; h++) {
+        hangers.push({
+          x: (h + 0.5) / slots * (W - P * 2) + P + rand(-40, 40),
+          sc: rand(0.95, 1.5),
+          ph: rand(0, 6.28),
+          twitch: rand(5, 11)
         });
       }
 
-      bats = [];
-      for (var b = 0; b < 7; b++) {
-        bats.push({
-          x: rand(-0.3, 1.3), y: rand(0.06, 0.42),
-          sp: rand(0.012, 0.034), sc: rand(0.5, 1.15),
-          ph: rand(0, 6.28), bob: rand(10, 28)
+      fliers = [];
+      for (var b = 0; b < 4; b++) {
+        fliers.push({
+          x: rand(-0.3, 1.3), y: rand(0.3, 0.8),
+          sp: rand(0.02, 0.05), sc: rand(0.45, 0.8),
+          ph: rand(0, 6.28), bob: rand(12, 30)
         });
       }
 
       drips = [];
       for (var d = 0; d < 3; d++) {
-        drips.push({ x: W * (0.54 + d * 0.035), off: rand(0, 1), sp: rand(0.22, 0.4) });
+        drips.push({ off: rand(0, 1), sp: rand(0.2, 0.36), dx: rand(-6, 6) });
       }
     }
 
-    function bat(x, y, s, flap) {
-      // One wing drawn and mirrored, so the flap always matches.
-      ctx.save();
-      ctx.translate(x, y); ctx.scale(s, s);
+    /* ---- one bat, drawn hanging or flying ---- */
+    function batWings(flap, spread) {
       var f = Math.sin(flap);
-      var tipY = -5 - f * 9;
-      var midY = 2 - f * 4;
+      var tipY = -4 - f * 8 * spread;
+      var midY = 2 - f * 3 * spread;
       ctx.beginPath();
-      ctx.moveTo(0, 0);
-      for (var sgn = -1; sgn <= 1; sgn += 2) {
+      for (var s = -1; s <= 1; s += 2) {
         ctx.moveTo(0, 0);
-        ctx.quadraticCurveTo(7 * sgn, midY - 5, 15 * sgn, tipY);
-        ctx.quadraticCurveTo(12 * sgn, midY + 2, 9 * sgn, midY + 1);
-        ctx.quadraticCurveTo(7 * sgn, midY + 5, 4 * sgn, midY + 2);
+        ctx.quadraticCurveTo(7 * s, midY - 5, 15 * s, tipY);
+        ctx.quadraticCurveTo(12 * s, midY + 2, 9 * s, midY + 1);
+        ctx.quadraticCurveTo(7 * s, midY + 5, 4 * s, midY + 2);
         ctx.lineTo(0, 3);
         ctx.closePath();
       }
       ctx.fill();
       ctx.beginPath(); ctx.ellipse(0, 0, 2.6, 3.6, 0, 0, 6.3); ctx.fill();
+      // ears, which is most of what makes it read as a bat at this size
+      ctx.beginPath();
+      ctx.moveTo(-1.8, -3); ctx.lineTo(-3, -6.4); ctx.lineTo(-0.3, -4.4);
+      ctx.moveTo(1.8, -3); ctx.lineTo(3, -6.4); ctx.lineTo(0.3, -4.4);
+      ctx.fill();
+    }
+
+    function drawPipeFrame() {
+      ctx.lineCap = 'butt';
+
+      // body
+      var grad = ctx.createLinearGradient(0, TOP - R, 0, TOP + R);
+      grad.addColorStop(0, '#5a6b80');
+      grad.addColorStop(.38, '#aebccd');
+      grad.addColorStop(.62, '#415162');
+      grad.addColorStop(1, '#2b3847');
+
+      ctx.save();
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = R * 2;
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(P, H + R);
+      ctx.lineTo(P, TOP);
+      ctx.lineTo(W - P, TOP);
+      ctx.lineTo(W - P, H + R);
+      ctx.stroke();
       ctx.restore();
+
+      // a highlight along the top of each run sells the cylinder
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,.5)';
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.moveTo(P - R + 4, H);
+      ctx.lineTo(P - R + 4, TOP - R + 5);
+      ctx.moveTo(P, TOP - R + 4);
+      ctx.lineTo(W - P, TOP - R + 4);
+      ctx.moveTo(W - P - R + 4, TOP);
+      ctx.lineTo(W - P - R + 4, H);
+      ctx.stroke();
+      ctx.restore();
+
+      // couplings
+      function coupling(x, y, vertical) {
+        ctx.save();
+        ctx.translate(x, y);
+        if (vertical) ctx.rotate(Math.PI / 2);
+        var g = ctx.createLinearGradient(0, -R - 4, 0, R + 4);
+        g.addColorStop(0, '#7b8ca0'); g.addColorStop(.5, '#aebccd'); g.addColorStop(1, '#3b4a5c');
+        ctx.fillStyle = g;
+        ctx.fillRect(-10, -R - 4, 20, R * 2 + 8);
+        ctx.restore();
+      }
+      coupling(W * 0.3, TOP, false);
+      coupling(W * 0.72, TOP, false);
+      coupling(P, TOP + (H - TOP) * 0.55, true);
+      coupling(W - P, TOP + (H - TOP) * 0.4, true);
     }
 
     function draw() {
       ctx.clearRect(0, 0, W, H);
 
-      // ---- moon, low and cold
-      var mx = W * 0.82, my = H * 0.2, mr = Math.min(W, H) * 0.075;
-      var glow = ctx.createRadialGradient(mx, my, mr * 0.4, mx, my, mr * 5);
-      glow.addColorStop(0, 'rgba(190,225,255,.22)');
-      glow.addColorStop(1, 'rgba(190,225,255,0)');
-      ctx.fillStyle = glow;
-      ctx.fillRect(mx - mr * 5, my - mr * 5, mr * 10, mr * 10);
-      ctx.fillStyle = 'rgba(226,240,255,.9)';
-      ctx.beginPath(); ctx.arc(mx, my, mr, 0, 6.3); ctx.fill();
-      ctx.fillStyle = 'rgba(150,190,230,.25)';
-      ctx.beginPath(); ctx.arc(mx - mr * .3, my - mr * .25, mr * .18, 0, 6.3); ctx.fill();
-      ctx.beginPath(); ctx.arc(mx + mr * .25, my + mr * .3, mr * .12, 0, 6.3); ctx.fill();
+      var reach = 0.5 + Math.sin(t * 0.2) * 0.5;      // the freeze, breathing
 
-      // ---- falling flakes behind the pipe
-      flakes.forEach(function (fl) {
-        var y = (fl.y + t * fl.vy) % (H + 20);
-        var x = fl.x + Math.sin(t * 0.6 + fl.ph) * 14 + t * fl.vx * 0.2;
-        x = ((x % (W + 40)) + W + 40) % (W + 40) - 20;
-        ctx.fillStyle = 'rgba(214,236,255,' + fl.a + ')';
-        ctx.beginPath(); ctx.arc(x, y, fl.r, 0, 6.3); ctx.fill();
-      });
+      drawPipeFrame();
 
-      // ---- bats
-      ctx.fillStyle = 'rgba(8,16,30,.82)';
-      bats.forEach(function (b) {
-        b.x += b.sp * 0.016;
-        if (b.x > 1.35) { b.x = -0.35; b.y = rand(0.06, 0.42); }
-        var bx = b.x * W;
-        var by = b.y * H + Math.sin(t * 1.6 + b.ph) * b.bob;
-        bat(bx, by, b.sc, t * 9 + b.ph);
-      });
-
-      // ---- the pipe
-      var pg = ctx.createLinearGradient(0, pipeY - 13, 0, pipeY + 13);
-      pg.addColorStop(0, '#5d6a7d');
-      pg.addColorStop(0.35, '#93a3b6');
-      pg.addColorStop(0.6, '#44505f');
-      pg.addColorStop(1, '#2b3442');
-      ctx.fillStyle = pg;
-      ctx.fillRect(-10, pipeY - 13, W + 20, 26);
-
-      // couplings
-      ctx.fillStyle = '#6d7b8d';
-      [0.2, 0.86].forEach(function (p) { ctx.fillRect(W * p - 9, pipeY - 17, 18, 34); });
-      ctx.fillStyle = 'rgba(255,255,255,.14)';
-      [0.2, 0.86].forEach(function (p) { ctx.fillRect(W * p - 9, pipeY - 17, 18, 4); });
-
-      // ---- frost sheet creeping in from the right
-      var reach = 0.5 + Math.sin(t * 0.22) * 0.5;      // 0 to 1, slow breath
-      var edge = W * (1.08 - reach * 1.16);
-      var fg = ctx.createLinearGradient(edge, 0, W, 0);
-      fg.addColorStop(0, 'rgba(226,244,255,0)');
-      fg.addColorStop(0.35, 'rgba(226,244,255,.55)');
-      fg.addColorStop(1, 'rgba(240,250,255,.92)');
-      ctx.save();
-      ctx.beginPath(); ctx.rect(-10, pipeY - 13, W + 20, 26); ctx.clip();
-      ctx.fillStyle = fg; ctx.fillRect(edge, pipeY - 13, W - edge + 10, 26);
-      ctx.restore();
-
-      // ---- ice crystals off the pipe
-      crystals.forEach(function (c) {
-        var local = (c.x - edge) / (W * 0.45);
-        var grow = Math.max(0, Math.min(1, local - c.born * 0.5));
-        if (grow <= 0) return;
-        var len = c.len * grow;
-        var dir = c.up ? -1 : 1;
-        var sway = Math.sin(t * 0.9 + c.sway) * 0.06;
+      // ---- frost crusting along the runs
+      ctx.strokeStyle = 'rgba(190,228,250,.95)';
+      ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+      frost.forEach(function (fr) {
+        if (reach < fr.born * 0.9) return;
+        var g = Math.min(1, (reach - fr.born * 0.9) * 2.4);
         ctx.save();
-        ctx.translate(c.x, pipeY + dir * 12);
-        ctx.rotate(c.ang + sway);
-        ctx.strokeStyle = 'rgba(224,244,255,' + (0.3 + grow * 0.55) + ')';
-        ctx.lineWidth = c.w; ctx.lineCap = 'round';
-        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, dir * len); ctx.stroke();
-        // two barbs, which is what makes it read as ice and not a hair
+        ctx.translate(fr.x, fr.y);
+        ctx.rotate(fr.ang);
+        ctx.globalAlpha = g * 0.9;
         ctx.beginPath();
-        ctx.moveTo(0, dir * len * 0.45);
-        ctx.lineTo(-len * 0.3, dir * len * 0.68);
-        ctx.moveTo(0, dir * len * 0.45);
-        ctx.lineTo(len * 0.3, dir * len * 0.68);
+        ctx.moveTo(0, 0); ctx.lineTo(0, fr.len * g);
+        ctx.moveTo(0, fr.len * g * 0.5);
+        ctx.lineTo(-fr.len * g * 0.32, fr.len * g * 0.72);
+        ctx.moveTo(0, fr.len * g * 0.5);
+        ctx.lineTo(fr.len * g * 0.32, fr.len * g * 0.72);
         ctx.stroke();
         ctx.restore();
       });
+      ctx.globalAlpha = 1;
 
-      // ---- the split, opening and closing with the freeze
-      var sx = W * 0.58;
-      var open = Math.max(0, reach - 0.55) * 2.6;
-      if (open > 0.02) {
-        ctx.strokeStyle = 'rgba(10,18,32,' + Math.min(open, .85) + ')';
-        ctx.lineWidth = 1 + open * 2.6; ctx.lineCap = 'round';
+      // ---- icicles off the top run
+      icicles.forEach(function (ic) {
+        var g = Math.max(0, Math.min(1, (reach - ic.born) * 1.8));
+        if (g <= 0) return;
+        var len = ic.len * g;
+        var w = ic.w * (0.6 + g * 0.4);
+        var sway = Math.sin(t * 0.7 + ic.ph) * 0.9;
+        var grd = ctx.createLinearGradient(0, TOP + R, 0, TOP + R + len);
+        grd.addColorStop(0, 'rgba(176,220,248,.95)');
+        grd.addColorStop(1, 'rgba(230,246,255,.35)');
+        ctx.fillStyle = grd;
         ctx.beginPath();
-        ctx.moveTo(sx - 26, pipeY - 9);
-        ctx.lineTo(sx - 8, pipeY - 1);
-        ctx.lineTo(sx + 10, pipeY - 7);
-        ctx.lineTo(sx + 30, pipeY + 2);
+        ctx.moveTo(ic.x - w, TOP + R - 2);
+        ctx.lineTo(ic.x + w, TOP + R - 2);
+        ctx.lineTo(ic.x + sway, TOP + R + len);
+        ctx.closePath();
+        ctx.fill();
+      });
+
+      // ---- the split, and what comes out of it
+      var sx = W * 0.5;
+      var open = Math.max(0, reach - 0.52) * 2.4;
+      if (open > 0.02) {
+        ctx.strokeStyle = 'rgba(16,28,44,' + Math.min(open, .9) + ')';
+        ctx.lineWidth = 1.4 + open * 2.4; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(sx - 28, TOP - 7);
+        ctx.lineTo(sx - 9, TOP + 2);
+        ctx.lineTo(sx + 11, TOP - 6);
+        ctx.lineTo(sx + 31, TOP + 3);
         ctx.stroke();
 
         drips.forEach(function (d) {
-          var p = ((t * d.sp + d.off) % 1);
-          var y = pipeY + 13 + p * (H - pipeY - 20);
+          var p = (t * d.sp + d.off) % 1;
+          var y = TOP + R + p * (H - TOP) * 0.7;
           var a = (1 - p) * open;
           if (a <= 0.02) return;
-          ctx.fillStyle = 'rgba(120,200,255,' + a + ')';
+          ctx.fillStyle = 'rgba(10,95,208,' + a * 0.85 + ')';
           ctx.beginPath();
-          ctx.ellipse(d.x, y, 2.1, 3.4 + p * 2, 0, 0, 6.3);
+          ctx.ellipse(sx + d.dx, y, 2.4, 3.8 + p * 3, 0, 0, 6.3);
           ctx.fill();
         });
       }
+
+      // ---- bats hanging off the top run
+      ctx.fillStyle = INK;
+      hangers.forEach(function (b) {
+        var swing = Math.sin(t * 0.8 + b.ph) * 0.07;
+        ctx.save();
+        ctx.translate(b.x, TOP + R - 1);
+        ctx.rotate(swing);
+        // the claw hooked over the pipe
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(0, 5); ctx.stroke();
+        ctx.translate(0, 5 + 9 * b.sc);
+        ctx.scale(b.sc, -b.sc);                 // upside down, as they roost
+        batWings(t * 1.2 + b.ph, 0.28);
+        ctx.restore();
+      });
+
+      // ---- a few out hunting
+      fliers.forEach(function (b) {
+        b.x += b.sp * 0.016;
+        if (b.x > 1.35) { b.x = -0.35; b.y = rand(0.22, 0.72); }
+        var bx = b.x * W;
+        var by = b.y * H + Math.sin(t * 1.7 + b.ph) * b.bob;
+        ctx.save();
+        ctx.translate(bx, by);
+        ctx.scale(b.sc, b.sc);
+        ctx.globalAlpha = 0.5;
+        batWings(t * 9 + b.ph, 1);
+        ctx.restore();
+      });
+      ctx.globalAlpha = 1;
     }
 
     var last = 0;
     function loop(now) {
       if (!running) return;
       if (!last) last = now;
-      var dt = Math.min((now - last) / 1000, 0.05);
+      t += Math.min((now - last) / 1000, 0.05);
       last = now;
-      t += dt;
       draw();
       raf = requestAnimationFrame(loop);
     }
-
-    function start() {
-      if (running || reduced) return;
-      running = true; last = 0; raf = requestAnimationFrame(loop);
-    }
-    function stop() {
-      running = false; last = 0;
-      if (raf) cancelAnimationFrame(raf);
-    }
+    function start() { if (running || reduced) return; running = true; last = 0; raf = requestAnimationFrame(loop); }
+    function stop() { running = false; last = 0; if (raf) cancelAnimationFrame(raf); }
 
     resize();
-    draw();                                   // paint once even if we never animate
+    draw();
 
     var ro = window.ResizeObserver ? new ResizeObserver(function () { resize(); draw(); }) : null;
     if (ro) ro.observe(cv); else window.addEventListener('resize', function () { resize(); draw(); });
 
-    // Only burn frames while the hero is actually on screen.
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        es[0].isIntersecting ? start() : stop();
-      }, { threshold: 0.02 }).observe(cv);
+      new IntersectionObserver(function (es) { es[0].isIntersecting ? start() : stop(); },
+        { threshold: 0.02 }).observe(cv);
     } else { start(); }
 
-    document.addEventListener('visibilitychange', function () {
-      document.hidden ? stop() : start();
-    });
+    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
   })();
 
   /* =========================================================
