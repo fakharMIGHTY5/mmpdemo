@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "73"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "74"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -121,9 +121,7 @@ def nav(depth, active=""):
           <a href="{rel(depth,'services.html')}"><b>All services</b><span>See everything we fix</span></a>
         </div>
       </div>
-      <a href="{rel(depth,'commercial.html')}"{cur('commercial')}>Commercial</a>
       <a href="{rel(depth,'case-studies.html')}"{cur('case-studies')}>Case Studies</a>
-      <a href="{rel(depth,'process.html')}"{cur('process')}>How It Works</a>
       <a href="{rel(depth,'about.html')}"{cur('about')}>About</a>
       <a href="{rel(depth,'contact-us.html')}"{cur('contact')}>Contact</a>
       <a class="nav-tel" href="tel:{SITE['tel_href']}">{SITE['tel']}</a>
@@ -169,7 +167,7 @@ def foot(depth):
         <h4>Company</h4>
         {rest}<a href="{rel(depth,'case-studies.html')}">Case studies</a>
         <a href="{rel(depth,'work.html')}">Photo reports</a>
-        <a href="{rel(depth,'process.html')}">How it works</a>
+        <a href="{rel(depth,'commercial.html')}">Commercial</a>
         <a href="{rel(depth,'about.html')}">About</a>
         <a href="{rel(depth,'book.html')}">Get started</a>
         <a href="{rel(depth,'contact-us.html')}">Contact us</a>
@@ -816,8 +814,6 @@ def main():
                             "Service plans, preventive maintenance and emergency readiness for property managers, facilities teams and building owners across Greater Philadelphia.", "commercial"),
         "work.html": ("Our Work | Moisture Master Pros",
                       "Real assessments, real remediation, real repairs. See what our findings, containment and rebuild work actually look like.", "work"),
-        "process.html": ("How It Works | Moisture Master Pros",
-                         "Check your ZIP, choose how to start, get a documented assessment, and get a priced scope of work you actually own.", "process"),
         "about.html": ("About Moisture Master Pros",
                        "Founded by Joshua Haynes. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia.", "about"),
         "book.html": ("Get Started | Moisture Master Pros",

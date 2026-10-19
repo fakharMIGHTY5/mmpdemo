@@ -188,6 +188,11 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .drop{ position:relative; }
 .drop > button svg{ width:11px; height:11px; transition:transform .3s var(--ease); }
 .drop[data-open="true"] > button svg{ transform:rotate(180deg); }
+/* The menu hangs 16px below the button. Without a bridge across that
+   gap the pointer leaves .drop on the way down and the menu closes. */
+.drop-menu::before{
+  content:""; position:absolute; left:0; right:0; top:-20px; height:20px;
+}
 .drop-menu{
   position:absolute; top:calc(100% + 16px); left:50%; transform:translate(-50%,-8px);
   width:min(620px,86vw); padding:18px; border-radius:18px; background:#fff;

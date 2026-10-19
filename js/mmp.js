@@ -156,8 +156,17 @@
         drop.setAttribute('data-open', drop.getAttribute('data-open') === 'true' ? 'false' : 'true');
       });
       if (fine) {
-        drop.addEventListener('mouseenter', function () { drop.setAttribute('data-open', 'true'); });
-        drop.addEventListener('mouseleave', function () { drop.setAttribute('data-open', 'false'); });
+        // A short grace period on the way out, so clipping a corner of the
+        // menu on the way to an item does not slam it shut.
+        var shut = null;
+        drop.addEventListener('mouseenter', function () {
+          clearTimeout(shut);
+          drop.setAttribute('data-open', 'true');
+        });
+        drop.addEventListener('mouseleave', function () {
+          clearTimeout(shut);
+          shut = setTimeout(function () { drop.setAttribute('data-open', 'false'); }, 180);
+        });
       }
       document.addEventListener('click', function (e) {
         if (!drop.contains(e.target)) drop.setAttribute('data-open', 'false');

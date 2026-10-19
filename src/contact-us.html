@@ -1,0 +1,113 @@
+<section class="phead">
+  <div class="phead-in">
+    <div class="phead-txt">
+      <p class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact us</p>
+      <h1 class="d2" style="margin:0 0 22px;max-width:15ch">Tell us what is happening.</h1>
+      <p class="t1" style="max-width:52ch">Describe it in your own words. You do not need to know what is causing it, that is our job. Someone comes back to you the same working day.</p>
+      <div class="row" style="margin-top:32px">
+        <a class="b" href="tel:{{TEL_HREF}}">Call {{TEL}}</a>
+        <a class="b b-ghost" href="contact.html">Not sure how urgent it is?</a>
+      </div>
+    </div>
+    <figure class="phead-fig"><img src="assets/img/report-hallway-2.jpg" alt="An annotated assessment photograph" width="1200" height="900"></figure>
+  </div>
+</section>
+
+<section class="panel panel-auto paper">
+  <div class="inner">
+    <div class="cu">
+      <div class="cu-form" data-r>
+        <p class="kicker">Send us a message</p>
+        <h2 class="d3" style="margin:0 0 clamp(24px,3vh,32px)">We read every one of these.</h2>
+
+        <form class="form" data-lead novalidate>
+          <div class="two-f">
+            <div>
+              <label for="cu-name">Name</label>
+              <input id="cu-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="cu-email">Email</label>
+              <input id="cu-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="two-f">
+            <div>
+              <label for="cu-phone">Phone</label>
+              <input id="cu-phone" name="phone" type="tel" placeholder="(555) 000 0000" autocomplete="tel">
+            </div>
+            <div>
+              <label for="cu-zip">Property ZIP code</label>
+              <input id="cu-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="19123" autocomplete="postal-code" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="cu-kind">What is this about</label>
+            <select id="cu-kind" name="kind">
+              <option>I have noticed a specific problem</option>
+              <option>I want a paid inspection booked</option>
+              <option>I want a video consultation first</option>
+              <option>I manage a building or a portfolio</option>
+              <option>I am buying a property</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cu-msg">Message</label>
+            <textarea id="cu-msg" name="message" placeholder="What are you seeing, where is it, and how long has it been going on?" required></textarea>
+          </div>
+
+          <button class="b" type="submit">Send message</button>
+          <p class="form-note">If water is moving right now, call {{TEL}} rather than waiting on a reply.</p>
+        </form>
+      </div>
+
+      <aside class="cu-side" data-r data-d="1">
+        <div class="cu-card">
+          <p class="kicker">Reach us directly</p>
+          <a class="cu-line" href="tel:{{TEL_HREF}}"><b>{{TEL}}</b><span>Phone, fastest for anything active</span></a>
+          <a class="cu-line" href="mailto:info@moisturemasterpros.com"><b>info@moisturemasterpros.com</b><span>Email, for photographs and documents</span></a>
+          <div class="cu-line"><b>Greater Philadelphia and northern Delaware</b><span>Florida coming soon</span></div>
+          <div class="cu-line"><b>48 hour response</b><span>Emergency call out available</span></div>
+        </div>
+
+        <div class="cu-card alt">
+          <p class="kicker">Another way in</p>
+          <p>Answer eight questions instead. It takes about a minute and tells you how urgent your situation looks before anyone asks you for anything.</p>
+          <a class="b b-sm" href="contact.html">Take the assessment</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-auto" id="faq">
+  <div class="inner" style="max-width:900px">
+    <div data-r style="margin-bottom:clamp(30px,4vh,48px)">
+      <p class="kicker">Questions and answers</p>
+      <h2 class="d2" style="max-width:20ch">The things people ask before they call.</h2>
+    </div>
+    <div class="acc" data-r data-d="1">{{FAQ_ALL}}</div>
+  </div>
+</section>
+
+<section class="panel panel-auto navy" data-nav="navy">
+  <div class="inner mid" style="max-width:760px">
+    <div data-r>
+      <p class="kicker">Start here</p>
+      <h2 class="d2" style="margin-bottom:22px">Check your ZIP code first.</h2>
+      <p class="t1" style="margin-bottom:clamp(28px,4vh,40px)">We will tell you straight away whether this is something we can take on at your address.</p>
+    </div>
+    <div class="zip" data-zip data-zip-next="book.html" data-zip-restore data-r data-d="1">
+      <form class="zip-form">
+        <input type="text" inputmode="numeric" placeholder="Property ZIP code" aria-label="Property ZIP code" maxlength="5">
+        <button class="b" type="submit">Check my area</button>
+      </form>
+      <div class="zip-out" data-zip-out></div>
+      <p class="zip-note">Or call {{TEL}}</p>
+    </div>
+  </div>
+</section>
