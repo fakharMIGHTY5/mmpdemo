@@ -3,7 +3,7 @@
     "lead": "Property managers, facilities teams and building owners. The same diagnostics, on a schedule, with documentation your insurer and your board will accept.",
     "plans": [
       {
-        "name": "Commercial Service Plan",
+        "name": "Commercial Service Plans",
         "tag": "Ongoing cover",
         "blurb": "A standing relationship rather than a call-out. Scheduled inspections across your portfolio, priority response, and a single point of contact who already knows your buildings.",
         "points": [
@@ -11,7 +11,7 @@
           "Priority scheduling ahead of general call-outs",
           "One account contact across every property",
           "Documented findings after every visit",
-          "Agreed rates for repair work"
+          "Agreed-upon rates for repair work"
         ]
       },
       {
