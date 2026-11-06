@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "98"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "100"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -743,6 +743,16 @@ def svc_form(s, depth=1):
 """
 
 
+def title_for(s):
+    """Search results cut off around sixty characters, so the page title uses
+    the short service name and drops Greater. A handful are still long enough
+    that the city has to go too."""
+    base = "%s, Philadelphia | %s" % (s["short"], SITE["name"])
+    if len(base) <= 60:
+        return base
+    return "%s | %s" % (s["short"], SITE["name"])
+
+
 def build_service(s):
     d = 1
     signs = "".join("<li>%s</li>" % html.escape(x) for x in s["signs"])
@@ -871,7 +881,7 @@ def build_service(s):
 """
     write(
         "services/%s.html" % s["slug"],
-        "%s in Greater Philadelphia | %s" % (s["title"], SITE["name"]),
+        title_for(s),
         s["blurb"],
         body, depth=1, active="services",
         jsonld=[
@@ -887,7 +897,7 @@ def build_service(s):
 # ----------------------------------------------------------------- run
 def main():
     PAGE_META = {
-        "index.html": ("Moisture Master Pros | Leak Detection, Mold Remediation & Major Moisture Repair",
+        "index.html": ("Moisture Master Pros | Leak Detection & Mold Remediation",
                        "We find the water, repair the damage, and prove it is dry. Leak detection, mold remediation, drainage, foundations and stucco across Greater Philadelphia and Northern Delaware.", ""),
         "services.html": ("Our Services | Moisture Master Pros",
                           "Leak detection, mold remediation, water damage, French drains, sump pumps, foundation repair, air sealing, stucco and exterior repair, explained plainly.", "services"),

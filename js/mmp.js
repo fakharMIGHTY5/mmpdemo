@@ -12,6 +12,18 @@
   var lerp  = function (a, b, t) { return a + (b - a) * t; };
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* The booking funnel lives on contact-us.html. Service pages sit a folder
+     down, so the prefix has to be worked out rather than written into each
+     call. Any gate on the page already carries the right relative path, so
+     use that when there is one and fall back to reading the location. */
+  function bookUrl(q) {
+    var hint = document.querySelector('[data-zip-next]');
+    var base = hint && hint.getAttribute('data-zip-next')
+      ? hint.getAttribute('data-zip-next')
+      : (/\/services\//.test(location.pathname) ? '../contact-us.html' : 'contact-us.html');
+    return base + (q || '');
+  }
+
   /* =========================================================
      SERVICE AREA
      Prefix ranges, not a ZIP list — the real coverage map goes
@@ -85,7 +97,7 @@
         return;
       }
       saveZip(z, res);
-      var next = gate.getAttribute('data-zip-next') || 'book.html';
+      var next = gate.getAttribute('data-zip-next') || bookUrl();
 
       if (res.state === 'in') {
         out.innerHTML = '<b>' + ICON_OK + 'Good news, we cover ' + res.name + '</b>' +
@@ -99,14 +111,14 @@
           '<p>We are opening in Florida but crews are not working there yet. A video consultation is available today, anywhere in the US, and we will tell you the moment we are live near you.</p>' +
           '<div class="row">' +
             '<a class="b b-sm" href="' + next + '?path=video&amp;zip=' + z + '">Book a video consultation</a>' +
-            '<a class="b b-sm b-ghost" href="contact.html?waitlist=' + z + '">Tell me when you open</a>' +
+            '<a class="b b-sm b-ghost" href="' + bookUrl('?waitlist=' + z) + '">Tell me when you open</a>' +
           '</div>';
       } else {
         out.innerHTML = '<b>' + ICON_NO + 'We do not cover ' + z + ' yet</b>' +
           '<p>Crews work across Philadelphia, the surrounding suburbs and northern Delaware. A video consultation is available anywhere in the US.</p>' +
           '<div class="row">' +
             '<a class="b b-sm" href="' + next + '?path=video&amp;zip=' + z + '">Book a video consultation</a>' +
-            '<a class="b b-sm b-ghost" href="contact.html?waitlist=' + z + '">Tell me when you expand</a>' +
+            '<a class="b b-sm b-ghost" href="' + bookUrl('?waitlist=' + z) + '">Tell me when you expand</a>' +
           '</div>';
       }
       document.dispatchEvent(new CustomEvent('mmp:zip', { detail: { zip: z, res: res } }));
@@ -539,7 +551,7 @@
           tell('Found it.',
             (tries === 0 ? 'First sweep. ' : '') +
             'A failed parapet, tracking down the party wall and surfacing a floor below. Close that and the ceiling stays clean.',
-            'Book a real assessment', null, 'book.html?path=inspection');
+            'Book a real assessment', null, bookUrl('?path=inspection'));
         }, 950);
       } else {
         tries++;
@@ -734,10 +746,10 @@
       var alt = $('[data-band-alt]', root);
       if (cta && band && /low/i.test(band.name)) {
         cta.textContent = 'Book a video consultation';
-        cta.setAttribute('href', 'book.html?path=video');
+        cta.setAttribute('href', bookUrl('?path=video'));
         if (alt) {
           alt.textContent = 'Discuss a repair project';
-          alt.setAttribute('href', 'book.html?path=project');
+          alt.setAttribute('href', bookUrl('?path=project'));
         }
       }
 
