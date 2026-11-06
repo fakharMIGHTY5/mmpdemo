@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "95"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "98"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",

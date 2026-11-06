@@ -854,9 +854,9 @@
     var P = 0;                               // side runs, inset from the edge
     var TOP = 0;                             // top run, clear of the fixed nav
     var R = 14;                              // pipe radius
-    var icicles = [], drips = [], frost = [];
+    var icicles = [], drips = [], frost = [], snow = [];
 
-    var INK = '#1d2b3e', LINE = '#33465f', ICE = '#9fd4f7', DEEP = '#0a5fd0';
+    var INK = '#1d2b3e', LINE = '#33465f', ICE = '#9fd4f7', DEEP = '#0a5fd0', SNOW = '#6FB4E8';
 
     function rand(a, b) { return a + Math.random() * (b - a); }
 
@@ -904,6 +904,61 @@
       for (var d = 0; d < 3; d++) {
         drips.push({ off: rand(0, 1), sp: rand(0.2, 0.36), dx: rand(-6, 6) });
       }
+
+      /* Snow, in two depths. The far ones are small and slow and sit
+         behind the pipework; a handful of near ones drift in front, which
+         is what stops it reading as a flat curtain. Pale blue rather than
+         white, because white on a white page is nothing. */
+      snow = [];
+      var flakes = Math.round((W * H) / 14000);
+      for (var n = 0; n < flakes; n++) {
+        var near = Math.random() < 0.22;
+        snow.push({
+          x: rand(0, W),
+          y: rand(0, H),
+          r: near ? rand(2.6, 4.4) : rand(1, 2.3),
+          vy: near ? rand(26, 40) : rand(9, 20),
+          sway: rand(7, 20),
+          ph: rand(0, 6.28),
+          a: near ? rand(0.5, 0.78) : rand(0.26, 0.46),
+          near: near,
+          star: near && Math.random() < 0.5,
+          spin: rand(-0.6, 0.6)
+        });
+      }
+    }
+
+    function drawSnow(near) {
+      snow.forEach(function (f) {
+        if (f.near !== near) return;
+        var y = (f.y + t * f.vy) % (H + 24) - 12;
+        var x = f.x + Math.sin(t * 0.5 + f.ph) * f.sway;
+        x = ((x % (W + 30)) + W + 30) % (W + 30) - 15;
+        ctx.globalAlpha = f.a;
+        if (f.star) {
+          // a few of the near ones get arms, enough to read as snow
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(t * f.spin + f.ph);
+          ctx.strokeStyle = SNOW;
+          ctx.lineWidth = 1.3;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          for (var k = 0; k < 3; k++) {
+            var a2 = k * Math.PI / 3;
+            ctx.moveTo(-Math.cos(a2) * f.r, -Math.sin(a2) * f.r);
+            ctx.lineTo(Math.cos(a2) * f.r, Math.sin(a2) * f.r);
+          }
+          ctx.stroke();
+          ctx.restore();
+        } else {
+          ctx.fillStyle = SNOW;
+          ctx.beginPath();
+          ctx.arc(x, y, f.r, 0, 6.283);
+          ctx.fill();
+        }
+      });
+      ctx.globalAlpha = 1;
     }
 
     function drawPipeFrame() {
@@ -1014,6 +1069,7 @@
 
       var reach = 0.8 + Math.sin(t * 0.18) * 0.2;      // stays frozen, breathes
 
+      drawSnow(false);
       drawPipeFrame();
       drawIceCrust(reach);
 
@@ -1084,6 +1140,8 @@
           ctx.fill();
         });
       }
+
+      drawSnow(true);
 
     }
 
