@@ -90,7 +90,8 @@
         "french-drains",
         "stucco-remediation"
       ],
-      "video": "s07"
+      "video": "s07",
+      "video_len": "0:15"
     },
     {
       "slug": "french-drains",
@@ -165,7 +166,8 @@
         "foundation-repair",
         "water-damage"
       ],
-      "video": "s13"
+      "video": "s13",
+      "video_len": "0:15"
     },
     {
       "slug": "sump-pumps",
@@ -240,7 +242,8 @@
         "foundation-repair",
         "water-damage"
       ],
-      "video": "s09"
+      "video": "s09",
+      "video_len": "0:15"
     },
     {
       "slug": "water-damage",
@@ -315,7 +318,8 @@
         "leak-detection",
         "sump-pumps"
       ],
-      "video": "s10"
+      "video": "s10",
+      "video_len": "0:15"
     },
     {
       "slug": "foundation-repair",
@@ -390,7 +394,8 @@
         "sump-pumps",
         "exterior-repairs"
       ],
-      "video": "s11"
+      "video": "s11",
+      "video_len": "0:15"
     },
     {
       "slug": "mold-remediation",
@@ -466,7 +471,8 @@
         "leak-detection",
         "air-sealing"
       ],
-      "video": "s12"
+      "video": "s12",
+      "video_len": "0:15"
     },
     {
       "slug": "air-sealing",
@@ -541,7 +547,8 @@
         "exterior-repairs",
         "leak-detection"
       ],
-      "video": "s22"
+      "video": "s22",
+      "video_len": "0:15"
     },
     {
       "slug": "stucco-remediation",
@@ -616,7 +623,8 @@
         "leak-detection",
         "mold-remediation"
       ],
-      "video": "s14"
+      "video": "s14",
+      "video_len": "0:15"
     },
     {
       "slug": "exterior-repairs",
@@ -691,7 +699,8 @@
         "leak-detection",
         "foundation-repair"
       ],
-      "video": "s15"
+      "video": "s15",
+      "video_len": "0:15"
     },
     {
       "slug": "mold-air-testing",
@@ -761,7 +770,8 @@
         "air-sealing",
         "leak-detection"
       ],
-      "video": "s16"
+      "video": "s16",
+      "video_len": "0:15"
     },
     {
       "slug": "fiberglass-deck-repair",
@@ -828,7 +838,8 @@
         "water-damage",
         "leak-detection"
       ],
-      "video": "s17"
+      "video": "s17",
+      "video_len": "0:15"
     },
     {
       "slug": "fiberglass-deck-replacement",
@@ -895,7 +906,8 @@
         "exterior-repairs",
         "interior-repairs"
       ],
-      "video": "s18"
+      "video": "s18",
+      "video_len": "0:15"
     },
     {
       "slug": "basement-waterproofing",
@@ -962,7 +974,8 @@
         "sump-pumps",
         "foundation-repair"
       ],
-      "video": "s19"
+      "video": "s19",
+      "video_len": "0:15"
     },
     {
       "slug": "masonry-pointing",
@@ -1095,7 +1108,8 @@
         "masonry-pointing",
         "exterior-repairs"
       ],
-      "video": "s21"
+      "video": "s21",
+      "video_len": "0:15"
     },
     {
       "slug": "concrete-repair",
@@ -1162,7 +1176,8 @@
         "foundation-repair",
         "basement-waterproofing"
       ],
-      "video": "s01"
+      "video": "s01",
+      "video_len": "0:15"
     },
     {
       "slug": "historic-preservation",
@@ -1229,7 +1244,8 @@
         "stucco-repair",
         "exterior-repairs"
       ],
-      "video": "s02"
+      "video": "s02",
+      "video_len": "0:15"
     },
     {
       "slug": "winterization",
@@ -1362,7 +1378,8 @@
         "masonry-pointing",
         "mold-remediation"
       ],
-      "video": "s08"
+      "video": "s08",
+      "video_len": "0:10"
     },
     {
       "slug": "odor-investigation",
@@ -1429,7 +1446,8 @@
         "leak-detection",
         "mold-air-testing"
       ],
-      "video": "s04"
+      "video": "s04",
+      "video_len": "0:10"
     },
     {
       "slug": "interior-repairs",
@@ -1496,7 +1514,8 @@
         "water-damage",
         "mold-remediation"
       ],
-      "video": "s05"
+      "video": "s05",
+      "video_len": "0:10"
     },
     {
       "slug": "flooring",
@@ -1563,7 +1582,8 @@
         "water-damage",
         "basement-waterproofing"
       ],
-      "video": "s06"
+      "video": "s06",
+      "video_len": "0:10"
     },
     {
       "slug": "emergency-cleanup",

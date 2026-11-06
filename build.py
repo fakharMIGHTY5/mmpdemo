@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "93"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "94"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -682,7 +682,7 @@ def svc_video(s, depth=1):
   <div class="inner">
     <div class="mid" data-r style="margin-bottom:clamp(28px,4vh,44px)">
       <p class="kicker">Watch</p>
-      <h2 class="d3">{html.escape(s['short'])} in sixty seconds.</h2>
+      <h2 class="d3">A quick look at {html.escape(s['short'].lower())}.</h2>
     </div>
     <div class="svid" data-svid data-r data-d="1">
       <video preload="none" playsinline
@@ -692,6 +692,7 @@ def svc_video(s, depth=1):
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.6v12.8c0 .8.9 1.3 1.5.8l9.2-6.4c.6-.4.6-1.2 0-1.6L9.5 4.8c-.7-.5-1.5 0-1.5.8Z"/></svg>
       </button>
     </div>
+    <p class="svid-meta">{html.escape(s.get('video_len','') )} &middot; sound on</p>
   </div>
 </section>
 """
