@@ -239,7 +239,8 @@
         "french-drains",
         "foundation-repair",
         "water-damage"
-      ]
+      ],
+      "video": "s09"
     },
     {
       "slug": "water-damage",
@@ -689,7 +690,8 @@
         "stucco-remediation",
         "leak-detection",
         "foundation-repair"
-      ]
+      ],
+      "video": "s15"
     },
     {
       "slug": "mold-air-testing",
@@ -892,7 +894,8 @@
         "fiberglass-deck-repair",
         "exterior-repairs",
         "interior-repairs"
-      ]
+      ],
+      "video": "s18"
     },
     {
       "slug": "basement-waterproofing",
@@ -1225,7 +1228,8 @@
         "masonry-pointing",
         "stucco-repair",
         "exterior-repairs"
-      ]
+      ],
+      "video": "s02"
     },
     {
       "slug": "winterization",
