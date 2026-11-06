@@ -842,9 +842,8 @@
      FROZEN HERO
      A frame of pipework around the edge of an otherwise empty
      page. Frost spreads along it, icicles grow down, a split
-     opens and drips, and the bats hang off it because we are
-     launching the week of Halloween. Canvas, because a few
-     hundred crystals as DOM nodes is a jank machine.
+     opens and drips. Canvas, because a few hundred crystals
+     as DOM nodes is a jank machine.
      ========================================================= */
   (function initFrost() {
     var cv = $('[data-frost]');
@@ -855,7 +854,7 @@
     var P = 0;                               // side runs, inset from the edge
     var TOP = 0;                             // top run, clear of the fixed nav
     var R = 14;                              // pipe radius
-    var icicles = [], hangers = [], fliers = [], drips = [], frost = [];
+    var icicles = [], drips = [], frost = [];
 
     var INK = '#1d2b3e', LINE = '#33465f', ICE = '#9fd4f7', DEEP = '#0a5fd0';
 
@@ -901,54 +900,10 @@
         }
       }
 
-      // Bats hanging upside down off the top pipe, the way they actually roost.
-      hangers = [];
-      var slots = Math.max(3, Math.round(W / 320));
-      for (var h = 0; h < slots; h++) {
-        hangers.push({
-          x: (h + 0.5) / slots * (W - P * 2) + P + rand(-40, 40),
-          sc: rand(0.95, 1.5),
-          ph: rand(0, 6.28),
-          twitch: rand(5, 11)
-        });
-      }
-
-      fliers = [];
-      for (var b = 0; b < 4; b++) {
-        fliers.push({
-          x: rand(-0.3, 1.3), y: rand(0.3, 0.8),
-          sp: rand(0.02, 0.05), sc: rand(0.45, 0.8),
-          ph: rand(0, 6.28), bob: rand(12, 30)
-        });
-      }
-
       drips = [];
       for (var d = 0; d < 3; d++) {
         drips.push({ off: rand(0, 1), sp: rand(0.2, 0.36), dx: rand(-6, 6) });
       }
-    }
-
-    /* ---- one bat, drawn hanging or flying ---- */
-    function batWings(flap, spread) {
-      var f = Math.sin(flap);
-      var tipY = -4 - f * 8 * spread;
-      var midY = 2 - f * 3 * spread;
-      ctx.beginPath();
-      for (var s = -1; s <= 1; s += 2) {
-        ctx.moveTo(0, 0);
-        ctx.quadraticCurveTo(7 * s, midY - 5, 15 * s, tipY);
-        ctx.quadraticCurveTo(12 * s, midY + 2, 9 * s, midY + 1);
-        ctx.quadraticCurveTo(7 * s, midY + 5, 4 * s, midY + 2);
-        ctx.lineTo(0, 3);
-        ctx.closePath();
-      }
-      ctx.fill();
-      ctx.beginPath(); ctx.ellipse(0, 0, 2.6, 3.6, 0, 0, 6.3); ctx.fill();
-      // ears, which is most of what makes it read as a bat at this size
-      ctx.beginPath();
-      ctx.moveTo(-1.8, -3); ctx.lineTo(-3, -6.4); ctx.lineTo(-0.3, -4.4);
-      ctx.moveTo(1.8, -3); ctx.lineTo(3, -6.4); ctx.lineTo(0.3, -4.4);
-      ctx.fill();
     }
 
     function drawPipeFrame() {
@@ -1130,36 +1085,6 @@
         });
       }
 
-      // ---- bats hanging off the top run
-      ctx.fillStyle = INK;
-      hangers.forEach(function (b) {
-        var swing = Math.sin(t * 0.8 + b.ph) * 0.07;
-        ctx.save();
-        ctx.translate(b.x, TOP + R - 1);
-        ctx.rotate(swing);
-        // the claw hooked over the pipe
-        ctx.strokeStyle = INK; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
-        ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(0, 5); ctx.stroke();
-        ctx.translate(0, 5 + 9 * b.sc);
-        ctx.scale(b.sc, -b.sc);                 // upside down, as they roost
-        batWings(t * 1.2 + b.ph, 0.28);
-        ctx.restore();
-      });
-
-      // ---- a few out hunting
-      fliers.forEach(function (b) {
-        b.x += b.sp * 0.016;
-        if (b.x > 1.35) { b.x = -0.35; b.y = rand(0.22, 0.72); }
-        var bx = b.x * W;
-        var by = b.y * H + Math.sin(t * 1.7 + b.ph) * b.bob;
-        ctx.save();
-        ctx.translate(bx, by);
-        ctx.scale(b.sc, b.sc);
-        ctx.globalAlpha = 0.5;
-        batWings(t * 9 + b.ph, 1);
-        ctx.restore();
-      });
-      ctx.globalAlpha = 1;
     }
 
     var last = 0;
@@ -1718,6 +1643,16 @@
       form.replaceWith(done);
       done.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
     });
+  });
+
+  /* =========================================================
+     MONTH
+     The hero kicker names the current month. Stamped into the
+     HTML at build time so it is right for a crawler, and
+     corrected here so it stays right between rebuilds.
+     ========================================================= */
+  $$('[data-month]').forEach(function (el) {
+    el.textContent = new Date().toLocaleString('en-US', { month: 'long' });
   });
 
   /* =========================================================
