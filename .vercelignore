@@ -1,5 +1,11 @@
-build.py
-src/
-content/
-README.md
 .claude/
+MMP Grok Prompts.txt
+MMP Mascot Scripts v2.pdf
+MMP Mascot Video Prompts.docx
+MMP Mascot Video Prompts.pdf
+MMP Website Copy Review.docx
+README.md
+_ref/
+build.py
+content/
+src/

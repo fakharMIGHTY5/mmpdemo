@@ -30,7 +30,7 @@
       "scale": "Diagnostic",
       "img": "report-thermal-building.jpg",
       "blurb": "Find the actual source of the water before anyone opens a wall. Thermal imaging, moisture meters and drone survey, inside and out.",
-      "lead": "Most of the money wasted on a water problem is spent guessing. We locate the entry point first, then tell you exactly what it will take to close it.",
+      "lead": "Most of the money wasted on a water problem is spent guessing. We locate the entry point first, then tell you exactly what it will take to fix it.",
       "signs": [
         "A stain that comes back after being painted over",
         "A musty smell in one room and nowhere else",
@@ -42,7 +42,7 @@
       "what": [
         "A leak almost never shows up where it enters. Water travels along framing, pipe runs and mortar joints, then surfaces at the lowest point it can find. That is why patching the stain does nothing.",
         "We survey the property with FLIR thermal imaging, pin moisture meters and, where the roofline or stucco is involved, a drone. Thermal shows us the temperature difference wet material creates; the meter confirms it in actual moisture content; the drone shows us the elevation nobody can reach from a ladder.",
-        "You get a written report with photographs, the location of every entry point we found, and a scope of work that prices the repair. If you go ahead with the repair, the inspection fee comes off the job."
+        "You get a written report with photographs, the location of every entry point we found, and a scope of work that prices the repair. When you go ahead with the repair, we take the inspection fee off the cost of the job."
       ],
       "steps": [
         {
@@ -59,7 +59,7 @@
         },
         {
           "h": "Written report",
-          "p": "Annotated photographs, findings, and a priced scope of work you can act on with us or with anyone else."
+          "p": "Annotated photographs, documented findings, and a priced scope of work you can act on with us or with anyone else."
         }
       ],
       "includes": [
@@ -68,12 +68,12 @@
         "Drone elevation survey where required",
         "Annotated photo report",
         "Priced scope of work",
-        "Fee credited against the repair"
+        "Inspection fee credited against the repair"
       ],
       "faq": [
         {
-          "q": "Why is the inspection paid?",
-          "a": "Because it is the work, not a sales visit. A free estimate is an hour of someone eyeballing your wall. A paid assessment is a technician with thermal equipment producing a document you own and can take to an insurer, a contractor or a settlement table. If you hire us for the repair, the fee comes off the invoice."
+          "q": "Why is there a fee for the inspection?",
+          "a": "Because it is the work, not a sales visit. A free estimate is an hour of someone eyeballing your wall. A paid assessment is a technician with thermal equipment producing a document you own and can take to an insurer, a contractor, or a settlement table. When you hire us for the repair, the fee comes off the invoice."
         },
         {
           "q": "How long does it take?",
@@ -81,7 +81,7 @@
         },
         {
           "q": "Will you open the wall?",
-          "a": "Only with your permission, and only where the thermal reading is ambiguous enough that a small inspection opening is the honest way to confirm it. We tell you before we do it."
+          "a": "Only with your permission, and only where the thermal reading is ambiguous enough that a small inspection opening is the honest way to confirm it. We ask you before we do it."
         }
       ],
       "start": "inspection",
@@ -448,7 +448,7 @@
         },
         {
           "q": "Is black mold different?",
-          "a": "'Black mold' is a colour, not a species, and plenty of harmless growth is black. The remediation approach is driven by how much there is, what material it is on, and how wet the building is. Not by the colour."
+          "a": "'Black mold' is a color, not a species, and plenty of harmless growth is black. The remediation approach is driven by how much there is, what material it is on, and how wet the building is. Not by the color."
         },
         {
           "q": "Why won't you remediate without fixing the leak?",
@@ -717,7 +717,7 @@
         },
         {
           "h": "Laboratory analysis",
-          "p": "Independent accredited laboratory. We do not analyse our own samples."
+          "p": "Independent accredited laboratory. We do not analyze our own samples."
         },
         {
           "h": "Report and interpret",
@@ -738,7 +738,7 @@
           "a": "Often not. If growth is visible and the moisture source is findable, testing tells you something you already know. It earns its cost when the growth is hidden, when a health question is live, or when a document is needed for a transaction or a dispute."
         },
         {
-          "q": "Who analyses the samples?",
+          "q": "Who analyzes the samples?",
           "a": "An independent accredited laboratory, not us. A company that both tests and sells remediation should never be marking its own homework."
         },
         {
@@ -1201,7 +1201,7 @@
         },
         {
           "q": "Do you work with approvals and consents?",
-          "a": "Yes. We allow for the time in the programme and we document the work to the standard the consent needs."
+          "a": "Yes. We allow for the time in the program and we document the work to the standard the consent needs."
         },
         {
           "q": "Is this more expensive than a normal repair?",
@@ -1229,7 +1229,7 @@
         "A room that has always been colder than the rest",
         "A property that stands empty over winter",
         "A pipe that has frozen before",
-        "Draughts you can feel at the window seams"
+        "Drafts you can feel at the window seams"
       ],
       "what": [
         "We survey the building for the two things that matter: where the pipe runs are vulnerable, and where the cold air is getting in. Those are usually the same places, because an opening that lets cold air in is an opening that stops the heat reaching the pipe.",
@@ -1245,7 +1245,7 @@
           "p": "Pipework in unheated or poorly insulated spaces, identified and photographed."
         },
         {
-          "h": "Prioritised list",
+          "h": "Prioritized list",
           "p": "Ordered by consequence, with what each item would cost to put right."
         },
         {
@@ -1256,7 +1256,7 @@
       "includes": [
         "A thermal survey of the building",
         "Identification of vulnerable pipe runs",
-        "A prioritised list by consequence, not by price",
+        "A prioritized list by consequence, not by price",
         "Sealing of the openings that are chilling those runs",
         "Guidance on what to do if you are leaving the property empty"
       ],
@@ -1354,7 +1354,7 @@
       "cat": "air",
       "scale": "Diagnostic",
       "img": "containment-2.jpg",
-      "blurb": "An odour nobody can place is usually water somewhere nobody has looked.",
+      "blurb": "An odor nobody can place is usually water somewhere nobody has looked.",
       "lead": "A smell in one room and nowhere else is a strong signal. It means something is wet in a place with no airflow, and it has been wet long enough to start breaking down.",
       "signs": [
         "A musty smell in one room that nobody can locate",
@@ -1364,13 +1364,13 @@
         "Guests notice it and you have stopped noticing it"
       ],
       "what": [
-        "We treat an odour as a locating problem. Thermal and moisture meters narrow it down, and we work from the strongest reading back toward the source rather than guessing and opening walls.",
-        "Masking an odour with a treatment is the one thing we will not do without finding the cause first. If something is wet behind a wall, a fragrance does not change that."
+        "We treat an odor as a locating problem. Thermal and moisture meters narrow it down, and we work from the strongest reading back toward the source rather than guessing and opening walls.",
+        "Masking an odor with a treatment is the one thing we will not do without finding the cause first. If something is wet behind a wall, a fragrance does not change that."
       ],
       "steps": [
         {
           "h": "Narrow it down",
-          "p": "Room by room, with readings, to find where the odour is strongest and why."
+          "p": "Room by room, with readings, to find where the odor is strongest and why."
         },
         {
           "h": "Find the moisture",

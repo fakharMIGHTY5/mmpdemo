@@ -22,7 +22,7 @@
           "Roof, parapet, coping and flashing survey",
           "Drainage and grade checks before each wet season",
           "Sealant and pointing condition reporting",
-          "Prioritised works list with costs",
+          "Prioritized works list with costs",
           "Year-on-year condition tracking"
         ]
       },
@@ -51,7 +51,7 @@
   "faq": [
     {
       "q": "Why do you charge for an inspection when others are free?",
-      "a": "Because it is different work. A free estimate is a salesperson looking at your wall so they can quote you. A paid assessment is a technician with thermal imaging and moisture meters producing a document with photographs, findings and a priced scope. You own it, and you can take it to an insurer, an engineer or a competitor. If you hire us for the repair, the fee comes off the invoice."
+      "a": "Because it is different work. A free estimate is a salesperson looking at your wall so they can quote you. A paid assessment is a technician with thermal imaging and moisture meters producing a document with photographs, findings and a priced scope. You own it, and you can take it to an insurer, an engineer or a competitor. When you hire us for the repair, the fee comes off the invoice."
     },
     {
       "q": "How much does an assessment cost?",
@@ -62,7 +62,7 @@
       "a": "Three years on workmanship, covering the labour on exterior repairs and installations we carry out. If something comes up under it we respond within 48 hours."
     },
     {
-      "q": "Do you work on commercial property?",
+      "q": "Do you work on commercial properties?",
       "a": "Yes. Alongside one-off commercial work we run three ongoing plans: a Commercial Service Plan, Preventive Maintenance, and Emergency Readiness. Property managers tend to want a schedule and a named contact rather than a phone number to call in a crisis."
     },
     {
@@ -87,29 +87,29 @@
     },
     {
       "q": "Do you work outside Philadelphia?",
-      "a": "We cover Philadelphia, the surrounding suburbs and northern Delaware. Florida is opening soon. Enter your ZIP anywhere on the site and we will tell you straight away."
+      "a": "We cover Philadelphia, the surrounding suburbs and Northern Delaware. Florida is opening soon. Enter your ZIP anywhere on the site and we will tell you straight away."
     }
   ],
   "team": [
     {
       "name": "Joshua",
       "role": "Founder",
-      "note": "Runs assessments himself. Clients keep writing the same line in reviews: he did not try to sell up."
+      "note": "Personally conducts assessments. Clients say the same thing again and again: he focused on fixing our problem, not on selling us services we did not need."
     },
     {
       "name": "Eric",
       "role": "Field technician",
-      "note": "On the tools for repair and remediation. Named repeatedly in reviews for letting people know before the noisy parts start."
+      "note": "Handles the tools for repair and remediation. Named repeatedly in reviews for letting people know before the noisy parts start."
     },
     {
       "name": "Promise",
       "role": "Client liaison",
-      "note": "Keeps jobs moving and owners informed, including advocating with utilities when a job stalls."
+      "note": "Keeps jobs moving and owners informed, including stepping in to solve problems when a job stalls."
     },
     {
       "name": "Quennie",
       "role": "Operations",
-      "note": "Service plans, scheduling and the paperwork that makes a claim go smoothly."
+      "note": "Handles service plans, scheduling and the paperwork that makes a claim go smoothly."
     }
   ],
   "quiz": {

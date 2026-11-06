@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "89"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "90"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -27,7 +27,7 @@ SITE = {
     "tel": "1-833-466-4788",
     "tel_href": "+18334664788",
     "url": "https://moisturemasterpros.com",
-    "areas": "Greater Philadelphia and northern Delaware",
+    "areas": "Greater Philadelphia and Northern Delaware",
 }
 
 with open(os.path.join(ROOT, "content", "services.json")) as f:
@@ -199,7 +199,7 @@ LOCAL_BUSINESS = {
     "@type": "HomeAndConstructionBusiness",
     "@id": SITE["url"] + "/#business",
     "name": SITE["name"],
-    "description": "Leak detection, mold remediation, water damage restoration, drainage, foundation and stucco remediation across Greater Philadelphia and northern Delaware.",
+    "description": "Leak detection, mold remediation, water damage restoration, drainage, foundation and stucco remediation across Greater Philadelphia and Northern Delaware.",
     "url": SITE["url"],
     "telephone": SITE["tel"],
     # Only what the confirmed ZIP list actually covers. Florida is announced
@@ -226,7 +226,7 @@ def service_schema(s):
         "serviceType": s["title"],
         "description": s["blurb"],
         "provider": {"@id": SITE["url"] + "/#business"},
-        "areaServed": "Greater Philadelphia and northern Delaware",
+        "areaServed": "Greater Philadelphia and Northern Delaware",
         "url": "%s/services/%s.html" % (SITE["url"], s["slug"]),
     }
 
@@ -789,7 +789,7 @@ def build_service(s):
         <button class="b" type="submit">Check</button>
       </form>
       <div class="zip-out" data-zip-out></div>
-      <p class="zip-note">Greater Philadelphia &middot; northern Delaware</p>
+      <p class="zip-note">Greater Philadelphia &middot; Northern Delaware</p>
     </div>
   </div>
 </section>
@@ -813,7 +813,7 @@ def build_service(s):
 def main():
     PAGE_META = {
         "index.html": ("Moisture Master Pros | Leak Detection, Mold Remediation & Major Moisture Repair",
-                       "We find the water, repair the damage, and prove it is dry. Leak detection, mold remediation, drainage, foundations and stucco across Greater Philadelphia and northern Delaware.", ""),
+                       "We find the water, repair the damage, and prove it is dry. Leak detection, mold remediation, drainage, foundations and stucco across Greater Philadelphia and Northern Delaware.", ""),
         "services.html": ("Our Services | Moisture Master Pros",
                           "Leak detection, mold remediation, water damage, French drains, sump pumps, foundation repair, air sealing, stucco and exterior repair, explained plainly.", "services"),
         "commercial.html": ("Commercial Property Services | Moisture Master Pros",
@@ -825,7 +825,7 @@ def main():
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
-                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and northern Delaware.", "contact"),
+                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and Northern Delaware.", "contact"),
     }
 
     for fn, (title, desc, active) in PAGE_META.items():

@@ -2425,3 +2425,17 @@ a.cu-line:hover b{ color:var(--blue); }
   font:500 11px/1.6 var(--fm); letter-spacing:.14em; color:var(--blue); flex:none;
 }
 @media (max-width:760px){ .cs-teaser{ grid-template-columns:1fr; } }
+
+/* Credentials list, replacing the chip row Lynn marked for deletion */
+.creds{
+  list-style:none; margin:0 auto; padding:0; max-width:640px; text-align:left;
+  display:grid; gap:0; border-top:1px solid var(--line);
+}
+.creds li{
+  padding:13px 2px 13px 26px; border-bottom:1px solid var(--line);
+  position:relative; font-size:15px; line-height:1.5; color:var(--ink-2);
+}
+.creds li::before{
+  content:""; position:absolute; left:4px; top:20px;
+  width:6px; height:6px; border-radius:50%; background:var(--blue);
+}

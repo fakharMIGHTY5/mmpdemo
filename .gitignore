@@ -1,4 +1,10 @@
-.DS_Store
-__pycache__/
 *.pyc
+.DS_Store
 .vercel
+MMP Grok Prompts.txt
+MMP Mascot Scripts v2.pdf
+MMP Mascot Video Prompts.docx
+MMP Mascot Video Prompts.pdf
+MMP Website Copy Review.docx
+__pycache__/
+_ref/
