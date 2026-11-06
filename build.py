@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "92"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "93"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -670,6 +670,78 @@ def svc_cards(depth=0, limit=None, exclude=None):
 
 
 # ----------------------------------------------------------------- service pages
+def svc_video(s, depth=1):
+    """The mascot film for this service, if one exists. First frame is the
+    character card, so it doubles as the poster and nothing extra loads
+    until somebody presses play."""
+    v = s.get("video")
+    if not v:
+        return ""
+    return f"""
+<section class="panel panel-auto" id="watch">
+  <div class="inner">
+    <div class="mid" data-r style="margin-bottom:clamp(28px,4vh,44px)">
+      <p class="kicker">Watch</p>
+      <h2 class="d3">{html.escape(s['short'])} in sixty seconds.</h2>
+    </div>
+    <div class="svid" data-svid data-r data-d="1">
+      <video preload="none" playsinline
+             poster="{rel(depth,'assets/video/poster/%s.jpg' % v)}"
+             src="{rel(depth,'assets/video/%s.m4v' % v)}"></video>
+      <button type="button" class="svid-play" aria-label="Play video">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.6v12.8c0 .8.9 1.3 1.5.8l9.2-6.4c.6-.4.6-1.2 0-1.6L9.5 4.8c-.7-.5-1.5 0-1.5.8Z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+"""
+
+
+def svc_form(s, depth=1):
+    """A short lead form on every service page, tagged with the service so
+    whoever picks it up already knows what it is about."""
+    return f"""
+<section class="panel panel-auto paper" id="ask">
+  <div class="inner" style="max-width:720px">
+    <div class="mid" data-r style="margin-bottom:clamp(26px,3.5vh,38px)">
+      <p class="kicker">Ask about this</p>
+      <h2 class="d3">Tell us what you are seeing.</h2>
+      <p class="t1" style="margin:16px auto 0;max-width:46ch">Someone who knows {html.escape(s['short'].lower())} comes back to you the same working day.</p>
+    </div>
+    <form class="form svc-form" data-lead data-r data-d="1" novalidate>
+      <input type="hidden" name="service" value="{html.escape(s['title'])}">
+      <div class="two-f">
+        <div>
+          <label for="sf-name">Name</label>
+          <input id="sf-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="sf-phone">Phone</label>
+          <input id="sf-phone" name="phone" type="tel" placeholder="(555) 000 0000" autocomplete="tel" required>
+        </div>
+      </div>
+      <div class="two-f">
+        <div>
+          <label for="sf-email">Email</label>
+          <input id="sf-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="sf-zip">Property ZIP</label>
+          <input id="sf-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="19103" autocomplete="postal-code" required>
+        </div>
+      </div>
+      <div>
+        <label for="sf-msg">What are you seeing? <span class="opt">optional</span></label>
+        <textarea id="sf-msg" name="message" placeholder="Where it is, how long it has been going on, anything you have already tried."></textarea>
+      </div>
+      <button class="b" type="submit">Send</button>
+      <p class="form-note">If water is moving right now, call {SITE['tel']} rather than waiting on a reply.</p>
+    </form>
+  </div>
+</section>
+"""
+
+
 def build_service(s):
     d = 1
     signs = "".join("<li>%s</li>" % html.escape(x) for x in s["signs"])
@@ -756,6 +828,7 @@ def build_service(s):
   </div>
 </section>
 
+{svc_video(s, d)}
 <section class="panel panel-auto paper">
   <div class="inner" style="max-width:860px">
     <div data-r>
@@ -765,6 +838,7 @@ def build_service(s):
     <div class="acc" data-r data-d="1">{faq}</div>
   </div>
 </section>
+{svc_form(s, d)}
 
 <section class="panel panel-auto">
   <div class="inner">

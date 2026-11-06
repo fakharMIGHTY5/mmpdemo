@@ -1440,6 +1440,27 @@
   })();
 
   /* =========================================================
+     SERVICE PAGE VIDEO
+     preload is none, so the file is only fetched once somebody
+     actually asks for it.
+     ========================================================= */
+  $$('[data-svid]').forEach(function (box) {
+    var v = $('video', box);
+    if (!v) return;
+    box.setAttribute('tabindex', '0');
+    function play() {
+      if (box.classList.contains('on')) return;
+      box.classList.add('on');
+      v.setAttribute('controls', '');
+      v.play().catch(function () {});
+    }
+    box.addEventListener('click', play);
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+    });
+  });
+
+  /* =========================================================
      ACCORDION
      ========================================================= */
   $$('.acc-btn').forEach(function (btn) {
@@ -1692,7 +1713,7 @@
       done.style.marginTop = '0';
       done.innerHTML = '<b>' + ICON_OK + 'Message sent</b>' +
         '<p>Thanks ' + (data.name ? String(data.name).split(' ')[0].replace(/[<>&]/g, '') : '') +
-        ' \u2014 someone will come back to you the same working day. ' +
+        ', someone will come back to you the same working day. ' +
         'If water is moving right now, call 1-833-466-4788 rather than waiting.</p>';
       form.replaceWith(done);
       done.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });

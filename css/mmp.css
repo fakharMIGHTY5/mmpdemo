@@ -2425,3 +2425,40 @@ a.cu-line:hover b{ color:var(--blue); }
   content:""; position:absolute; left:4px; top:20px;
   width:6px; height:6px; border-radius:50%; background:var(--blue);
 }
+
+/* ===========================================================
+   SERVICE PAGE VIDEO
+   Vertical film, so it sits in a fixed frame rather than
+   stretching the page. Nothing downloads until play is pressed.
+   =========================================================== */
+.svid{
+  position:relative; width:min(420px,100%); margin-inline:auto;
+  aspect-ratio:9/16; border-radius:22px; overflow:hidden;
+  background:var(--navy); cursor:pointer;
+  box-shadow:0 30px 70px -40px rgba(10,31,61,.5);
+}
+.svid video{ width:100%; height:100%; object-fit:cover; display:block; }
+.svid-play{
+  position:absolute; inset:0; margin:auto; width:74px; height:74px;
+  display:grid; place-items:center; cursor:pointer;
+  border:0; border-radius:50%; background:var(--blue); color:#fff;
+  box-shadow:0 14px 34px -10px rgba(10,95,208,.65);
+  transition:transform .3s var(--ease), background .3s var(--ease);
+}
+.svid-play svg{ width:26px; height:26px; margin-left:3px; }
+.svid:hover .svid-play{ transform:scale(1.07); background:var(--blue-deep); }
+.svid.on .svid-play{ display:none; }
+.svid.on{ cursor:default; }
+
+/* ---- service page lead form ---- */
+.svc-form{
+  padding:clamp(24px,3vw,38px); background:var(--white);
+  border:1px solid var(--line); border-radius:24px; text-align:left;
+}
+.svc-form .two-f{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.svc-form .two-f > div,.svc-form > div{ display:flex; flex-direction:column; gap:7px; min-width:0; }
+.svc-form button[type=submit]{ align-self:flex-start; margin-top:6px; }
+.svc-form label .opt{
+  font:500 9px/1 var(--fm); letter-spacing:.14em; color:var(--ink-3); margin-left:7px;
+}
+@media (max-width:620px){ .svc-form .two-f{ grid-template-columns:1fr; } }

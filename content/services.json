@@ -89,7 +89,8 @@
         "water-damage",
         "french-drains",
         "stucco-remediation"
-      ]
+      ],
+      "video": "s07"
     },
     {
       "slug": "french-drains",
@@ -163,7 +164,8 @@
         "sump-pumps",
         "foundation-repair",
         "water-damage"
-      ]
+      ],
+      "video": "s13"
     },
     {
       "slug": "sump-pumps",
@@ -311,7 +313,8 @@
         "mold-remediation",
         "leak-detection",
         "sump-pumps"
-      ]
+      ],
+      "video": "s10"
     },
     {
       "slug": "foundation-repair",
@@ -385,7 +388,8 @@
         "french-drains",
         "sump-pumps",
         "exterior-repairs"
-      ]
+      ],
+      "video": "s11"
     },
     {
       "slug": "mold-remediation",
@@ -460,7 +464,8 @@
         "water-damage",
         "leak-detection",
         "air-sealing"
-      ]
+      ],
+      "video": "s12"
     },
     {
       "slug": "air-sealing",
@@ -534,7 +539,8 @@
         "mold-remediation",
         "exterior-repairs",
         "leak-detection"
-      ]
+      ],
+      "video": "s22"
     },
     {
       "slug": "stucco-remediation",
@@ -608,7 +614,8 @@
         "exterior-repairs",
         "leak-detection",
         "mold-remediation"
-      ]
+      ],
+      "video": "s14"
     },
     {
       "slug": "exterior-repairs",
@@ -751,7 +758,8 @@
         "mold-remediation",
         "air-sealing",
         "leak-detection"
-      ]
+      ],
+      "video": "s16"
     },
     {
       "slug": "fiberglass-deck-repair",
@@ -817,7 +825,8 @@
         "exterior-repairs",
         "water-damage",
         "leak-detection"
-      ]
+      ],
+      "video": "s17"
     },
     {
       "slug": "fiberglass-deck-replacement",
@@ -949,7 +958,8 @@
         "french-drains",
         "sump-pumps",
         "foundation-repair"
-      ]
+      ],
+      "video": "s19"
     },
     {
       "slug": "masonry-pointing",
@@ -1081,7 +1091,8 @@
         "stucco-remediation",
         "masonry-pointing",
         "exterior-repairs"
-      ]
+      ],
+      "video": "s21"
     },
     {
       "slug": "concrete-repair",
@@ -1147,7 +1158,8 @@
         "french-drains",
         "foundation-repair",
         "basement-waterproofing"
-      ]
+      ],
+      "video": "s01"
     },
     {
       "slug": "historic-preservation",
@@ -1345,7 +1357,8 @@
         "basement-waterproofing",
         "masonry-pointing",
         "mold-remediation"
-      ]
+      ],
+      "video": "s08"
     },
     {
       "slug": "odor-investigation",
@@ -1411,7 +1424,8 @@
         "mold-remediation",
         "leak-detection",
         "mold-air-testing"
-      ]
+      ],
+      "video": "s04"
     },
     {
       "slug": "interior-repairs",
@@ -1477,7 +1491,8 @@
         "flooring",
         "water-damage",
         "mold-remediation"
-      ]
+      ],
+      "video": "s05"
     },
     {
       "slug": "flooring",
@@ -1543,7 +1558,8 @@
         "interior-repairs",
         "water-damage",
         "basement-waterproofing"
-      ]
+      ],
+      "video": "s06"
     },
     {
       "slug": "emergency-cleanup",
