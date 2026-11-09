@@ -31,10 +31,19 @@
     if (!url) {
       return Promise.resolve({ ok: false, error: 'No lead endpoint configured.' });
     }
+    var ccTag = document.querySelector('meta[name="lead-cc"]');
+    var cc = ccTag && ccTag.getAttribute('content');
+    var payload = {};
+    Object.keys(data).forEach(function (k) { payload[k] = data[k]; });
+    if (cc) payload._cc = cc;
+    payload._subject = 'Website lead: ' + (data.name || data.email || data.phone || 'no name') +
+      (data.zip ? ' (' + data.zip + ')' : '');
+    payload._template = 'table';
+
     return fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
     }).then(function (r) {
       /* FormSubmit answers 200 even when it has not sent anything, for
          instance while the address is still waiting to be activated, and

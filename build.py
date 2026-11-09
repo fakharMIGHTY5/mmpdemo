@@ -19,9 +19,13 @@ OUT = ROOT
 
 # Paste the form service's POST url in here and every form on the site
 # starts delivering. Empty means the forms say so rather than pretending.
-LEAD_ENDPOINT = "https://formsubmit.co/ajax/info@moisturemasterpros.com"
+# FormSubmit activates per address, and the activation link goes to the
+# one in the url, so that is the agency's: whoever is launching can click
+# it without waiting on the client. MMP is copied on every lead.
+LEAD_ENDPOINT = "https://formsubmit.co/ajax/fakhar@mighty-five.com"
+LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "105"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "106"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -82,6 +86,7 @@ def head(title, desc, depth, canonical, extra="", jsonld=None):
 <head>
 <meta charset="utf-8">
 <meta name="lead-endpoint" content="{LEAD_ENDPOINT}">
+<meta name="lead-cc" content="{LEAD_CC}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
