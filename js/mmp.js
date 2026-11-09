@@ -16,6 +16,43 @@
      down, so the prefix has to be worked out rather than written into each
      call. Any gate on the page already carries the right relative path, so
      use that when there is one and fall back to reading the location. */
+  /* Leads go to /api/lead, which hands them to whatever the Vercel
+     project has configured. It resolves to a reason rather than throwing,
+     because the caller's job is to tell the visitor the truth either way:
+     never "message sent" when nothing was sent. */
+  function sendLead(data) {
+    return fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (b) {
+        return { ok: r.ok && b.ok !== false, error: b.error || ('Request failed (' + r.status + ')') };
+      });
+    }).catch(function () {
+      return { ok: false, error: 'No connection.' };
+    });
+  }
+
+  /* Used by the funnel's final pane when the send did not land. */
+  function failCopy(root) {
+    var h = root.querySelector('[data-done-head]') || root.querySelector('h2');
+    var p = root.querySelector('[data-done-body]');
+    if (h) h.textContent = 'That did not go through.';
+    if (p) p.innerHTML = 'Something went wrong at our end, so nothing has reached the team. ' +
+      'Please call <a href="tel:+18334664788" style="color:var(--blue);font-weight:600">1-833-466-4788</a> ' +
+      'and we will pick it up straight away.';
+    var pill = root.querySelector('.pill');
+    if (pill) { pill.textContent = 'Not sent'; pill.style.background = '#FDECEC'; pill.style.color = '#A32020'; }
+  }
+
+  function busy(form, on) {
+    var b = form.querySelector('[type=submit]');
+    if (!b) return;
+    if (on) { b.dataset.was = b.textContent; b.textContent = 'Sending\u2026'; b.disabled = true; }
+    else { if (b.dataset.was) b.textContent = b.dataset.was; b.disabled = false; }
+  }
+
   function bookUrl(q) {
     var hint = document.querySelector('[data-zip-next]');
     var base = hint && hint.getAttribute('data-zip-next')
@@ -1628,10 +1665,15 @@
         Object.keys(answers).forEach(function (k) { data[k] = answers[k]; });
         data.zip = data.zip || readZip().zip;
         data.path = chosen || 'unspecified';
-        console.log('[MMP] questionnaire captured (not yet sent anywhere):', data);
-        go(3);
-        var echo = $('[data-echo]', root);
-        if (echo) echo.textContent = (data.name || 'You') + ' \u00B7 ' + (data.zip || '');
+        busy(quiz, true);
+        sendLead(data).then(function (r) {
+          busy(quiz, false);
+          go(3);
+          var done = $$('.pane', root)[3] || root;
+          var echo = $('[data-echo]', root);
+          if (echo) echo.textContent = (data.name || 'You') + ' \u00B7 ' + (data.zip || '');
+          if (!r.ok) failCopy(done);
+        });
       });
 
       paintQ();
@@ -1645,13 +1687,18 @@
         var data = Object.fromEntries(new FormData(form).entries());
         data.zip = data.zip || readZip().zip;
         data.path = chosen || 'unspecified';
-        console.log('[MMP] lead captured (not yet sent anywhere):', data);
-        go(3);
-        var echo = $('[data-echo]', root);
-        if (echo) {
-          echo.textContent = (data.name || 'You') + ' · ' + (data.zip || '') +
-            (data.email ? ' · ' + data.email : '');
-        }
+        busy(form, true);
+        sendLead(data).then(function (r) {
+          busy(form, false);
+          go(3);
+          var done = $$('.pane', root)[3] || root;
+          var echo = $('[data-echo]', root);
+          if (echo) {
+            echo.textContent = (data.name || 'You') + ' · ' + (data.zip || '') +
+              (data.email ? ' · ' + data.email : '');
+          }
+          if (!r.ok) failCopy(done);
+        });
       });
     }
   }
@@ -1702,16 +1749,23 @@
       e.preventDefault();
       if (!form.reportValidity()) return;
       var data = Object.fromEntries(new FormData(form).entries());
-      console.log('[MMP] lead captured (not yet sent anywhere):', data);
-      var done = document.createElement('div');
-      done.className = 'zip-out ok show';
-      done.style.marginTop = '0';
-      done.innerHTML = '<b>' + ICON_OK + 'Message sent</b>' +
-        '<p>Thanks ' + (data.name ? String(data.name).split(' ')[0].replace(/[<>&]/g, '') : '') +
-        ', someone will come back to you the same working day. ' +
-        'If water is moving right now, call 1-833-466-4788 rather than waiting.</p>';
-      form.replaceWith(done);
-      done.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
+      busy(form, true);
+      sendLead(data).then(function (r) {
+        busy(form, false);
+        var first = data.name ? String(data.name).split(' ')[0].replace(/[<>&]/g, '') : '';
+        var done = document.createElement('div');
+        done.className = 'zip-out ' + (r.ok ? 'ok' : 'no') + ' show';
+        done.style.marginTop = '0';
+        done.innerHTML = r.ok
+          ? '<b>' + ICON_OK + 'Message sent</b>' +
+            '<p>Thanks ' + first + ', someone will come back to you the same working day. ' +
+            'If water is moving right now, call 1-833-466-4788 rather than waiting.</p>'
+          : '<b>' + ICON_NO + 'That did not go through</b>' +
+            '<p>Nothing reached the team, so please do not wait on us. ' +
+            'Call <a href="tel:+18334664788" style="color:var(--sky);font-weight:700;text-decoration:underline">1-833-466-4788</a> and we will pick it up straight away.</p>';
+        form.replaceWith(done);
+        done.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
+      });
     });
   });
 
