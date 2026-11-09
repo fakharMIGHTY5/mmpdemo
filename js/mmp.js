@@ -21,14 +21,22 @@
      because the caller's job is to tell the visitor the truth either way:
      never "message sent" when nothing was sent. */
   function sendLead(data) {
-    return fetch('/api/lead', {
+    /* The endpoint is a meta tag rather than a constant so it can be
+       changed without a rebuild, and so the site stays a pile of static
+       files with no server to go wrong. Any service that accepts a JSON
+       or form POST works: Formspree, Getform, Web3Forms, a Zapier catch
+       hook, or a CRM's own intake URL. */
+    var tag = document.querySelector('meta[name="lead-endpoint"]');
+    var url = tag && tag.getAttribute('content');
+    if (!url) {
+      return Promise.resolve({ ok: false, error: 'No lead endpoint configured.' });
+    }
+    return fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(data)
     }).then(function (r) {
-      return r.json().catch(function () { return {}; }).then(function (b) {
-        return { ok: r.ok && b.ok !== false, error: b.error || ('Request failed (' + r.status + ')') };
-      });
+      return { ok: r.ok, error: r.ok ? '' : 'The form service answered ' + r.status + '.' };
     }).catch(function () {
       return { ok: false, error: 'No connection.' };
     });

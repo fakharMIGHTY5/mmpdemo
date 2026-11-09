@@ -17,7 +17,11 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
-ASSET_V = "102"   # bump to bust the CSS/JS cache after a change
+# Paste the form service's POST url in here and every form on the site
+# starts delivering. Empty means the forms say so rather than pretending.
+LEAD_ENDPOINT = ""
+
+ASSET_V = "103"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -77,6 +81,7 @@ def head(title, desc, depth, canonical, extra="", jsonld=None):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="lead-endpoint" content="{LEAD_ENDPOINT}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
