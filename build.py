@@ -19,9 +19,9 @@ OUT = ROOT
 
 # Paste the form service's POST url in here and every form on the site
 # starts delivering. Empty means the forms say so rather than pretending.
-LEAD_ENDPOINT = ""
+LEAD_ENDPOINT = "https://formsubmit.co/ajax/info@moisturemasterpros.com"
 
-ASSET_V = "103"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "104"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
