@@ -36,7 +36,16 @@
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(data)
     }).then(function (r) {
-      return { ok: r.ok, error: r.ok ? '' : 'The form service answered ' + r.status + '.' };
+      /* FormSubmit answers 200 even when it has not sent anything, for
+         instance while the address is still waiting to be activated, and
+         puts the truth in the body. So read the body, and treat anything
+         that does not clearly say it worked as a failure. */
+      return r.json().catch(function () { return null; }).then(function (b) {
+        if (b && String(b.success) === 'false') {
+          return { ok: false, error: b.message || 'The form service rejected it.' };
+        }
+        return { ok: r.ok, error: r.ok ? '' : 'The form service answered ' + r.status + '.' };
+      });
     }).catch(function () {
       return { ok: false, error: 'No connection.' };
     });

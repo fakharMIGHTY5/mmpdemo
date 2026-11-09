@@ -21,7 +21,7 @@ OUT = ROOT
 # starts delivering. Empty means the forms say so rather than pretending.
 LEAD_ENDPOINT = "https://formsubmit.co/ajax/info@moisturemasterpros.com"
 
-ASSET_V = "104"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "105"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
