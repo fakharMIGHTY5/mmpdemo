@@ -25,7 +25,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "https://formsubmit.co/ajax/fakhar@mighty-five.com"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "106"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "109"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -35,7 +35,7 @@ SITE = {
     "tel": "1-833-466-4788",
     "tel_href": "+18334664788",
     "url": "https://moisturemasterpros.com",
-    "areas": "Greater Philadelphia and Northern Delaware",
+    "areas": "Greater Philadelphia Area and Northern Delaware",
 }
 
 with open(os.path.join(ROOT, "content", "services.json")) as f:
@@ -121,7 +121,7 @@ def nav(depth, active=""):
     <a class="brand" href="{rel(depth,'index.html')}" aria-label="{SITE['name']} home">
       <img class="mark" src="{rel(depth,'assets/ui/mark.png')}" alt="" width="519" height="741">
       <img class="mark-inv" src="{rel(depth,'assets/ui/mark-white.png')}" alt="" width="1095" height="1616">
-      <span><b>Moisture Master Pros</b><span>Greater Philadelphia</span></span>
+      <span><b>Moisture Master Pros</b><span>Greater Philadelphia Area</span></span>
     </a>
     <button class="burger" aria-expanded="false" aria-label="Menu"><i></i><i></i><i></i></button>
     <nav class="links">
@@ -166,7 +166,7 @@ def foot(depth):
       <div>
         <a class="brand on-dark" href="{rel(depth,'index.html')}" style="color:#fff;margin-bottom:18px">
           <img class="mark-inv" src="{rel(depth,'assets/ui/mark-white.png')}" alt="" width="1095" height="1616">
-          <span><b>Moisture Master Pros</b><span style="color:rgba(255,255,255,.5)">Greater Philadelphia</span></span>
+          <span><b>Moisture Master Pros</b><span style="color:rgba(255,255,255,.5)">Greater Philadelphia Area</span></span>
         </a>
         <p class="foot-tag">{SITE['tagline']}.</p>
         <p>Leak detection, mold remediation, water damage restoration and major moisture repair across the {SITE['areas']}.</p>
@@ -209,7 +209,7 @@ LOCAL_BUSINESS = {
     "@type": "HomeAndConstructionBusiness",
     "@id": SITE["url"] + "/#business",
     "name": SITE["name"],
-    "description": "Leak detection, mold remediation, water damage restoration, drainage, foundation and stucco remediation across Greater Philadelphia and Northern Delaware.",
+    "description": "Leak detection, mold remediation, water damage restoration, drainage, foundation and stucco remediation across Greater Philadelphia Area and Northern Delaware.",
     "url": SITE["url"],
     "telephone": SITE["tel"],
     # Only what the confirmed ZIP list actually covers. Florida is announced
@@ -236,7 +236,7 @@ def service_schema(s):
         "serviceType": s["title"],
         "description": s["blurb"],
         "provider": {"@id": SITE["url"] + "/#business"},
-        "areaServed": "Greater Philadelphia and Northern Delaware",
+        "areaServed": "Greater Philadelphia Area and Northern Delaware",
         "url": "%s/services/%s.html" % (SITE["url"], s["slug"]),
     }
 
@@ -884,7 +884,7 @@ def build_service(s):
         <button class="b" type="submit">Check</button>
       </form>
       <div class="zip-out" data-zip-out></div>
-      <p class="zip-note">Greater Philadelphia &middot; Northern Delaware</p>
+      <p class="zip-note">Greater Philadelphia Area &middot; Northern Delaware</p>
     </div>
   </div>
 </section>
@@ -908,19 +908,19 @@ def build_service(s):
 def main():
     PAGE_META = {
         "index.html": ("Moisture Master Pros | Leak Detection & Mold Remediation",
-                       "We find the water, repair the damage, and prove it is dry. Leak detection, mold remediation, drainage, foundations and stucco across Greater Philadelphia and Northern Delaware.", ""),
+                       "We find the water, repair the damage, and prove it is dry. Leak detection, mold remediation, drainage, foundations and stucco across Greater Philadelphia Area and Northern Delaware.", ""),
         "services.html": ("Our Services | Moisture Master Pros",
                           "Leak detection, mold remediation, water damage, French drains, sump pumps, foundation repair, air sealing, stucco and exterior repair, explained plainly.", "services"),
         "commercial.html": ("Commercial Property Services | Moisture Master Pros",
-                            "Service plans, preventive maintenance and emergency readiness for property managers, facilities teams and building owners across Greater Philadelphia.", "commercial"),
+                            "Service plans, preventive maintenance and emergency readiness for property managers, facilities teams and building owners across Greater Philadelphia Area.", "commercial"),
         "work.html": ("Our Work | Moisture Master Pros",
                       "Real assessments, real remediation, real repairs. See what our findings, containment and rebuild work actually look like.", "work"),
         "about.html": ("About Moisture Master Pros",
-                       "Founded by Joshua Haynes. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia.", "about"),
+                       "Founded by Joshua Haynes. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia Area.", "about"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
-                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia and Northern Delaware.", "contact"),
+                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia Area and Northern Delaware.", "contact"),
     }
 
     for fn, (title, desc, active) in PAGE_META.items():

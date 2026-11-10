@@ -191,15 +191,23 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .drop[data-open="true"] > button svg,.drop[data-open="true"] > a svg{ transform:rotate(180deg); }
 /* The menu hangs 16px below the button. Without a bridge across that
    gap the pointer leaves .drop on the way down and the menu closes. */
-.drop-menu::before{
-  content:""; position:absolute; left:0; right:0; top:-20px; height:20px;
+.drop[data-open="true"]::after{
+  content:""; position:absolute; left:0; right:0; top:100%; height:20px;
 }
 .drop-menu{
   position:absolute; top:calc(100% + 16px); left:50%; transform:translate(-50%,-8px);
   width:min(620px,86vw); padding:18px; border-radius:18px; background:#fff;
   border:1px solid var(--line); box-shadow:0 30px 70px -30px rgba(10,31,61,.4);
   display:grid; grid-template-columns:1fr 1fr; gap:4px;
-  opacity:0; pointer-events:none; transition:.28s var(--ease);
+  opacity:0; pointer-events:none; transition:opacity .28s var(--ease),transform .28s var(--ease);
+  /* Twelve rows of services is taller than a laptop screen once the
+     browser chrome and a bookmarks bar are in the way, so cap it to what
+     is actually on screen and let the rest scroll. */
+  max-height:calc(100vh - 116px); overflow-y:auto; overscroll-behavior:contain;
+}
+.drop-menu::-webkit-scrollbar{ width:10px; }
+.drop-menu::-webkit-scrollbar-thumb{
+  background:var(--line); border-radius:99px; border:3px solid #fff;
 }
 .drop[data-open="true"] .drop-menu{ opacity:1; pointer-events:auto; transform:translate(-50%,0); }
 .drop-menu a{ display:block; padding:11px 14px; border-radius:11px; transition:background .22s; }
@@ -232,7 +240,13 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   .drop-menu{
     position:static; transform:none; width:100%; grid-template-columns:1fr; padding:4px 0 10px;
     border:0; box-shadow:none; background:transparent; display:none;
+    /* The panel this sits in does its own scrolling, so the desktop height
+       cap would only mean two scrollbars inside each other. */
+    max-height:none; overflow:visible;
   }
+  /* No pointer to bridge on a touch menu, and an invisible strip here would
+     sit over whatever is below it. */
+  .drop[data-open="true"]::after{ content:none; }
   .drop[data-open="true"] .drop-menu{ display:grid; transform:none; }
   .nav[data-on="navy"] .drop-menu b{ color:#fff; }
   .nav[data-on="navy"] .drop-menu a:hover{ background:rgba(255,255,255,.07); }
@@ -1183,6 +1197,11 @@ figcaption{
 .foot h4{ font-family:var(--fm); font-size:.57rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.45); margin:0 0 16px; font-weight:500; }
 .foot a{ color:rgba(255,255,255,.62); transition:color .25s, transform .25s var(--ease); display:block; padding:5px 0; font-size:.93rem; }
 .foot a:hover{ color:#fff; }
+/* .foot a is a more specific selector than .b, so the one button down here
+   was losing its flex centring and its side padding: the handset ended up
+   adrift in the top left corner of the pill. */
+.foot a.b{ display:inline-flex; padding:0 30px; }
+.foot a.b-sm{ padding:0 22px; }
 .foot p{ color:rgba(255,255,255,.62); font-size:.93rem; line-height:1.6; margin:0 0 18px; }
 .foot-base{
   margin-top:clamp(34px,6vh,58px); padding-top:24px; border-top:1px solid rgba(255,255,255,.14);
