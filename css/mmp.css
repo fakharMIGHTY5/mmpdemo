@@ -950,12 +950,19 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 
 .team{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,2.2vw,30px); }
 @media(max-width:920px){ .team{ grid-template-columns:1fr 1fr; } }
-@media(max-width:560px){ .team{ grid-template-columns:1fr; } }
+@media(max-width:560px){ .team{ grid-template-columns:1fr 1fr; gap:16px; } }
 .tm{ text-align:left; }
+/* The frame holds the shape so one portrait that came back a little
+   narrower than the rest still lines up with its neighbours. Weighted
+   above centre, because that is where a head sits in a headshot. */
 .tm-av{
-  display:grid; place-items:center; width:58px; height:58px; border-radius:50%;
+  display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 18%;
+  border-radius:16px; margin-bottom:18px; background:var(--paper);
+}
+.tm-ini{
+  display:grid; place-items:center; width:58px; aspect-ratio:1; border-radius:50%;
   background:var(--blue); color:#fff; font-family:var(--fd); font-weight:700;
-  font-size:1.4rem; margin-bottom:20px;
+  font-size:1.4rem;
 }
 .tm b{ display:block; font-family:var(--fd); font-size:1.12rem; font-weight:700; letter-spacing:-.025em; }
 .tm-role{

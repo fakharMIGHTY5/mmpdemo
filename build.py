@@ -25,7 +25,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "https://formsubmit.co/ajax/fakhar@mighty-five.com"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "109"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "111"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -601,15 +601,23 @@ def faq_block(limit=None, depth=0):
 
 
 def team_block():
+    """A real face where the initial used to be. The initial stays as the
+    fallback so a missing file degrades to the old card rather than a hole,
+    and the note is optional because most of the crew only have a job title."""
     out = ""
     for m in SITE_CONTENT["team"]:
-        initial = html.escape(m["name"][0])
-        out += (f'<div class="tm" data-r>'
-                f'<span class="tm-av">{initial}</span>'
-                f'<b>{html.escape(m["name"])}</b>'
-                f'<span class="tm-role">{html.escape(m["role"])}</span>'
-                f'<p>{html.escape(m["note"])}</p>'
-                f'</div>')
+        name, role = html.escape(m["name"]), html.escape(m["role"])
+        if m.get("photo"):
+            av = (f'<img class="tm-av" src="assets/team/{html.escape(m["photo"])}"'
+                  f' alt="{name}, {role} at {html.escape(SITE["name"])}"'
+                  f' width="640" height="800" loading="lazy" decoding="async">')
+        else:
+            av = f'<span class="tm-av tm-ini">{html.escape(m["name"][0])}</span>'
+        note = f'<p>{html.escape(m["note"])}</p>' if m.get("note") else ""
+        out += (f'<div class="tm" data-r>{av}'
+                f'<b>{name}</b>'
+                f'<span class="tm-role">{role}</span>'
+                f'{note}</div>')
     return out
 
 
@@ -916,7 +924,7 @@ def main():
         "work.html": ("Our Work | Moisture Master Pros",
                       "Real assessments, real remediation, real repairs. See what our findings, containment and rebuild work actually look like.", "work"),
         "about.html": ("About Moisture Master Pros",
-                       "Founded by Joshua Haynes. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia Area.", "about"),
+                       "Founded by Joshua Kent. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia Area.", "about"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",

@@ -92,24 +92,44 @@
   ],
   "team": [
     {
-      "name": "Joshua",
+      "name": "Joshua Kent",
       "role": "Founder",
-      "note": "Personally conducts assessments. Clients say the same thing again and again: he focused on fixing our problem, not on selling us services we did not need."
+      "photo": "joshua-kent.jpg"
     },
     {
-      "name": "Eric",
-      "role": "Field technician",
-      "note": "Handles the tools for repair and remediation. Named repeatedly in reviews for letting people know before the noisy parts start."
+      "name": "Promise Browne",
+      "role": "Executive Administration Manager",
+      "photo": "promise-browne.jpg"
     },
     {
-      "name": "Promise",
-      "role": "Client liaison",
-      "note": "Keeps jobs moving and owners informed, including stepping in to solve problems when a job stalls."
+      "name": "Henry Taylor",
+      "role": "Remediation Foreman",
+      "photo": "henry-taylor.jpg"
     },
     {
-      "name": "Quennie",
-      "role": "Operations",
-      "note": "Handles service plans, scheduling and the paperwork that makes a claim go smoothly."
+      "name": "Coong Ly",
+      "role": "Masonry Foreman",
+      "photo": "coong-ly.jpg"
+    },
+    {
+      "name": "Michael Faber",
+      "role": "Interior & Exterior Finisher",
+      "photo": "michael-faber.jpg"
+    },
+    {
+      "name": "Alejandro R. Otero",
+      "role": "Interior & Exterior Finisher",
+      "photo": "alejandro-otero.jpg"
+    },
+    {
+      "name": "Michael Cerdan",
+      "role": "Interior & Exterior Finisher",
+      "photo": "michael-cerdan.jpg"
+    },
+    {
+      "name": "Jalil Skinner",
+      "role": "Interior & Exterior Finisher",
+      "photo": "jalil-skinner.jpg"
     }
   ],
   "quiz": {
