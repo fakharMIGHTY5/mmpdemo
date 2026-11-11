@@ -19,13 +19,17 @@ OUT = ROOT
 
 # Paste the form service's POST url in here and every form on the site
 # starts delivering. Empty means the forms say so rather than pretending.
-# FormSubmit activates per address, and the activation link goes to the
-# one in the url, so that is the agency's: whoever is launching can click
-# it without waiting on the client. MMP is copied on every lead.
-LEAD_ENDPOINT = "https://formsubmit.co/ajax/fakhar@mighty-five.com"
+#
+# Deliberately empty. The service that used to be here went down on launch
+# day, and Malwarebytes was flagging the request as malware on a client's
+# machine, so a "malware blocked" box appeared over our own contact page.
+# Whatever replaces it gets checked against a blocklist and a scanner
+# first, because the visitor's browser passes judgement on our domain for
+# whatever we ask it to call.
+LEAD_ENDPOINT = ""
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "111"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "113"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",

@@ -29,7 +29,7 @@
     var tag = document.querySelector('meta[name="lead-endpoint"]');
     var url = tag && tag.getAttribute('content');
     if (!url) {
-      return Promise.resolve({ ok: false, error: 'No lead endpoint configured.' });
+      return Promise.resolve({ ok: false, reason: 'none' });
     }
     var ccTag = document.querySelector('meta[name="lead-cc"]');
     var cc = ccTag && ccTag.getAttribute('content');
@@ -45,9 +45,8 @@
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload)
     }).then(function (r) {
-      /* FormSubmit answers 200 even when it has not sent anything, for
-         instance while the address is still waiting to be activated, and
-         puts the truth in the body. So read the body, and treat anything
+      /* Form services routinely answer 200 while refusing to send, and put
+         the real answer in the body. So read the body, and treat anything
          that does not clearly say it worked as a failure. */
       return r.json().catch(function () { return null; }).then(function (b) {
         if (b && String(b.success) === 'false') {
@@ -61,15 +60,34 @@
   }
 
   /* Used by the funnel's final pane when the send did not land. */
-  function failCopy(root) {
+  var LINK = 'color:var(--blue);font-weight:600';
+
+  /* Two different failures, and the visitor should not be told the same
+     thing for both. A send that broke is an apology. No endpoint at all is
+     simply a different way to get hold of us, so it says that instead. */
+  function failBody(reason) {
+    if (reason === 'none') {
+      return 'The quickest way to reach us is straight on the phone. Call ' +
+        '<a href="tel:+18334664788" style="' + LINK + '">1-833-466-4788</a> ' +
+        'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
+        'info@moisturemasterpros.com</a> and we will pick it up the same working day.';
+    }
+    return 'Nothing reached the team, so please do not wait on us. Call ' +
+      '<a href="tel:+18334664788" style="' + LINK + '">1-833-466-4788</a> ' +
+      'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
+      'info@moisturemasterpros.com</a> and we will pick it up straight away.';
+  }
+
+  function failCopy(root, reason) {
     var h = root.querySelector('[data-done-head]') || root.querySelector('h2');
     var p = root.querySelector('[data-done-body]');
-    if (h) h.textContent = 'That did not go through.';
-    if (p) p.innerHTML = 'Something went wrong at our end, so nothing has reached the team. ' +
-      'Please call <a href="tel:+18334664788" style="color:var(--blue);font-weight:600">1-833-466-4788</a> ' +
-      'and we will pick it up straight away.';
+    if (h) h.textContent = reason === 'none' ? 'Give us a call instead.' : 'That did not go through.';
+    if (p) p.innerHTML = failBody(reason);
     var pill = root.querySelector('.pill');
-    if (pill) { pill.textContent = 'Not sent'; pill.style.background = '#FDECEC'; pill.style.color = '#A32020'; }
+    if (pill) {
+      pill.textContent = reason === 'none' ? 'Call us' : 'Not sent';
+      pill.style.background = '#FDECEC'; pill.style.color = '#A32020';
+    }
   }
 
   function busy(form, on) {
@@ -1698,7 +1716,7 @@
           var done = $$('.pane', root)[3] || root;
           var echo = $('[data-echo]', root);
           if (echo) echo.textContent = (data.name || 'You') + ' \u00B7 ' + (data.zip || '');
-          if (!r.ok) failCopy(done);
+          if (!r.ok) failCopy(done, r.reason);
         });
       });
 
@@ -1723,7 +1741,7 @@
             echo.textContent = (data.name || 'You') + ' · ' + (data.zip || '') +
               (data.email ? ' · ' + data.email : '');
           }
-          if (!r.ok) failCopy(done);
+          if (!r.ok) failCopy(done, r.reason);
         });
       });
     }
@@ -1786,9 +1804,8 @@
           ? '<b>' + ICON_OK + 'Message sent</b>' +
             '<p>Thanks ' + first + ', someone will come back to you the same working day. ' +
             'If water is moving right now, call 1-833-466-4788 rather than waiting.</p>'
-          : '<b>' + ICON_NO + 'That did not go through</b>' +
-            '<p>Nothing reached the team, so please do not wait on us. ' +
-            'Call <a href="tel:+18334664788" style="color:var(--sky);font-weight:700;text-decoration:underline">1-833-466-4788</a> and we will pick it up straight away.</p>';
+          : '<b>' + ICON_NO + (r.reason === 'none' ? 'Give us a call instead' : 'That did not go through') + '</b>' +
+            '<p>' + failBody(r.reason).replace(/var\(--blue\)/g, 'var(--sky)') + '</p>';
         form.replaceWith(done);
         done.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
       });
