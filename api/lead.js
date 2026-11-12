@@ -43,11 +43,19 @@ function ordered(d) {
   });
 }
 
+/* A token pasted through a browser can pick up a newline, a non-breaking
+   space or a zero-width character, and fetch then refuses the header with
+   "cannot convert argument to a ByteString" rather than anything about
+   the token. A JWT is only ever base64url and dots, so strip the rest. */
+function headerSafe(v) {
+  return String(v == null ? '' : v).replace(/[^\x21-\x7E]/g, '');
+}
+
 async function monday(token, query, variables) {
   const r = await fetch('https://api.monday.com/v2', {
     method: 'POST',
     headers: {
-      Authorization: token,
+      Authorization: headerSafe(token),
       'Content-Type': 'application/json',
       'API-Version': '2024-10'
     },
