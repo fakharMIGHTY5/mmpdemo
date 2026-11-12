@@ -86,6 +86,13 @@ const COL = {
 const STATUS = process.env.MONDAY_STATUS_LABEL || 'New Lead';
 const SOURCE = process.env.MONDAY_SOURCE_LABEL || 'Website';
 
+/* Someone outside the service area is not a lead anybody can work this
+   week, so they go to their own group and leave the pipeline to the
+   enquiries that can actually be sold. Over a season the ZIPs on them
+   say where it is worth opening next. */
+const WAIT_GROUP = process.env.MONDAY_GROUP_WAITLIST || 'group_mm91kgyq';
+const WAIT_SOURCE = process.env.MONDAY_WAIT_SOURCE_LABEL || 'Website waiting list';
+
 function usPhone(raw) {
   const d = String(raw).replace(/[^0-9]/g, '');
   if (d.length === 10) return '+1' + d;
@@ -93,12 +100,16 @@ function usPhone(raw) {
   return String(raw);
 }
 
+function isWaitlist(d) {
+  return String(d.path || '').toLowerCase() === 'waitlist';
+}
+
 function columnValues(d) {
   const v = {};
   if (d.email) v[COL.email] = { email: d.email, text: d.email };
   if (d.phone) v[COL.phone] = { phone: usPhone(d.phone), countryShortName: 'US' };
   v[COL.status] = { label: STATUS };
-  v[COL.source] = { label: SOURCE };
+  v[COL.source] = { label: isWaitlist(d) ? WAIT_SOURCE : SOURCE };
   return v;
 }
 
@@ -140,6 +151,7 @@ module.exports = async function handler(req, res) {
       const title = who + (data.zip ? ' (' + data.zip + ')' : '');
 
       const cols = columnValues(data);
+      const into = isWaitlist(data) ? WAIT_GROUP : (group || null);
       let made;
       try {
         made = await monday(token,
@@ -147,7 +159,7 @@ module.exports = async function handler(req, res) {
           '  create_item (board_id: $board, group_id: $group, item_name: $name,' +
           '               column_values: $cols, create_labels_if_missing: true) { id }' +
           '}',
-          { board: String(board), group: group || null, name: title, cols: JSON.stringify(cols) });
+          { board: String(board), group: into, name: title, cols: JSON.stringify(cols) });
       } catch (e) {
         // A renamed or deleted column should cost us the tidy fields, not
         // the lead. Fall back to an item with just the name on it.
@@ -156,7 +168,7 @@ module.exports = async function handler(req, res) {
           'mutation ($board: ID!, $group: String, $name: String!) {' +
           '  create_item (board_id: $board, group_id: $group, item_name: $name) { id }' +
           '}',
-          { board: String(board), group: group || null, name: title });
+          { board: String(board), group: into, name: title });
       }
 
       const id = made && made.create_item && made.create_item.id;
