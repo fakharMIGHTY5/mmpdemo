@@ -68,12 +68,12 @@
   function failBody(reason) {
     if (reason === 'none') {
       return 'The quickest way to reach us is straight on the phone. Call ' +
-        '<a href="tel:+18334664788" style="' + LINK + '">1-833-466-4788</a> ' +
+        '<a href="tel:' + tel(1) + '" style="' + LINK + '">' + tel() + '</a> ' +
         'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
         'info@moisturemasterpros.com</a> and we will pick it up the same working day.';
     }
     return 'Nothing reached the team, so please do not wait on us. Call ' +
-      '<a href="tel:+18334664788" style="' + LINK + '">1-833-466-4788</a> ' +
+      '<a href="tel:' + tel(1) + '" style="' + LINK + '">' + tel() + '</a> ' +
       'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
       'info@moisturemasterpros.com</a> and we will pick it up straight away.';
   }
@@ -95,6 +95,13 @@
     if (!b) return;
     if (on) { b.dataset.was = b.textContent; b.textContent = 'Sending\u2026'; b.disabled = true; }
     else { if (b.dataset.was) b.textContent = b.dataset.was; b.disabled = false; }
+  }
+
+  /* One number, read from the head, so changing it in build.py changes it
+     everywhere including the strings this file builds at runtime. */
+  function tel(href) {
+    var m = document.querySelector('meta[name="tel' + (href ? '-href' : '') + '"]');
+    return (m && m.getAttribute('content')) || (href ? '+14844280673' : '484-428-0673');
   }
 
   function bookUrl(q) {
@@ -185,7 +192,7 @@
           '<p>A Moisture Master Pros crew works in ' + z + '. Pick how you would like to start.</p>' +
           '<div class="row">' +
             '<a class="b b-sm" href="' + next + '?zip=' + z + '">Choose how to start</a>' +
-            '<a class="b b-sm b-ghost" href="tel:+18334664788">Call 1-833-466-4788</a>' +
+            '<a class="b b-sm b-ghost" href="tel:' + tel(1) + '">Call ' + tel() + '</a>' +
           '</div>';
       } else if (res.state === 'soon') {
         out.innerHTML = '<b>' + ICON_SOON + 'Florida is coming soon</b>' +
@@ -1803,7 +1810,7 @@
         done.innerHTML = r.ok
           ? '<b>' + ICON_OK + 'Message sent</b>' +
             '<p>Thanks ' + first + ', someone will come back to you the same working day. ' +
-            'If water is moving right now, call 1-833-466-4788 rather than waiting.</p>'
+            'If water is moving right now, call ' + tel() + ' rather than waiting.</p>'
           : '<b>' + ICON_NO + (r.reason === 'none' ? 'Give us a call instead' : 'That did not go through') + '</b>' +
             '<p>' + failBody(r.reason).replace(/var\(--blue\)/g, 'var(--sky)') + '</p>';
         form.replaceWith(done);

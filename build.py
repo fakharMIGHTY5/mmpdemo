@@ -29,15 +29,15 @@ OUT = ROOT
 LEAD_ENDPOINT = ""
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "113"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "114"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
     "short": "MMP",
     "tagline": "When you think of moisture and mold, think of the pros",
     "tagline_alt": "Creating and restoring healthy living environments",
-    "tel": "1-833-466-4788",
-    "tel_href": "+18334664788",
+    "tel": "484-428-0673",
+    "tel_href": "+14844280673",
     "url": "https://moisturemasterpros.com",
     "areas": "Greater Philadelphia Area and Northern Delaware",
 }
@@ -90,6 +90,8 @@ def head(title, desc, depth, canonical, extra="", jsonld=None):
 <head>
 <meta charset="utf-8">
 <meta name="lead-endpoint" content="{LEAD_ENDPOINT}">
+<meta name="tel" content="{SITE['tel']}">
+<meta name="tel-href" content="{SITE['tel_href']}">
 <meta name="lead-cc" content="{LEAD_CC}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
@@ -932,7 +934,7 @@ def main():
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
-                            "Send us a message, call 1-833-466-4788, or read the questions people ask before they call. Greater Philadelphia Area and Northern Delaware.", "contact"),
+                            "Send us a message, call " + SITE['tel'] + ", or read the questions people ask before they call. Greater Philadelphia Area and Northern Delaware.", "contact"),
     }
 
     for fn, (title, desc, active) in PAGE_META.items():
