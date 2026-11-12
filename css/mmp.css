@@ -657,6 +657,19 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
 }
 .zip-out.show{ display:block; }
+/* The waiting list form sits inside the ZIP answer, so it borrows the
+   gate's pill shape rather than looking like a second form bolted on. */
+.zip-wait{
+  display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;
+}
+.zip-wait input{
+  flex:1 1 220px; min-width:0; height:46px; padding:0 18px; border-radius:100px;
+  border:1px solid var(--line); background:#fff; color:var(--ink); font:inherit; font-size:.95rem;
+}
+.zip-wait input:focus{ outline:2px solid var(--blue); outline-offset:1px; }
+.zip-wait .b{ flex:none; }
+@media(max-width:560px){ .zip-wait .b{ width:100%; } }
+
 .zip-out.ok{ background:rgba(4,54,40,.9); border:1px solid rgba(23,166,115,.5); }
 .zip-out.no{ background:rgba(2,28,42,.9); border:1px solid rgba(53,197,223,.42); }
 .zip-out.bad{ background:rgba(62,16,15,.9); border:1px solid rgba(216,69,63,.5); }

@@ -167,6 +167,45 @@
   var ICON_SOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3 1.8"/></svg>';
   var ICON_NO  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.2v.2"/></svg>';
 
+  /* Somebody outside the map is still worth knowing about, so the answer
+     takes an email rather than handing them two buttons that led back to
+     the page they were already on. It posts the same way every other form
+     does, and lands on the board marked as a waiting list signup. */
+  function waitForm(zip, why) {
+    return '<form class="zip-wait" data-wait data-wait-zip="' + zip + '" data-wait-why="' + why + '">' +
+      '<input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>' +
+      '<button class="b b-sm" type="submit">Tell me when you reach me</button>' +
+      '</form>';
+  }
+
+  document.addEventListener('submit', function (e) {
+    var f = e.target.closest ? e.target.closest('[data-wait]') : null;
+    if (!f) return;
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    var email = f.querySelector('[name=email]').value.trim();
+    if (!email) return;
+    var btn = f.querySelector('[type=submit]');
+    var was = btn.textContent;
+    btn.textContent = 'Sending\u2026';
+    btn.disabled = true;
+    sendLead({
+      name: 'Waiting list, ' + f.getAttribute('data-wait-why'),
+      email: email,
+      zip: f.getAttribute('data-wait-zip'),
+      path: 'waitlist',
+      message: 'Asked to be told when Moisture Master Pros covers ' +
+               f.getAttribute('data-wait-zip') + '.'
+    }).then(function (r) {
+      var p = document.createElement('p');
+      p.style.cssText = 'margin:14px 0 0;font-weight:600';
+      p.textContent = r.ok
+        ? 'Thank you, we will be in touch the moment we reach you.'
+        : 'That did not send. Email info@moisturemasterpros.com and we will add you.';
+      f.replaceWith(p);
+    });
+  });
+
   /* ---------- ZIP gates (there may be several on a page) ---------- */
   $$('[data-zip]').forEach(function (gate) {
     var form = $('form', gate);
@@ -188,26 +227,25 @@
       var next = gate.getAttribute('data-zip-next') || bookUrl();
 
       if (res.state === 'in') {
+        var inFunnel = !!gate.closest('[data-funnel]');
         out.innerHTML = '<b>' + ICON_OK + 'Good news, we cover ' + res.name + '</b>' +
-          '<p>A Moisture Master Pros crew works in ' + z + '. Pick how you would like to start.</p>' +
-          '<div class="row">' +
-            '<a class="b b-sm" href="' + next + '?zip=' + z + '">Choose how to start</a>' +
-            '<a class="b b-sm b-ghost" href="tel:' + tel(1) + '">Call ' + tel() + '</a>' +
-          '</div>';
+          '<p>A Moisture Master Pros crew works in ' + z + '.' +
+          (inFunnel ? ' A few questions next.' : '') + '</p>' +
+          (inFunnel ? '' :
+            '<div class="row">' +
+              '<a class="b b-sm" href="' + next + '?zip=' + z + '">Get started</a>' +
+              '<a class="b b-sm b-ghost" href="tel:' + tel(1) + '">Call ' + tel() + '</a>' +
+            '</div>');
       } else if (res.state === 'soon') {
         out.innerHTML = '<b>' + ICON_SOON + 'Florida is coming soon</b>' +
-          '<p>We are opening in Florida but crews are not working there yet. A video consultation is available today, anywhere in the US, and we will tell you the moment we are live near you.</p>' +
-          '<div class="row">' +
-            '<a class="b b-sm" href="' + next + '?path=video&amp;zip=' + z + '">Book a video consultation</a>' +
-            '<a class="b b-sm b-ghost" href="' + bookUrl('?waitlist=' + z) + '">Tell me when you open</a>' +
-          '</div>';
+          '<p>We are opening in Florida but crews are not working there yet. ' +
+          'Leave your email and we will tell you the moment we are live near you.</p>' +
+          waitForm(z, 'florida');
       } else {
         out.innerHTML = '<b>' + ICON_NO + 'We do not cover ' + z + ' yet</b>' +
-          '<p>Crews work across Philadelphia, the surrounding suburbs and northern Delaware. A video consultation is available anywhere in the US.</p>' +
-          '<div class="row">' +
-            '<a class="b b-sm" href="' + next + '?path=video&amp;zip=' + z + '">Book a video consultation</a>' +
-            '<a class="b b-sm b-ghost" href="' + bookUrl('?waitlist=' + z) + '">Tell me when you expand</a>' +
-          '</div>';
+          '<p>Crews work across Philadelphia, the surrounding suburbs and northern Delaware. ' +
+          'Leave your email and we will tell you when we reach you.</p>' +
+          waitForm(z, 'out of area');
       }
       document.dispatchEvent(new CustomEvent('mmp:zip', { detail: { zip: z, res: res } }));
     }
@@ -1627,11 +1665,10 @@
     document.addEventListener('mmp:zip', function (e) {
       var st = e.detail.res.state;
       applyZip(st);
-      if (st === 'bad') return;
-      setTimeout(function () {
-        // A requested path resumes here, once we know we can honour it.
-        go(1);
-      }, 700);
+      // Outside the map there is nothing to ask. The answer offers to take
+      // an email instead, and moving the page on would hide it.
+      if (st !== 'in') return;
+      setTimeout(function () { go(1); }, 700);
     });
     var stored = readZip();
     if (stored.state) {
