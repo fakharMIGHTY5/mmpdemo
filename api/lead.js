@@ -66,6 +66,34 @@ async function monday(token, query, variables) {
   return body.data;
 }
 
+/* Column ids on MMP's Leads board. A board with different columns only
+   needs these changed, and anything the board rejects is dropped rather
+   than losing the lead, see the fallback below. */
+const COL = {
+  email:  process.env.MONDAY_COL_EMAIL  || 'lead_email',
+  phone:  process.env.MONDAY_COL_PHONE  || 'lead_phone',
+  status: process.env.MONDAY_COL_STATUS || 'lead_status',
+  source: process.env.MONDAY_COL_SOURCE || 'color_mkyb8krc'
+};
+const STATUS = process.env.MONDAY_STATUS_LABEL || 'New Lead';
+const SOURCE = process.env.MONDAY_SOURCE_LABEL || 'Website';
+
+function usPhone(raw) {
+  const d = String(raw).replace(/[^0-9]/g, '');
+  if (d.length === 10) return '+1' + d;
+  if (d.length === 11 && d.charAt(0) === '1') return '+' + d;
+  return String(raw);
+}
+
+function columnValues(d) {
+  const v = {};
+  if (d.email) v[COL.email] = { email: d.email, text: d.email };
+  if (d.phone) v[COL.phone] = { phone: usPhone(d.phone), countryShortName: 'US' };
+  v[COL.status] = { label: STATUS };
+  v[COL.source] = { label: SOURCE };
+  return v;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -103,13 +131,25 @@ module.exports = async function handler(req, res) {
       const who = data.name || data.email || data.phone;
       const title = who + (data.zip ? ' (' + data.zip + ')' : '');
 
-      // The item carries the name; everything else goes on as an update,
-      // so this works on any board without having to know its columns.
-      const made = await monday(token,
-        'mutation ($board: ID!, $group: String, $name: String!) {' +
-        '  create_item (board_id: $board, group_id: $group, item_name: $name) { id }' +
-        '}',
-        { board: String(board), group: group || null, name: title });
+      const cols = columnValues(data);
+      let made;
+      try {
+        made = await monday(token,
+          'mutation ($board: ID!, $group: String, $name: String!, $cols: JSON) {' +
+          '  create_item (board_id: $board, group_id: $group, item_name: $name,' +
+          '               column_values: $cols, create_labels_if_missing: true) { id }' +
+          '}',
+          { board: String(board), group: group || null, name: title, cols: JSON.stringify(cols) });
+      } catch (e) {
+        // A renamed or deleted column should cost us the tidy fields, not
+        // the lead. Fall back to an item with just the name on it.
+        console.warn('[lead] column mapping refused, falling back:', e.message);
+        made = await monday(token,
+          'mutation ($board: ID!, $group: String, $name: String!) {' +
+          '  create_item (board_id: $board, group_id: $group, item_name: $name) { id }' +
+          '}',
+          { board: String(board), group: group || null, name: title });
+      }
 
       const id = made && made.create_item && made.create_item.id;
       if (!id) throw new Error('Monday did not return an item id.');
