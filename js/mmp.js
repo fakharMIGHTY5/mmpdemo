@@ -1757,8 +1757,11 @@
       paintQ();
     }
 
-    // Submission is a front-end stub until the CRM endpoint is wired up.
-    var form = $('form[data-lead]', root);
+    /* Any lead form in the funnel that is NOT the questionnaire. The
+       questionnaire carries data-lead too, and without :not() this picked
+       the same form the quiz handler is already on, so every enquiry was
+       sent twice and arrived on the board as two identical items. */
+    var form = $('form[data-lead]:not([data-quiz])', root);
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
