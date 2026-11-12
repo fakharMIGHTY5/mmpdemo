@@ -29,7 +29,7 @@ OUT = ROOT
 LEAD_ENDPOINT = ""
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "114"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "115"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -361,14 +361,6 @@ SVC_SCENE = {
 <rect class="zslot" x="200" y="168" width="56" height="40"/>
 <rect class="zpan" x="200" y="168" width="56" height="40" rx="3"/>
 """,
-"mold-air-testing": """
-<rect class="zk" x="58" y="152" width="96" height="86" rx="12"/>
-<path class="zk zt" d="M80 178h52M80 200h32"/>
-<path class="zk zq zflow" d="M154 178h74a22 22 0 0 0 22-22V96"/>
-<rect class="zk" x="228" y="52" width="46" height="46" rx="8"/>
-<path class="zk zt" d="M240 68h22M240 82h22"/>
-<g class="zmote"><circle class="zf" cx="300" cy="118" r="5"/><circle class="zf zd1" cx="320" cy="150" r="4"/><circle class="zf zd2" cx="288" cy="176" r="6"/><circle class="zf zd3" cx="326" cy="206" r="4"/></g>
-""",
 "fiberglass-deck-repair": """
 <path class="zk" d="M70 150h260v16H70z"/>
 <path class="zk zt" d="M70 166v96h260v-96"/>
@@ -657,7 +649,6 @@ SVC_ICON = {
     "air-sealing":        '<path d="M3 8h13a3 3 0 1 0-3-3"/><path d="M3 13h16a3 3 0 1 1-3 3"/><path d="M3 18h9"/>',
     "stucco-remediation": '<path d="M4 4h16v16H4z"/><path d="M4 10h16M4 15h16M10 4v6M15 10v5M8 15v5"/>',
     "exterior-repairs":   '<path d="M3 11 12 4l9 7"/><path d="M5.5 9.6V20h13V9.6"/><path d="M10 20v-5h4v5"/>',
-    "mold-air-testing":   '<path d="M9.4 3h5.2M10.6 3v5.8L6 17.6A2.4 2.4 0 0 0 8.1 21h7.8a2.4 2.4 0 0 0 2.1-3.4l-4.6-8.8V3"/><path d="M8 15h8"/>',
     "fiberglass-deck-repair":   '<path d="M3 9h18v3H3z"/><path d="M5 12v8M19 12v8"/><path d="M8 5.5 12 3l4 2.5"/><path d="M10 15.5h4"/>',
     "fiberglass-deck-replacement": '<path d="M3 8h18v3H3z"/><path d="M5 11v9M19 11v9"/><path d="M12 2.5v4M10 4.5l2-2 2 2"/><path d="M8 15h8"/>',
     "basement-waterproofing":   '<path d="M3 9.5 12 4l9 5.5"/><path d="M5.5 9v11h13V9"/><path d="M8 20v-5h8v5"/><path d="M8 12.5h8"/>',

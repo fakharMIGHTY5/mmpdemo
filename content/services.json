@@ -703,77 +703,6 @@
       "video_len": "0:15"
     },
     {
-      "slug": "mold-air-testing",
-      "title": "Mold & Air Quality Testing",
-      "short": "Mold & Air Testing",
-      "cat": "air",
-      "scale": "Diagnostic",
-      "img": "report-thermal-ceiling.jpg",
-      "blurb": "Air and surface sampling with laboratory analysis, for when you need a documented result rather than an opinion.",
-      "lead": "Testing is worth paying for when a decision depends on the number: a transaction, a dispute, a health question. Otherwise, find the water.",
-      "signs": [
-        "A health concern that a doctor has asked you to investigate",
-        "A purchase or sale that needs a documented air quality result",
-        "A dispute with a landlord, builder, insurer or seller",
-        "Growth you can smell but cannot see",
-        "Verification needed after a remediation somebody else performed",
-        "A tenant complaint that needs answering with evidence"
-      ],
-      "what": [
-        "We take air samples indoors and a matched outdoor control, plus surface or tape lift samples where there is something visible to sample, and send them to an independent accredited laboratory.",
-        "The outdoor control is what makes the indoor result mean anything. Spores exist everywhere; what matters is whether the indoor count and species profile differ meaningfully from the air outside the building on the same day.",
-        "You get the laboratory report and our interpretation of what it means in plain language. If it points to a problem, we scope the moisture repair that caused it. If it points to nothing, we tell you that too."
-      ],
-      "steps": [
-        {
-          "h": "Walk the property",
-          "p": "Visual survey, moisture readings and a conversation about what you are experiencing and where."
-        },
-        {
-          "h": "Sample",
-          "p": "Indoor air samples, a matched outdoor control, and surface or tape lifts where there is visible growth."
-        },
-        {
-          "h": "Laboratory analysis",
-          "p": "Independent accredited laboratory. We do not analyze our own samples."
-        },
-        {
-          "h": "Report and interpret",
-          "p": "The laboratory result, plus what it actually means for your building, in language you can act on."
-        }
-      ],
-      "includes": [
-        "Visual and moisture survey",
-        "Indoor air sampling with outdoor control",
-        "Surface and tape lift sampling where indicated",
-        "Independent accredited laboratory analysis",
-        "Written interpretation in plain language",
-        "Remediation scope if one is warranted"
-      ],
-      "faq": [
-        {
-          "q": "Do I need testing before remediation?",
-          "a": "Often not. If growth is visible and the moisture source is findable, testing tells you something you already know. It earns its cost when the growth is hidden, when a health question is live, or when a document is needed for a transaction or a dispute."
-        },
-        {
-          "q": "Who analyzes the samples?",
-          "a": "An independent accredited laboratory, not us. A company that both tests and sells remediation should never be marking its own homework."
-        },
-        {
-          "q": "What is post-remediation verification?",
-          "a": "Sampling after the work is finished and the containment is still up, to confirm the area has been returned to a normal condition. We recommend it on any significant remediation, including ones we did not perform."
-        }
-      ],
-      "start": "inspection",
-      "related": [
-        "mold-remediation",
-        "air-sealing",
-        "leak-detection"
-      ],
-      "video": "s16",
-      "video_len": "0:15"
-    },
-    {
       "slug": "fiberglass-deck-repair",
       "title": "Fiberglass Rooftop Deck Leak Repairs",
       "short": "Fiberglass Deck Repairs",
@@ -1443,8 +1372,7 @@
       "start": "inspection",
       "related": [
         "mold-remediation",
-        "leak-detection",
-        "mold-air-testing"
+        "leak-detection"
       ],
       "video": "s04",
       "video_len": "0:10"
