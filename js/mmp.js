@@ -1563,8 +1563,11 @@
 
   /* =========================================================
      BOOKING FUNNEL
-     ZIP first, then the path, then the details. The ZIP result
-     decides which paths are even offered.
+     ZIP first, then the details. Visitors used to pick between a
+     project, an inspection and a video call here, which asked them to
+     price a job they had not described yet, so it is gone. A path
+     arriving in the url is still recorded, because the buttons across
+     the site that carry one are worth telling apart.
      ========================================================= */
   var funnel = $('[data-funnel]');
   if (funnel) initFunnel(funnel);
@@ -1627,47 +1630,34 @@
       if (st === 'bad') return;
       setTimeout(function () {
         // A requested path resumes here, once we know we can honour it.
-        if (!applyWanted()) go(1);
+        go(1);
       }, 700);
     });
     var stored = readZip();
     if (stored.state) {
       applyZip(stored.state);
-      if (stored.state !== 'bad' && applyWanted()) { /* jumped to details */ }
     }
 
-    // path choice
-    $$('.pick[data-path]', root).forEach(function (p) {
-      p.addEventListener('click', function () {
-        $$('.pick[data-path]', root).forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
-        p.setAttribute('aria-pressed', 'true');
-        chosen = p.getAttribute('data-path');
-        var f = $('[name=path]', root);
-        if (f) f.value = chosen;
-        var title = $('[data-path-title]', root);
-        if (title) title.textContent = p.getAttribute('data-label') || '';
-        $$('[data-only]', root).forEach(function (el) {
-          el.classList.toggle('hide', el.getAttribute('data-only').split(' ').indexOf(chosen) === -1);
-        });
-        setTimeout(function () { go(2); }, 260);
-      });
-    });
-
-    /* A path handed over in the URL, from the hero, a service page or the
-       game. It must NOT jump straight to the details form: the ZIP gate is
-       the whole point of this funnel, and skipping it let an out-of-area
-       visitor fill in the entire form before being told no. The request is
-       held until the ZIP has been answered. */
-    var wanted = new URLSearchParams(location.search).get('path');
+    /* A path handed over in the url, from the hero, a service page or the
+       mold game. Nobody is asked to choose any more, but which button they
+       pressed still says something about what they want, so it rides along
+       on the lead and names the thing in the heading. */
+    var LABEL = {
+      project: 'a repair project',
+      inspection: 'a paid inspection',
+      video: 'a video consultation'
+    };
 
     function applyWanted() {
-      if (!wanted) return false;
-      var target = $('.pick[data-path="' + wanted + '"]', root);
-      if (!target || target.hasAttribute('disabled')) { wanted = null; return false; }
-      wanted = null;
-      target.click();
-      return true;
+      var wanted = new URLSearchParams(location.search).get('path');
+      if (!wanted || !LABEL[wanted]) return;
+      chosen = wanted;
+      var f = $('[name=path]', root);
+      if (f) f.value = chosen;
+      var title = $('[data-path-title]', root);
+      if (title) title.textContent = LABEL[chosen];
     }
+    applyWanted();
 
     /* ---------- the questionnaire ----------
        One question per screen. Picking an answer advances automatically, so
@@ -1719,8 +1709,8 @@
         busy(quiz, true);
         sendLead(data).then(function (r) {
           busy(quiz, false);
-          go(3);
-          var done = $$('.pane', root)[3] || root;
+          go(2);
+          var done = $$('.pane', root)[2] || root;
           var echo = $('[data-echo]', root);
           if (echo) echo.textContent = (data.name || 'You') + ' \u00B7 ' + (data.zip || '');
           if (!r.ok) failCopy(done, r.reason);
@@ -1741,8 +1731,8 @@
         busy(form, true);
         sendLead(data).then(function (r) {
           busy(form, false);
-          go(3);
-          var done = $$('.pane', root)[3] || root;
+          go(2);
+          var done = $$('.pane', root)[2] || root;
           var echo = $('[data-echo]', root);
           if (echo) {
             echo.textContent = (data.name || 'You') + ' · ' + (data.zip || '') +
