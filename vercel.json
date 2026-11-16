@@ -27,5 +27,15 @@
       "destination": "/services/mold-remediation.html",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy.html"
+    }
   ]
 }

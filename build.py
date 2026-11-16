@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "122"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "123"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -182,6 +182,7 @@ def foot(depth):
         <a href="{rel(depth,'contact-us.html')}">Get started</a>
         <a href="{rel(depth,'contact-us.html')}">Contact us</a>
         <a href="{rel(depth,'contact-us.html')}#faq">Questions</a>
+        <a href="{rel(depth,'privacy-policy.html')}">Privacy Policy</a>
       </div>
     </div>
     <div class="foot-base">
@@ -918,6 +919,8 @@ def main():
                        "Founded by Joshua Kent. IAQA member, BBB accredited, OSHA certified. Over 2,000 properties across Greater Philadelphia Area.", "about"),
         "case-studies.html": ("Case Studies | Moisture Master Pros",
                               "Real jobs written up in full: the call, the finding, the repair and what it came to. Coming soon.", "case-studies"),
+        "privacy-policy.html": ("Privacy Policy | Moisture Master Pros",
+                                "How Moisture Master Pros collects, uses, shares and protects personal information from our website, forms and advertising.", ""),
         "contact-us.html": ("Contact Us | Moisture Master Pros",
                             "Send us a message, call " + SITE['tel'] + ", or read the questions people ask before they call. Greater Philadelphia Area and Northern Delaware.", "contact"),
     }
