@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "123"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "126"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -189,9 +189,9 @@ def foot(depth):
       <span>&copy; <span data-year>2026</span> {SITE['name']}. All rights reserved.</span>
       <span>Serving the {SITE['areas']}</span>
       <div class="socials">
-        <a href="https://www.facebook.com/moisturemasterpros" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6A22 22 0 0 0 14.3 3.5c-2.4 0-4 1.45-4 4.1V9.9H7.6V13h2.7v8Z"/></svg></a>
+        <a href="https://www.facebook.com/MoistureMasterProsOfficial/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6A22 22 0 0 0 14.3 3.5c-2.4 0-4 1.45-4 4.1V9.9H7.6V13h2.7v8Z"/></svg></a>
         <a href="https://www.instagram.com/moisturemasterpros" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="https://www.youtube.com/@moisturemasterpros" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3Z"/></svg></a>
+        <a href="https://www.youtube.com/@Leaksmoldpro" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3Z"/></svg></a>
         <a href="mailto:info@moisturemasterpros.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"/><path d="m3.4 6.6 8.6 6 8.6-6"/></svg></a>
       </div>
     </div>
@@ -223,7 +223,7 @@ LOCAL_BUSINESS = {
     "priceRange": "$$-$$$",
     "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200"},
     "sameAs": [
-        "https://www.facebook.com/moisturemasterpros",
+        "https://www.facebook.com/MoistureMasterProsOfficial/",
         "https://www.instagram.com/moisturemasterpros",
     ],
 }

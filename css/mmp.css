@@ -1163,6 +1163,13 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 }
 .marks img{ width:auto; }
 .marks .iaqa{ height:38px; } .marks .bbb{ height:56px; }
+/* BBB serve their seal at a fixed 293x61, so it gets the same box as a
+   mark rather than being scaled to match the others. */
+.marks .seal{
+  display:flex; align-items:center; justify-content:center; height:84px;
+  padding:0 clamp(16px,2vw,24px); border-radius:16px; background:#fff;
+}
+.marks .bbb-seal{ height:44px; width:auto; }
 .chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
 .chip{
   font-family:var(--fm); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase;

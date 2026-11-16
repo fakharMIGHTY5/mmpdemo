@@ -421,8 +421,8 @@
       ],
       "steps": [
         {
-          "h": "Assess and test",
-          "p": "Extent of growth, moisture source, and air or surface sampling where the situation warrants a laboratory result."
+          "h": "Assess",
+          "p": "Extent of growth, the moisture source feeding it, and how far it has travelled behind finishes."
         },
         {
           "h": "Contain",
@@ -454,7 +454,7 @@
       "faq": [
         {
           "q": "Do I need a mold test first?",
-          "a": "Not always. If you can see it and smell it, you do not need a laboratory to tell you it is there. You need the moisture source found. Testing earns its keep when the growth is hidden, when a health question is involved, or when a transaction or dispute needs a documented result."
+          "a": "Not always, and we do not carry out testing ourselves. If you can see it and smell it, you do not need a laboratory to tell you it is there. You need the moisture source found. Where a documented laboratory result is needed, for a health question, a transaction or a dispute, use an independent testing company. Keeping that separate from the company doing the remediation is the right way round anyway."
         },
         {
           "q": "Is black mold different?",
