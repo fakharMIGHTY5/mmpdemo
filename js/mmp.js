@@ -118,19 +118,33 @@
      in here once MMP confirms it. Everything downstream (hero
      gate, booking funnel, contact form) reads this one source.
      ========================================================= */
-  /* Exactly the 49 ZIP codes MMP confirmed, not prefix ranges. A ZIP is
+  /* Exactly the 126 ZIP codes MMP confirmed, not prefix ranges. A ZIP is
      either on this list or it is not covered; there is no guessing at the
      edges of a county. Add or remove codes here and every gate on the site
-     follows, because they all read this one table. */
+     follows, because they all read this one table.
+
+     Widened on 16 November 2026 at Josh's request, from 49 to 126, after
+     inspection bookings fell by about two a day. His list did not include
+     the northern Delaware codes, so those are kept rather than dropped:
+     the site says Northern Delaware in the footer, the hero and the
+     schema, and removing them is a copy change nobody asked for. */
   var AREA = [
     { name: 'Philadelphia', zips:
-      '19103 19106 19118 19119 19127 19128 19129 19130 19146 19147 ' },
+      '19102 19103 19104 19106 19107 19114 19118 19119 19122 19123 19125 ' +
+      '19127 19128 19129 19130 19131 19137 19144 19145 19146 19147 19148 ' +
+      '19151 19154 ' },
     { name: 'the Philadelphia suburbs', zips:
-      '19003 19004 19006 19008 19010 19034 19035 19041 19046 19063 19064 19066 ' +
-      '19072 19073 19081 19083 19085 19086 19087 19096 19301 19312 19317 19333 ' +
-      '19348 19355 19380 19382 19422 19428 19444 19462 ' },
+      '18041 18054 18070 18073 18074 18076 18901 18902 18914 18915 18925 ' +
+      '18929 18936 18964 18969 18974 18976 19001 19002 19003 19004 19006 ' +
+      '19008 19010 19012 19014 19015 19025 19026 19027 19031 19033 19034 ' +
+      '19035 19036 19038 19040 19041 19043 19044 19046 19060 19061 19063 ' +
+      '19064 19066 19070 19072 19073 19074 19075 19078 19081 19083 19085 ' +
+      '19086 19087 19090 19095 19096 19301 19312 19317 19333 19342 19348 ' +
+      '19355 19373 19380 19382 19401 19403 19405 19406 19422 19426 19428 ' +
+      '19435 19436 19438 19440 19444 19446 19453 19454 19460 19462 19464 ' +
+      '19468 19473 19477 19492 19504 19512 19525 ' },
     { name: 'northern Delaware', zips:
-      '19701 19702 19707 19801 19803 19806 19807 ' }
+      '19701 19702 19707 19801 19803 19806 19807 ' },
   ];
 
   /* Florida is sold but not yet staffed. It gets its own answer rather than
