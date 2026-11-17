@@ -74,24 +74,28 @@ async function monday(token, query, variables) {
   return body.data;
 }
 
-/* Column ids on MMP's Leads board. A board with different columns only
-   needs these changed, and anything the board rejects is dropped rather
-   than losing the lead, see the fallback below. */
+/* Column ids on MMP's Inquiries board, the one Quennie actually works
+   from. She encodes every enquiry here by hand whatever the source, so
+   the website is just another entry in "Source of Inquiry" rather than a
+   parallel system. A board with different columns only needs these
+   changed, and anything the board refuses is dropped rather than losing
+   the lead, see the fallback below. */
 const COL = {
-  email:  process.env.MONDAY_COL_EMAIL  || 'lead_email',
-  phone:  process.env.MONDAY_COL_PHONE  || 'lead_phone',
-  status: process.env.MONDAY_COL_STATUS || 'lead_status',
-  source: process.env.MONDAY_COL_SOURCE || 'color_mkyb8krc'
+  email:   process.env.MONDAY_COL_EMAIL   || 'email__1',
+  phone:   process.env.MONDAY_COL_PHONE   || 'phone__1',
+  zip:     process.env.MONDAY_COL_ZIP     || 'text3__1',
+  city:    process.env.MONDAY_COL_CITY    || 'text1__1',
+  state:   process.env.MONDAY_COL_STATE   || 'text2__1',
+  date:    process.env.MONDAY_COL_DATE    || 'date4',
+  source:  process.env.MONDAY_COL_SOURCE  || 'status',
+  client:  process.env.MONDAY_COL_CLIENT  || 'status4__1',
+  details: process.env.MONDAY_COL_DETAILS || 'text26__1'
 };
-const STATUS = process.env.MONDAY_STATUS_LABEL || 'New Lead';
-const SOURCE = process.env.MONDAY_SOURCE_LABEL || 'Website';
 
-/* Someone outside the service area is not a lead anybody can work this
-   week, so they go to their own group and leave the pipeline to the
-   enquiries that can actually be sold. Over a season the ZIPs on them
-   say where it is worth opening next. */
-const WAIT_GROUP = process.env.MONDAY_GROUP_WAITLIST || 'group_mm91kgyq';
-const WAIT_SOURCE = process.env.MONDAY_WAIT_SOURCE_LABEL || 'Website waiting list';
+/* "Form Submission" is one of her existing options. Nothing here invents a
+   label: a new one would quietly widen a dropdown she reports on. */
+const SOURCE = process.env.MONDAY_SOURCE_LABEL || 'Form Submission';
+const CLIENT = process.env.MONDAY_CLIENT_LABEL || 'New';
 
 function usPhone(raw) {
   const d = String(raw).replace(/[^0-9]/g, '');
@@ -104,12 +108,31 @@ function isWaitlist(d) {
   return String(d.path || '').toLowerCase() === 'waitlist';
 }
 
+/* One line for the Details column, which is a single line of text. The
+   whole enquiry still goes on as an update underneath. */
+function summary(d) {
+  if (isWaitlist(d)) {
+    return 'OUTSIDE SERVICE AREA. Asked to be told when we cover ' +
+           (d.zip || 'their area') + '.';
+  }
+  const bits = [];
+  if (d.service) bits.push(d.service);
+  if (d.urgency) bits.push(d.urgency);
+  if (d.message) bits.push(d.message);
+  return (bits.join('. ') || 'Website enquiry').slice(0, 500);
+}
+
 function columnValues(d) {
   const v = {};
   if (d.email) v[COL.email] = { email: d.email, text: d.email };
   if (d.phone) v[COL.phone] = { phone: usPhone(d.phone), countryShortName: 'US' };
-  v[COL.status] = { label: STATUS };
-  v[COL.source] = { label: isWaitlist(d) ? WAIT_SOURCE : SOURCE };
+  if (d.zip) v[COL.zip] = String(d.zip);
+  if (d.city) v[COL.city] = String(d.city);
+  if (d.state) v[COL.state] = String(d.state);
+  v[COL.date] = { date: new Date().toISOString().slice(0, 10) };
+  v[COL.source] = { label: SOURCE };
+  v[COL.client] = { label: CLIENT };
+  v[COL.details] = summary(d);
   return v;
 }
 
@@ -147,11 +170,12 @@ module.exports = async function handler(req, res) {
 
   try {
     if (token && board) {
-      const who = data.name || data.email || data.phone;
-      const title = who + (data.zip ? ' (' + data.zip + ')' : '');
+      // Her board is named by person, with the ZIP in its own column, so
+      // the title is just the name rather than name plus bracket.
+      const title = data.name || data.email || data.phone;
 
       const cols = columnValues(data);
-      const into = isWaitlist(data) ? WAIT_GROUP : (group || null);
+      const into = group || null;
       let made;
       try {
         made = await monday(token,
