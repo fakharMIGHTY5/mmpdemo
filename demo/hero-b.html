@@ -18,7 +18,13 @@
    ------------------------------------------------------------------ */
 .ce{ position:relative; min-height:calc(100svh - var(--nav-h)); margin-top:var(--nav-h);
      display:grid; place-items:center; overflow:hidden; background:var(--white); }
-.ce-cv{ position:absolute; inset:0; width:100%; height:100%; }
+.ce-bg{ position:absolute; inset:0; overflow:hidden; }
+.ce-lines{ position:absolute; inset:0; width:100%; height:100%; }
+/* the sentence has to win, so the wall sits well back behind it */
+.ce-in::before{
+  content:""; position:absolute; inset:-12% -8%; z-index:-1; border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,255,255,.96),rgba(255,255,255,0));
+}
 .ce-in{ position:relative; z-index:2; text-align:center; padding:clamp(30px,5vh,70px) var(--gut); max-width:900px; }
 
 .ce-h1{
@@ -52,6 +58,8 @@
 .ce-then{ font-family:var(--fm); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); }
 
 .ce-cta{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; align-items:center; }
+.b-lg{ height:64px; padding:0 40px; font-size:1.1rem; }
+@media(max-width:560px){ .b-lg{ height:58px; padding:0 28px; font-size:1.02rem; } }
 .ce-note{ margin-top:clamp(22px,3vh,30px); font-family:var(--fm); font-size:.62rem;
           letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); }
 
@@ -71,13 +79,45 @@
     </a>
     <nav class="links">
       <a class="nav-tel" href="tel:+14844280673">484-428-0673</a>
-      <a class="b b-sm" href="tel:+14844280673">Talk to an expert</a>
+      <a class="b b-sm" href="tel:+14844280673">Talk To An Expert</a>
     </nav>
   </div>
 </header>
 
 <section class="ce">
-  <canvas class="ce-cv" aria-hidden="true"></canvas>
+  <div class="ce-bg" aria-hidden="true">
+    <svg class="ce-lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="wash-w" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0A5FD0" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#0A5FD0" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="wash-m" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#2f6b43" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#2f6b43" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g stroke="#0A5FD0" stroke-opacity=".10" stroke-width="1.2" fill="none">
+        <path d="M0 150h1440M0 280h1440M0 410h1440M0 540h1440M0 670h1440M0 800h1440"/>
+        <path d="M240 150v130M560 150v130M880 150v130M1200 150v130
+                 M80 280v130M400 280v130M720 280v130M1040 280v130M1360 280v130
+                 M240 410v130M560 410v130M880 410v130M1200 410v130
+                 M80 540v130M400 540v130M720 540v130M1040 540v130M1360 540v130
+                 M240 670v130M560 670v130M880 670v130M1200 670v130"/>
+      </g>
+      <path d="M150 0c0 180 40 240 30 380s-50 200-40 330 20 130 20 190" stroke="#0A5FD0"
+            stroke-opacity=".22" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M1290 0c0 180-40 240-30 380s50 200 40 330-20 130-20 190" stroke="#0A5FD0"
+            stroke-opacity=".22" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <rect x="0" y="0" width="1440" height="340" fill="url(#wash-w)"/>
+      <rect x="0" y="560" width="1440" height="340" fill="url(#wash-m)"/>
+      <g fill="#2f6b43" fill-opacity=".13">
+        <circle cx="150" cy="862" r="52"/><circle cx="212" cy="884" r="34"/>
+        <circle cx="96" cy="890" r="30"/><circle cx="1290" cy="866" r="48"/>
+        <circle cx="1232" cy="888" r="32"/><circle cx="1346" cy="886" r="26"/>
+      </g>
+    </svg>
+  </div>
   <div class="ce-in">
     <h1 class="ce-h1">Water gets in.<br><span class="m">Mold</span> follows.</h1>
     <p class="ce-sub">A mold company treats the growth. A plumber chases the pipe. We do both ends
@@ -88,7 +128,7 @@
         <i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.7S5.5 10 5.5 14.2a6.5 6.5 0 0 0 13 0C18.5 10 12 2.7 12 2.7Z"/></svg></i>
         Leak Detection
       </a>
-      <span class="ce-then">then</span>
+      <span class="ce-then">and</span>
       <a class="ce-chip ce-chip-m" href="../services/mold-remediation.html">
         <i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="14" r="4.4"/><circle cx="15.4" cy="11.4" r="3.2"/><circle cx="14.6" cy="16.6" r="2.6"/></svg></i>
         Mold Remediation
@@ -96,9 +136,9 @@
     </div>
 
     <div class="ce-cta">
-      <a class="b" href="tel:+14844280673">
+      <a class="b b-lg" href="tel:+14844280673">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.1 5.1l1.4-1.9 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.6 15.6 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
-        Talk to an expert
+        Talk To An Expert
       </a>
       <a class="b b-ghost" href="../services.html">All 22 services</a>
     </div>
@@ -106,115 +146,7 @@
   </div>
 </section>
 
-<script>
-/* The wall behind the words tells the headline literally: water tracks
-   down, pools at the bottom, and growth blooms out of the pool. Each
-   bloom belongs to the streak above it, so the cause and the effect are
-   in the same place rather than scattered. Runs once and holds. */
-(function () {
-  var cv = document.querySelector('.ce-cv');
-  if (!cv || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, t0 = null, tracks = [];
 
-  function build() {
-    tracks = [];
-    var lanes = Math.max(3, Math.round(W / 340));
-    for (var i = 0; i < lanes; i++) {
-      var x = (i + 0.5) / lanes * W + (Math.random() - 0.5) * 60;
-      var wob = 14 + Math.random() * 24, ph = Math.random() * 6.28;
-      // where the streak actually ends up, so the growth sits under it
-      var landX = x + Math.sin(7 + ph) * wob * 0.65;
-      var blobs = [];
-      var n = 7 + Math.floor(Math.random() * 5);
-      for (var k = 0; k < n; k++) {
-        var a = Math.random() * 6.283, d = Math.pow(Math.random(), 0.6) * 120;
-        blobs.push({
-          x: landX + Math.cos(a) * d,
-          y: H - 40 - Math.abs(Math.sin(a)) * d * 0.75,
-          r: 14 + Math.random() * 40,
-          delay: 2.0 + Math.random() * 1.6
-        });
-      }
-      tracks.push({ x: x, wob: wob, ph: ph, landX: landX,
-                    delay: Math.random() * 0.9, dur: 1.9 + Math.random() * 0.8, blobs: blobs });
-    }
-  }
-
-  function size() {
-    var r = cv.getBoundingClientRect();
-    W = r.width; H = r.height;
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    cv.width = W * dpr; cv.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build();
-  }
-
-  function frame(ts) {
-    if (t0 === null) t0 = ts;
-    var t = (ts - t0) / 1000;
-    ctx.clearRect(0, 0, W, H);
-
-    // courses, so the backdrop reads as a wall
-    ctx.strokeStyle = 'rgba(10,31,61,.055)'; ctx.lineWidth = 1;
-    for (var y = 80; y < H; y += 64) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-    tracks.forEach(function (tr) {
-      // ---- the growth, underneath the water that caused it
-      tr.blobs.forEach(function (b) {
-        var p = Math.min(1, Math.max(0, (t - b.delay) / 2.4));
-        if (p <= 0) return;
-        var e = 1 - Math.pow(1 - p, 3);
-        ctx.fillStyle = 'rgba(47,107,67,.17)';
-        ctx.beginPath(); ctx.arc(b.x, b.y, b.r * e, 0, 6.283); ctx.fill();
-        ctx.fillStyle = 'rgba(31,82,50,.14)';
-        ctx.beginPath(); ctx.arc(b.x + b.r * .18, b.y - b.r * .12, b.r * e * .45, 0, 6.283); ctx.fill();
-      });
-
-      // ---- the water
-      var p = Math.min(1, Math.max(0, (t - tr.delay) / tr.dur));
-      if (p <= 0) return;
-      var e = 1 - Math.pow(1 - p, 2.2);
-
-      var g = ctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, 'rgba(10,95,208,.40)');
-      g.addColorStop(1, 'rgba(10,95,208,.16)');
-      ctx.strokeStyle = g;
-      ctx.lineWidth = 16; ctx.lineCap = 'round';
-      ctx.beginPath(); ctx.moveTo(tr.x, -10);
-      for (var s = 0; s <= 1.001; s += 0.04) {
-        if (s > e) break;
-        ctx.lineTo(tr.x + Math.sin(s * 7 + tr.ph) * tr.wob, s * H);
-      }
-      ctx.stroke();
-
-      // a brighter core, so it reads as running water not a smear
-      ctx.strokeStyle = 'rgba(75,189,252,.5)';
-      ctx.lineWidth = 4;
-      ctx.beginPath(); ctx.moveTo(tr.x, -10);
-      for (var s2 = 0; s2 <= 1.001; s2 += 0.04) {
-        if (s2 > e) break;
-        ctx.lineTo(tr.x + Math.sin(s2 * 7 + tr.ph) * tr.wob, s2 * H);
-      }
-      ctx.stroke();
-
-      // the pool it leaves at the bottom
-      if (e > 0.96) {
-        var pool = Math.min(1, (e - 0.96) / 0.04);
-        ctx.fillStyle = 'rgba(10,95,208,.2)';
-        ctx.beginPath();
-        ctx.ellipse(tr.landX, H - 14, 70 * pool, 13 * pool, 0, 0, 6.283);
-        ctx.fill();
-      }
-    });
-
-    if (t < 8) requestAnimationFrame(frame);
-  }
-
-  size();
-  addEventListener('resize', function () { t0 = null; size(); requestAnimationFrame(frame); });
-  requestAnimationFrame(frame);
-})();
-</script>
 
 </body>
 </html>
