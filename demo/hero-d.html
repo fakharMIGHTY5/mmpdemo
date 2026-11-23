@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Option D, At The Door | Moisture Master Pros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/mmp.css?v=128">
+<style>
+/* ------------------------------------------------------------------
+   OPTION D: AT THE DOOR
+   The claim on the left, the proof on the right. It says what they do
+   in six words and then shows the thing the customer is actually
+   buying, which is two people in uniform turning up at the house.
+   ------------------------------------------------------------------ */
+.dw{ display:grid; grid-template-columns:1fr 1fr; align-items:stretch;
+     min-height:calc(100svh - var(--nav-h)); margin-top:var(--nav-h); background:#fff; }
+
+.dw-say{ display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+         padding:clamp(36px,5vh,70px) clamp(28px,4.6vw,74px); }
+.dw-h1{
+  font-family:var(--fd); font-weight:900; letter-spacing:-.04em; line-height:1;
+  font-size:clamp(2.1rem,4vw,3.9rem); color:var(--ink);
+  margin:0 0 clamp(26px,4vh,40px);
+}
+/* the two services carry the site's colour coding, so they read as the
+   two services and not as one long string of words */
+.dw-h1 .w{ color:var(--blue); }
+.dw-h1 .m{ color:#2f6b43; }
+/* neither service name may be split across two lines, it is the whole
+   point of the headline that they read as two phrases */
+.dw-h1 .w,.dw-h1 .m{ white-space:nowrap; }
+.dw-note{ margin:clamp(16px,2.4vh,22px) 0 0; font-family:var(--fm); font-size:.64rem;
+          letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
+          text-wrap:balance; }
+
+.dw-shot{ position:relative; overflow:hidden; background:var(--paper); }
+.dw-shot img{ position:absolute; inset:0; width:100%; height:100%; display:block;
+              object-fit:cover; object-position:center 42%; }
+
+.b-lg{ height:64px; padding:0 40px; font-size:1.1rem; }
+
+@media(max-width:900px){
+  .dw{ grid-template-columns:1fr; min-height:0; }
+  .dw-say{ padding-top:clamp(44px,7vh,74px); padding-bottom:clamp(34px,5vh,54px); }
+  .dw-shot{ min-height:62svh; }
+}
+@media(max-width:560px){
+  .dw-h1 br{ display:none; }
+  .b-lg{ height:58px; padding:0 28px; font-size:1.02rem; width:100%; justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" data-on="white">
+  <div class="nav-in">
+    <a class="brand" href="../index.html" aria-label="Moisture Master Pros home">
+      <img class="mark" src="../assets/ui/mark.png" alt="" width="519" height="741">
+      <span><b>Moisture Master Pros</b><span>Greater Philadelphia Area</span></span>
+    </a>
+    <nav class="links">
+      <a class="nav-tel" href="tel:+14844280673">484-428-0673</a>
+      <a class="b b-sm" href="tel:+14844280673">Talk To An Expert</a>
+    </nav>
+  </div>
+</header>
+
+<section class="dw">
+  <div class="dw-say">
+    <h1 class="dw-h1"><span class="w">Leak Detection</span> and<br> <span class="m">Mold Remediation</span> Experts</h1>
+    <a class="b b-lg" href="tel:+14844280673">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.1 5.1l1.4-1.9 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.6 15.6 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
+      Talk To An Expert
+    </a>
+    <p class="dw-note">Greater Philadelphia Area &middot; Same working day</p>
+  </div>
+
+  <div class="dw-shot">
+    <img src="../assets/img/hero-door-welcome.jpg"
+         alt="Two Moisture Master Pros technicians in uniform being let into a home by the owner"
+         loading="eager">
+  </div>
+</section>
+
+</body>
+</html>

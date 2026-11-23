@@ -13,14 +13,16 @@
 .pk{ padding:clamp(36px,6vh,70px) var(--gut) clamp(50px,8vh,90px); }
 .pk-in{ max-width:var(--maxw); margin-inline:auto; }
 .pk-head{ margin-bottom:clamp(30px,5vh,52px); }
-.pk-grid{ display:grid; gap:clamp(18px,2.4vw,30px); grid-template-columns:repeat(3,1fr); }
-@media(max-width:1000px){ .pk-grid{ grid-template-columns:1fr; } }
+.pk-grid{ display:grid; gap:clamp(18px,2.4vw,30px); grid-template-columns:repeat(2,1fr); --pk-s:.4; }
+@media(max-width:1000px){ .pk-grid{ grid-template-columns:1fr; --pk-s:.56; } }
+@media(max-width:760px){ .pk-grid{ --pk-s:.42; } }
+@media(max-width:540px){ .pk-grid{ --pk-s:.3; } }
 .pk-card{ border:1.5px solid var(--line); border-radius:20px; background:#fff; overflow:hidden;
           display:flex; flex-direction:column; }
 .pk-shot{ aspect-ratio:16/10; border-bottom:1px solid var(--line); position:relative;
           overflow:hidden; background:var(--paper); }
 .pk-shot iframe{ position:absolute; top:0; left:0; width:1440px; height:900px;
-                 transform:scale(.333); transform-origin:0 0; border:0; pointer-events:none; }
+                 transform:scale(var(--pk-s)); transform-origin:0 0; border:0; pointer-events:none; }
 .pk-body{ padding:clamp(20px,2.4vw,28px); display:flex; flex-direction:column; gap:10px; }
 .pk-tag{ font-family:var(--fm); font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
          color:var(--blue); margin:0; }
@@ -34,7 +36,7 @@
   <div class="pk-in">
     <div class="pk-head">
       <p class="pk-tag">For review, not live</p>
-      <h1 class="d2" style="margin:0">Three ways to open the home page.</h1>
+      <h1 class="d2" style="margin:0">Four ways to open the home page.</h1>
     </div>
 
     <div class="pk-grid">
@@ -63,6 +65,15 @@
           <p class="pk-tag">Option C</p>
           <h2>Two Doors</h2>
           <a class="b b-sm" href="/demo/hero-c.html">Open option C</a>
+        </div>
+      </article>
+
+      <article class="pk-card">
+        <div class="pk-shot"><iframe src="/demo/hero-d.html" title="Option D preview" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="pk-body">
+          <p class="pk-tag">Option D</p>
+          <h2>At The Door</h2>
+          <a class="b b-sm" href="/demo/hero-d.html">Open option D</a>
         </div>
       </article>
 
