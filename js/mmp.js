@@ -1809,7 +1809,10 @@
       f.src = 'https://www.youtube-nocookie.com/embed/' + id +
               '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
       f.title = box.getAttribute('data-title') || 'Moisture Master Pros';
-      f.allow = 'accelerated-motion; autoplay; encrypted-media; picture-in-picture';
+      // clipboard-write is what makes YouTube's own copy link button work.
+      // Without it the player reports that it cannot copy to the clipboard.
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; '
+              + 'gyroscope; picture-in-picture; web-share';
       f.setAttribute('allowfullscreen', '');
       box.appendChild(f);
       box.classList.add('on');
