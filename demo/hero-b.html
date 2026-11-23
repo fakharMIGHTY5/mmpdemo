@@ -19,7 +19,13 @@
 .ce{ position:relative; min-height:calc(100svh - var(--nav-h)); margin-top:var(--nav-h);
      display:grid; place-items:center; overflow:hidden; background:var(--white); }
 .ce-bg{ position:absolute; inset:0; overflow:hidden; }
-.ce-lines{ position:absolute; inset:0; width:100%; height:100%; }
+/* One quiet photograph of the thing the headline is about. The veil over
+   it is what keeps the dark type readable without killing the picture. */
+.ce-shot{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+          object-position:center 78%; display:block; }
+.ce-veil{ position:absolute; inset:0; background:
+  linear-gradient(180deg,rgba(248,250,252,.22) 0%,rgba(248,250,252,.50) 38%,
+                         rgba(248,250,252,.54) 60%,rgba(248,250,252,.40) 100%); }
 /* the sentence has to win, so the wall sits well back behind it */
 .ce-in::before{
   content:""; position:absolute; inset:-12% -8%; z-index:-1; border-radius:50%;
@@ -61,7 +67,7 @@
 .b-lg{ height:64px; padding:0 40px; font-size:1.1rem; }
 @media(max-width:560px){ .b-lg{ height:58px; padding:0 28px; font-size:1.02rem; } }
 .ce-note{ margin-top:clamp(22px,3vh,30px); font-family:var(--fm); font-size:.62rem;
-          letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); }
+          letter-spacing:.16em; text-transform:uppercase; color:var(--ink-2); }
 
 @media(max-width:620px){
   .ce-pair{ grid-template-columns:1fr; gap:10px; }
@@ -86,37 +92,8 @@
 
 <section class="ce">
   <div class="ce-bg" aria-hidden="true">
-    <svg class="ce-lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="wash-w" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#0A5FD0" stop-opacity=".16"/>
-          <stop offset="1" stop-color="#0A5FD0" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="wash-m" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0" stop-color="#2f6b43" stop-opacity=".16"/>
-          <stop offset="1" stop-color="#2f6b43" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <g stroke="#0A5FD0" stroke-opacity=".10" stroke-width="1.2" fill="none">
-        <path d="M0 150h1440M0 280h1440M0 410h1440M0 540h1440M0 670h1440M0 800h1440"/>
-        <path d="M240 150v130M560 150v130M880 150v130M1200 150v130
-                 M80 280v130M400 280v130M720 280v130M1040 280v130M1360 280v130
-                 M240 410v130M560 410v130M880 410v130M1200 410v130
-                 M80 540v130M400 540v130M720 540v130M1040 540v130M1360 540v130
-                 M240 670v130M560 670v130M880 670v130M1200 670v130"/>
-      </g>
-      <path d="M150 0c0 180 40 240 30 380s-50 200-40 330 20 130 20 190" stroke="#0A5FD0"
-            stroke-opacity=".22" stroke-width="9" fill="none" stroke-linecap="round"/>
-      <path d="M1290 0c0 180-40 240-30 380s50 200 40 330-20 130-20 190" stroke="#0A5FD0"
-            stroke-opacity=".22" stroke-width="9" fill="none" stroke-linecap="round"/>
-      <rect x="0" y="0" width="1440" height="340" fill="url(#wash-w)"/>
-      <rect x="0" y="560" width="1440" height="340" fill="url(#wash-m)"/>
-      <g fill="#2f6b43" fill-opacity=".13">
-        <circle cx="150" cy="862" r="52"/><circle cx="212" cy="884" r="34"/>
-        <circle cx="96" cy="890" r="30"/><circle cx="1290" cy="866" r="48"/>
-        <circle cx="1232" cy="888" r="32"/><circle cx="1346" cy="886" r="26"/>
-      </g>
-    </svg>
+    <img class="ce-shot" src="../assets/img/hero-wall-damp.jpg" alt="" loading="eager">
+    <span class="ce-veil"></span>
   </div>
   <div class="ce-in">
     <h1 class="ce-h1">Water gets in.<br><span class="m">Mold</span> follows.</h1>

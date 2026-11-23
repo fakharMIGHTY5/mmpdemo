@@ -33,11 +33,14 @@
   position:relative; display:flex; flex-direction:column; justify-content:flex-end;
   padding:clamp(26px,3.4vw,52px); overflow:hidden; isolation:isolate; text-decoration:none;
 }
-.sp-side::before{ content:""; position:absolute; inset:0; z-index:-2; transition:transform .7s var(--ease); }
-.sp-leak::before{ background:linear-gradient(165deg,#0A5FD0,#062A5E 72%); }
-.sp-mold::before{ background:linear-gradient(165deg,#1b3d27,#0b1a12 72%); }
-.sp-side:hover::before,.sp-side:focus-visible::before{ transform:scale(1.05); }
-.sp-art{ position:absolute; inset:0; z-index:-1; opacity:.5; }
+/* The photograph carries the half. The scrim laid over it is what the
+   white type stands on, and it keeps each side's colour coding. */
+.sp-side::before{ content:""; position:absolute; inset:0; z-index:-1; }
+.sp-leak::before{ background:linear-gradient(172deg,rgba(8,46,104,.46),rgba(5,24,56,.80) 58%,rgba(3,14,34,.94)); }
+.sp-mold::before{ background:linear-gradient(172deg,rgba(14,40,25,.44),rgba(8,26,16,.80) 58%,rgba(4,14,9,.95)); }
+.sp-art{ position:absolute; inset:0; z-index:-2; width:100%; height:100%; display:block;
+         object-fit:cover; object-position:62% 50%; transition:transform .7s var(--ease); }
+.sp-side:hover .sp-art,.sp-side:focus-visible .sp-art{ transform:scale(1.05); }
 
 .sp-kick{ font-family:var(--fm); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
           color:rgba(255,255,255,.6); margin:0 0 12px; }
@@ -93,16 +96,7 @@
 
   <div class="sp">
     <a class="sp-side sp-leak" href="../services/leak-detection.html">
-      <svg class="sp-art" viewBox="0 0 400 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <g fill="none" stroke="#9fd4f7" stroke-width="2" stroke-linecap="round" opacity=".5">
-          <path d="M40 90h320M40 150h320M40 210h320M40 270h320"/>
-          <path d="M120 90v60M260 90v60M60 150v60M200 150v60M340 150v60M120 210v60M260 210v60"/>
-        </g>
-        <path d="M200 215c0 0 -4 40 2 70s14 44 6 66-26 30-26 56a44 44 0 0 0 88 0c0-30-24-38-32-62s2-44 6-66 4-64 4-64Z"
-              fill="#4BBDFC" opacity=".32"/>
-        <circle cx="206" cy="470" r="9" fill="#9fd4f7" opacity=".85"/>
-        <circle cx="206" cy="534" r="6" fill="#9fd4f7" opacity=".55"/>
-      </svg>
+      <img class="sp-art" src="../assets/img/hero-leak-thermal.jpg" alt="" loading="eager">
       <p class="sp-kick">Service one</p>
       <h2 class="sp-name">Leak Detection</h2>
       <p class="sp-say">We find where the water is getting in before anybody opens a wall.</p>
@@ -112,20 +106,7 @@
     </a>
 
     <a class="sp-side sp-mold" href="../services/mold-remediation.html">
-      <svg class="sp-art" viewBox="0 0 400 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <g fill="#3f8a56" opacity=".45">
-          <circle cx="150" cy="430" r="58"/><circle cx="214" cy="396" r="44"/>
-          <circle cx="246" cy="456" r="52"/><circle cx="108" cy="492" r="36"/>
-          <circle cx="196" cy="498" r="40"/><circle cx="286" cy="406" r="26"/>
-        </g>
-        <g fill="#7cc795" opacity=".4">
-          <circle cx="166" cy="424" r="22"/><circle cx="232" cy="446" r="18"/>
-          <circle cx="128" cy="470" r="13"/><circle cx="206" cy="470" r="11"/>
-        </g>
-        <g fill="none" stroke="#7cc795" stroke-width="1.6" stroke-linecap="round" opacity=".38">
-          <path d="M150 372c-6-26 4-48 18-62M246 404c18-14 28-34 26-56M108 456c-22-6-38-22-44-44"/>
-        </g>
-      </svg>
+      <img class="sp-art" src="../assets/img/hero-mold-containment.jpg" alt="" loading="eager">
       <p class="sp-kick">Service two</p>
       <h2 class="sp-name">Mold Remediation</h2>
       <p class="sp-say">Removed properly, then we fix the water that fed it.</p>
