@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Option C, Two Doors | Moisture Master Pros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/mmp.css?v=128">
+<style>
+/* ------------------------------------------------------------------
+   OPTION C: TWO DOORS
+   Nobody searches for "remediation". They search for what they can see
+   on their wall. So the page asks the question they are already asking
+   themselves, and each answer is one of the two services.
+   ------------------------------------------------------------------ */
+.td{ min-height:calc(100svh - var(--nav-h)); margin-top:var(--nav-h);
+     display:flex; flex-direction:column; justify-content:center;
+     padding:clamp(30px,5vh,60px) var(--gut); background:var(--paper); }
+.td-in{ max-width:var(--maxw); margin-inline:auto; width:100%; }
+
+.td-ask{ text-align:center; margin-bottom:clamp(26px,4vh,44px); }
+.td-kick{ font-family:var(--fm); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+          color:var(--blue); margin:0 0 14px; }
+.td-h1{ font-family:var(--fd); font-weight:900; letter-spacing:-.04em; line-height:.95;
+        font-size:clamp(2.3rem,6vw,4.4rem); margin:0 0 16px; }
+.td-sub{ color:var(--ink-2); font-size:clamp(1rem,1.4vw,1.18rem); max-width:46ch; margin:0 auto; }
+
+.td-doors{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,2vw,26px); }
+.td-door{
+  position:relative; display:block; text-decoration:none; overflow:hidden; isolation:isolate;
+  background:#fff; border:1.5px solid var(--line); border-radius:clamp(18px,2vw,26px);
+  padding:clamp(24px,3vw,40px); min-height:clamp(260px,34vh,360px);
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .3s;
+}
+.td-door:hover{ transform:translateY(-5px); box-shadow:0 30px 60px -30px rgba(10,31,61,.42); }
+.td-mold:hover{ border-color:#2f6b43; }
+.td-leak:hover{ border-color:var(--blue); }
+.td-door::after{
+  content:""; position:absolute; right:-70px; bottom:-70px; width:260px; height:260px;
+  border-radius:50%; z-index:-1; opacity:.1; transition:transform .5s var(--ease);
+}
+.td-mold::after{ background:#2f6b43; }
+.td-leak::after{ background:var(--blue); }
+.td-door:hover::after{ transform:scale(1.35); }
+
+.td-ic{ display:grid; place-items:center; width:clamp(48px,5vw,60px); height:clamp(48px,5vw,60px);
+        border-radius:16px; margin-bottom:auto; }
+.td-mold .td-ic{ background:#e6f3ea; color:#2f6b43; }
+.td-leak .td-ic{ background:var(--blue-pale); color:var(--blue); }
+.td-ic svg{ width:50%; height:50%; }
+
+.td-said{ font-family:var(--fd); font-weight:900; letter-spacing:-.03em; color:var(--ink);
+          font-size:clamp(1.5rem,2.8vw,2.1rem); line-height:1.05; margin:clamp(20px,3vh,30px) 0 10px; }
+.td-does{ color:var(--ink-2); font-size:clamp(.95rem,1.2vw,1.04rem); line-height:1.55; margin:0 0 20px; max-width:34ch; }
+.td-tag{ font-family:var(--fm); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; }
+.td-mold .td-tag{ color:#2f6b43; }
+.td-leak .td-tag{ color:var(--blue); }
+.td-tag span{ display:inline-flex; align-items:center; gap:8px; }
+.td-tag svg{ width:13px; height:13px; }
+
+.td-or{ text-align:center; margin-top:clamp(26px,4vh,40px); }
+.td-or .b{ margin-bottom:12px; }
+.td-note{ font-family:var(--fm); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+          color:var(--ink-3); margin:0; }
+
+@media(max-width:760px){ .td-doors{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="nav" data-on="white">
+  <div class="nav-in">
+    <a class="brand" href="../index.html" aria-label="Moisture Master Pros home">
+      <img class="mark" src="../assets/ui/mark.png" alt="" width="519" height="741">
+      <span><b>Moisture Master Pros</b><span>Greater Philadelphia Area</span></span>
+    </a>
+    <nav class="links">
+      <a class="nav-tel" href="tel:+14844280673">484-428-0673</a>
+      <a class="b b-sm" href="tel:+14844280673">Talk to an expert</a>
+    </nav>
+  </div>
+</header>
+
+<section class="td">
+  <div class="td-in">
+    <div class="td-ask">
+      <p class="td-kick">Mold remediation &amp; leak detection &middot; Greater Philadelphia Area</p>
+      <h1 class="td-h1">What are you looking at?</h1>
+      <p class="td-sub">Tell us what you can see and we will tell you what it actually is,
+        before anybody quotes you for anything.</p>
+    </div>
+
+    <div class="td-doors">
+      <a class="td-door td-mold" href="../services/mold-remediation.html">
+        <span class="td-ic">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="14" r="4.6"/><circle cx="15.6" cy="11.2" r="3.4"/><circle cx="14.8" cy="16.8" r="2.8"/><circle cx="5.6" cy="17.4" r="2"/></svg>
+        </span>
+        <div>
+          <h2 class="td-said">I can see mold,<br>or I can smell it.</h2>
+          <p class="td-does">Black spotting, a musty room, growth that came back after someone
+            already treated it once.</p>
+          <p class="td-tag"><span>Mold Remediation
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></p>
+        </div>
+      </a>
+
+      <a class="td-door td-leak" href="../services/leak-detection.html">
+        <span class="td-ic">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.7S5.5 10 5.5 14.2a6.5 6.5 0 0 0 13 0C18.5 10 12 2.7 12 2.7Z"/></svg>
+        </span>
+        <div>
+          <h2 class="td-said">There is water,<br>and I cannot find it.</h2>
+          <p class="td-does">A stain that keeps returning, a damp patch after rain, a bill that
+            says you are losing water somewhere.</p>
+          <p class="td-tag"><span>Leak Detection
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></p>
+        </div>
+      </a>
+    </div>
+
+    <div class="td-or">
+      <a class="b" href="tel:+14844280673">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.1 5.1l1.4-1.9 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.6 15.6 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
+        Talk to an expert
+      </a>
+      <p class="td-note">Not sure which? Call 484-428-0673 and describe it. No charge to talk.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

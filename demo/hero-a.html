@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Option A, The Split | Moisture Master Pros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/mmp.css?v=128">
+<style>
+/* ------------------------------------------------------------------
+   OPTION A: THE SPLIT
+   The two services are the page. One down each side, each with its own
+   temperature: water is cool and blue, mold is warm and dark. Nobody
+   has to read a sentence to work out what this company does.
+   ------------------------------------------------------------------ */
+.sp-wrap{ padding-top:var(--nav-h); }
+
+/* the line that holds the two halves together as one company */
+.sp-bridge{
+  text-align:center; padding:clamp(20px,3.4vh,34px) var(--gut);
+  border-bottom:1px solid var(--line); background:#fff;
+}
+.sp-bridge h1{
+  font-family:var(--fd); font-weight:900; letter-spacing:-.03em; color:var(--ink);
+  font-size:clamp(1.05rem,2.5vw,1.75rem); line-height:1.2; margin:0;
+}
+
+.sp{ display:grid; grid-template-columns:1fr 1fr; min-height:min(62svh,560px); }
+.sp-side{
+  position:relative; display:flex; flex-direction:column; justify-content:flex-end;
+  padding:clamp(26px,3.4vw,52px); overflow:hidden; isolation:isolate; text-decoration:none;
+}
+.sp-side::before{ content:""; position:absolute; inset:0; z-index:-2; transition:transform .7s var(--ease); }
+.sp-leak::before{ background:linear-gradient(165deg,#0A5FD0,#062A5E 72%); }
+.sp-mold::before{ background:linear-gradient(165deg,#1b3d27,#0b1a12 72%); }
+.sp-side:hover::before,.sp-side:focus-visible::before{ transform:scale(1.05); }
+.sp-art{ position:absolute; inset:0; z-index:-1; opacity:.5; }
+
+.sp-kick{ font-family:var(--fm); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+          color:rgba(255,255,255,.6); margin:0 0 12px; }
+.sp-name{ font-family:var(--fd); font-weight:900; color:#fff; margin:0 0 14px;
+          font-size:clamp(2rem,4.6vw,3.6rem); line-height:.95; letter-spacing:-.035em;
+          max-width:7ch; }
+.sp-say{ color:rgba(255,255,255,.8); font-size:clamp(.96rem,1.2vw,1.1rem); line-height:1.55;
+         max-width:30ch; margin:0 0 24px; }
+.sp-go{
+  display:inline-flex; align-items:center; gap:10px; align-self:flex-start; font-weight:700;
+  color:#fff; font-size:.98rem; padding:12px 20px; border-radius:100px;
+  border:1.5px solid rgba(255,255,255,.42); transition:background .25s,border-color .25s,gap .25s,color .25s;
+}
+.sp-side:hover .sp-go{ background:#fff; color:var(--ink); border-color:#fff; gap:15px; }
+.sp-go svg{ width:16px; height:16px; }
+
+/* the one shared action, clear of both sides */
+.sp-foot{
+  display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap;
+  padding:clamp(22px,3.4vh,34px) var(--gut); background:var(--paper);
+  border-top:1px solid var(--line);
+}
+.sp-foot span{ font-family:var(--fm); font-size:.62rem; letter-spacing:.16em;
+               text-transform:uppercase; color:var(--ink-3); }
+
+@media(max-width:860px){
+  .sp{ grid-template-columns:1fr; min-height:0; }
+  .sp-side{ min-height:52svh; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" data-on="white">
+  <div class="nav-in">
+    <a class="brand" href="../index.html" aria-label="Moisture Master Pros home">
+      <img class="mark" src="../assets/ui/mark.png" alt="" width="519" height="741">
+      <span><b>Moisture Master Pros</b><span>Greater Philadelphia Area</span></span>
+    </a>
+    <nav class="links">
+      <a class="nav-tel" href="tel:+14844280673">484-428-0673</a>
+      <a class="b b-sm" href="tel:+14844280673">Talk to an expert</a>
+    </nav>
+  </div>
+</header>
+
+<div class="sp-wrap">
+  <div class="sp-bridge"><h1>We find the water. We remove the mold. We prove it is dry.</h1></div>
+
+  <div class="sp">
+    <a class="sp-side sp-leak" href="../services/leak-detection.html">
+      <svg class="sp-art" viewBox="0 0 400 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <g fill="none" stroke="#9fd4f7" stroke-width="2" stroke-linecap="round" opacity=".5">
+          <path d="M40 90h320M40 150h320M40 210h320M40 270h320"/>
+          <path d="M120 90v60M260 90v60M60 150v60M200 150v60M340 150v60M120 210v60M260 210v60"/>
+        </g>
+        <path d="M200 215c0 0 -4 40 2 70s14 44 6 66-26 30-26 56a44 44 0 0 0 88 0c0-30-24-38-32-62s2-44 6-66 4-64 4-64Z"
+              fill="#4BBDFC" opacity=".32"/>
+        <circle cx="206" cy="470" r="9" fill="#9fd4f7" opacity=".85"/>
+        <circle cx="206" cy="534" r="6" fill="#9fd4f7" opacity=".55"/>
+      </svg>
+      <p class="sp-kick">Service one</p>
+      <h2 class="sp-name">Leak Detection</h2>
+      <p class="sp-say">Thermal imaging, moisture meters and a drone. We find where the water is
+        getting in before anybody opens a wall.</p>
+      <span class="sp-go">See how we find it
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="sp-side sp-mold" href="../services/mold-remediation.html">
+      <svg class="sp-art" viewBox="0 0 400 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <g fill="#3f8a56" opacity=".45">
+          <circle cx="150" cy="430" r="58"/><circle cx="214" cy="396" r="44"/>
+          <circle cx="246" cy="456" r="52"/><circle cx="108" cy="492" r="36"/>
+          <circle cx="196" cy="498" r="40"/><circle cx="286" cy="406" r="26"/>
+        </g>
+        <g fill="#7cc795" opacity=".4">
+          <circle cx="166" cy="424" r="22"/><circle cx="232" cy="446" r="18"/>
+          <circle cx="128" cy="470" r="13"/><circle cx="206" cy="470" r="11"/>
+        </g>
+        <g fill="none" stroke="#7cc795" stroke-width="1.6" stroke-linecap="round" opacity=".38">
+          <path d="M150 372c-6-26 4-48 18-62M246 404c18-14 28-34 26-56M108 456c-22-6-38-22-44-44"/>
+        </g>
+      </svg>
+      <p class="sp-kick">Service two</p>
+      <h2 class="sp-name">Mold Remediation</h2>
+      <p class="sp-say">Contained, HEPA filtered, removed properly. Then we fix the water that
+        fed it, so it does not come back.</p>
+      <span class="sp-go">See how we remove it
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <div class="sp-foot">
+    <a class="b" href="tel:+14844280673">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.1 5.1l1.4-1.9 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.6 15.6 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
+      Talk to an expert
+    </a>
+    <span>Greater Philadelphia Area &middot; Same working day</span>
+  </div>
+</div>
+
+</body>
+</html>
