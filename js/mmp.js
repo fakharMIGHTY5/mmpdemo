@@ -1856,8 +1856,7 @@
         done.style.marginTop = '0';
         done.innerHTML = r.ok
           ? '<b>' + ICON_OK + 'Message sent</b>' +
-            '<p>Thanks ' + first + ', we will get back to you promptly during business hours. ' +
-            'If water is moving right now, call ' + tel() + ' rather than waiting.</p>'
+            '<p>Thanks ' + first + ', we will get back to you promptly during business hours.</p>'
           : '<b>' + ICON_NO + (r.reason === 'none' ? 'Give us a call instead' : 'That did not go through') + '</b>' +
             '<p>' + failBody(r.reason).replace(/var\(--blue\)/g, 'var(--sky)') + '</p>';
         form.replaceWith(done);
