@@ -123,6 +123,11 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .b:hover{ transform:translateY(-2px); background:var(--blue-deep); }
 .b-ghost{ background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1.5px var(--line); }
 .b-ghost:hover{ background:transparent; box-shadow:inset 0 0 0 1.5px var(--blue); color:var(--blue); }
+/* The second way to make contact. Blue like the first, outlined rather than
+   solid, because two solid buttons side by side cancel each other out. */
+.b-line{ background:#fff; color:var(--blue); box-shadow:inset 0 0 0 2px var(--blue); }
+.b-line:hover{ background:var(--blue-pale); color:var(--blue); }
+.b-lg{ height:64px; padding:0 40px; font-size:1.1rem; }
 .b-sm{ height:46px; padding:0 22px; font-size:.92rem; }
 /* An <svg> with no width/height attribute lays out at 300x150. Everything
    that sits beside a label gets sized here rather than per-icon. */
@@ -182,6 +187,10 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .nav[data-on="navy"] .links > a:hover,.nav[data-on="navy"] .links .drop > button:hover,.nav[data-on="navy"] .links .drop > a:hover{ color:#fff; }
 .nav .b{ height:44px; padding:0 22px; font-size:.88rem; }
 .nav .links a.b{ color:#fff; font-weight:600; }
+.nav .links a.b-line{ color:var(--blue); }
+/* Two buttons plus the number will not fit between the burger breakpoint and
+   about 1140. The number goes, because the call button already dials it. */
+@media(min-width:1001px) and (max-width:1140px){ .nav .links a.nav-tel{ display:none; } }
 .nav[data-on="navy"] .links a.b{ background:#fff; color:var(--navy); }
 .nav-tel{ font-family:var(--fm); font-size:.72rem; letter-spacing:.06em; white-space:nowrap; }
 
@@ -291,6 +300,36 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
    White, with the frozen run framing the edge. The scene is
    the warning; the middle is left alone.
    =========================================================== */
+/* ---------- Home hero: the claim on the left, the proof on the right ----------
+   Both services are named in the first line and both ways of making contact
+   sit directly under it. No form in the hero, by request. */
+.dw{ display:grid; grid-template-columns:1.35fr 1fr; align-items:stretch;
+     min-height:calc(100svh - var(--nav-h)); margin-top:var(--nav-h); background:#fff; }
+.dw-say{ display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+         padding:clamp(36px,5vh,70px) clamp(28px,4.6vw,74px); }
+.dw-h1{ font-family:var(--fd); font-weight:900; letter-spacing:-.04em; line-height:1;
+        font-size:clamp(2.1rem,4vw,3.9rem); color:var(--ink); margin:0 0 clamp(26px,4vh,40px); }
+.dw-h1 .w{ color:var(--blue); }
+.dw-h1 .m{ color:#2f6b43; }
+/* neither service name may break across a line, it is the point of the line */
+.dw-h1 .w,.dw-h1 .m{ white-space:nowrap; }
+.dw-cta{ display:flex; flex-wrap:wrap; gap:clamp(10px,1.2vw,14px); }
+.dw-note{ margin:clamp(16px,2.4vh,22px) 0 0; font-family:var(--fm); font-size:.64rem;
+          letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); text-wrap:balance; }
+.dw-shot{ position:relative; overflow:hidden; background:var(--paper); }
+.dw-shot img{ position:absolute; inset:0; width:100%; height:100%; display:block;
+              object-fit:cover; object-position:center 42%; }
+@media(max-width:900px){
+  .dw{ grid-template-columns:1fr; min-height:0; }
+  .dw-say{ padding-top:clamp(44px,7vh,74px); padding-bottom:clamp(34px,5vh,54px); }
+  .dw-shot{ order:2; min-height:62svh; }
+}
+@media(max-width:560px){
+  .dw-h1 br{ display:none; }
+  .dw-cta{ width:100%; }
+  .b-lg{ height:58px; padding:0 24px; font-size:1.02rem; width:100%; justify-content:center; }
+}
+
 .hero{
   position:relative; isolation:isolate; overflow:hidden;
   min-height:clamp(640px,98svh,1040px);

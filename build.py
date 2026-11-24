@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "129"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "132"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -135,14 +135,15 @@ def nav(depth, active=""):
       <a href="{rel(depth,'about.html')}"{cur('about')}>About</a>
       <a href="{rel(depth,'contact-us.html')}"{cur('contact')}>Contact</a>
       <a class="nav-tel" href="tel:{SITE['tel_href']}">{SITE['tel']}</a>
-      <a class="b" href="{rel(depth,'contact-us.html')}">Get started</a>
+      <a class="b b-line" href="{rel(depth,'contact-us.html')}">Email An Expert</a>
+      <a class="b" href="tel:{SITE['tel_href']}">Talk To An Expert</a>
     </nav>
   </div>
 </header>
 
 <div class="callbar">
   <a class="c1" href="tel:{SITE['tel_href']}">{icon('phone')} Call now</a>
-  <a class="c2" href="{rel(depth,'contact-us.html')}">Get started</a>
+  <a class="c2" href="{rel(depth,'contact-us.html')}">Email An Expert</a>
 </div>
 """
 
