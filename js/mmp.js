@@ -1828,6 +1828,30 @@
       }
     }
 
+    /* YouTube paints its own screen over a paused or finished video, title at
+       the top, copy link bottom left, more videos bottom right, and no
+       parameter turns that off. So the poster comes back over the top of it
+       whenever the video is not actually running. */
+    function cover(on) { box.classList.toggle('paused', !!on); }
+
+    /* The player reports its state back to us once we ask it to, which keeps
+       the poster honest when the video reaches the end on its own. */
+    function listen() {
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage(
+          JSON.stringify({ event: 'listening', id: 'mmp-video' }), '*');
+      }
+    }
+    window.addEventListener('message', function (e) {
+      if (!frame || e.source !== frame.contentWindow) return;
+      var d;
+      try { d = JSON.parse(e.data); } catch (err) { return; }
+      var st = d && d.info && d.info.playerState;
+      if (typeof st !== 'number') return;
+      if (st === 1 || st === 3) cover(false);      // playing, buffering
+      if (st === 0 || st === 2) cover(true);       // ended, paused
+    });
+
     box.addEventListener('click', function (e) {
       /* the full screen button lives inside the box, so its clicks must not
          be read as play and pause */
@@ -1853,6 +1877,7 @@
       frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; '
                   + 'picture-in-picture';
       frame.setAttribute('allowfullscreen', '');
+      frame.addEventListener('load', listen);
       box.appendChild(frame);
 
       var fs = document.createElement('button');

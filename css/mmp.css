@@ -964,8 +964,12 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .vid:hover .vid-play{ transform:scale(1.08); background:var(--blue-deep); }
 /* once it is playing, the poster chrome gets out of the way */
 .vid.on::after,.vid.on .vid-play{ opacity:0; pointer-events:none; }
-/* paused by a click on the picture, so there has to be a way back in */
+/* Paused or finished: the poster comes back over the iframe, which is what
+   hides YouTube's own end screen, and the play button returns with it. */
+.vid.on.paused img{ z-index:2; }
+.vid.on.paused::after{ opacity:1; }
 .vid.on.paused .vid-play{ opacity:1; pointer-events:none; }
+.vid.on.paused .vid-full{ opacity:0; pointer-events:none; }
 /* ours, because YouTube's own bar is switched off */
 .vid-full{
   position:absolute; right:12px; bottom:12px; z-index:4; opacity:0;
