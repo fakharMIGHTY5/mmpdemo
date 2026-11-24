@@ -36,6 +36,14 @@
     {
       "source": "/privacy-policy/",
       "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/leave-a-review",
+      "destination": "/leave-a-review.html"
+    },
+    {
+      "source": "/leave-a-review/",
+      "destination": "/leave-a-review.html"
     }
   ]
 }

@@ -1802,20 +1802,67 @@
   /* =========================================================
      VIDEO
      ========================================================= */
+  var FULL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+    + 'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    + '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+
   $$('[data-video]').forEach(function (box) {
-    box.addEventListener('click', function () {
-      if (box.classList.contains('on')) return;
+    var frame = null;
+
+    /* enablejsapi lets us drive the player without loading YouTube's own
+       script, which would pull in the chrome we just took away. */
+    function cmd(func) {
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: func, args: [] }), '*');
+      }
+    }
+
+    function fullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (box.requestFullscreen) {
+        box.requestFullscreen();
+      } else if (box.webkitRequestFullscreen) {
+        box.webkitRequestFullscreen();
+      }
+    }
+
+    box.addEventListener('click', function (e) {
+      /* the full screen button lives inside the box, so its clicks must not
+         be read as play and pause */
+      if (e.target.closest && e.target.closest('.vid-full')) return;
+
+      if (box.classList.contains('on')) {
+        var paused = box.classList.toggle('paused');
+        cmd(paused ? 'pauseVideo' : 'playVideo');
+        return;
+      }
+
       var id = box.getAttribute('data-video');
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id +
-              '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-      f.title = box.getAttribute('data-title') || 'Moisture Master Pros';
-      // clipboard-write is what makes YouTube's own copy link button work.
-      // Without it the player reports that it cannot copy to the clipboard.
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; '
-              + 'gyroscope; picture-in-picture; web-share';
-      f.setAttribute('allowfullscreen', '');
-      box.appendChild(f);
+      frame = document.createElement('iframe');
+      /* controls=0 takes YouTube's whole control bar with it, which is the
+         only way to be rid of its copy link button. Play, pause and full
+         screen are ours below. Captions are asked for explicitly because
+         YouTube hides them along with the bar. */
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + id
+                + '?autoplay=1&rel=0&modestbranding=1&playsinline=1'
+                + '&controls=0&disablekb=1&iv_load_policy=3'
+                + '&cc_load_policy=1&enablejsapi=1';
+      frame.title = box.getAttribute('data-title') || 'Moisture Master Pros';
+      frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; '
+                  + 'picture-in-picture';
+      frame.setAttribute('allowfullscreen', '');
+      box.appendChild(frame);
+
+      var fs = document.createElement('button');
+      fs.type = 'button';
+      fs.className = 'vid-full';
+      fs.setAttribute('aria-label', 'Full screen');
+      fs.innerHTML = FULL_SVG;
+      fs.addEventListener('click', fullscreen);
+      box.appendChild(fs);
+
       box.classList.add('on');
     });
   });
