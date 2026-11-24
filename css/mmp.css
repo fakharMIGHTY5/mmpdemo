@@ -263,6 +263,31 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 }
 
 /* ---------- Sticky call bar (mobile) ---------- */
+/* ---------- Leave a review ----------
+   Four places to leave one. The code is for somebody at a computer who will
+   scan it with their phone, the button is for somebody already on a phone. */
+/* minmax(0,1fr), not 1fr: the longest button label was widening its column */
+.lr{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(14px,1.8vw,24px); }
+.lr-card{
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;
+  padding:clamp(22px,2.4vw,30px); border-radius:22px; background:var(--white);
+  border:1px solid var(--line); transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.lr-card:hover{ transform:translateY(-3px); box-shadow:0 22px 48px -30px rgba(10,31,61,.45); }
+.lr-card h2{ font-family:var(--fd); font-weight:900; letter-spacing:-.02em;
+             font-size:1.05rem; line-height:1.2; margin:0; }
+.lr-card .b{ margin-top:auto; }
+.lr-qr{ width:100%; max-width:168px; height:auto; display:block; border-radius:10px; }
+.lr-note{ margin:clamp(26px,3.4vh,36px) 0 0; text-align:center; font-family:var(--fm);
+          font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); }
+@media(max-width:880px){ .lr{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:560px){
+  .lr{ grid-template-columns:1fr; }
+  .lr-qr{ display:none; }          /* pointless to scan the screen you are holding */
+  .lr-card .b{ width:100%; }
+  .lr-note{ display:none; }
+}
+
 /* ---------- Floating call button ----------
    The phone has to be reachable from anywhere on a long page without
    scrolling back to the top. It rides in the corner above 760, which is
