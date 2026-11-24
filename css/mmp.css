@@ -263,6 +263,23 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 }
 
 /* ---------- Sticky call bar (mobile) ---------- */
+/* ---------- Floating call button ----------
+   The phone has to be reachable from anywhere on a long page without
+   scrolling back to the top. It rides in the corner above 760, which is
+   where the sticky bar below does not run, so the two never overlap. */
+.fab{
+  position:fixed; z-index:880; display:none; align-items:center; gap:10px;
+  right:clamp(18px,2.2vw,30px); bottom:clamp(18px,2.2vw,30px);
+  height:58px; padding:0 26px 0 22px; border-radius:100px;
+  background:var(--blue); color:#fff; font-weight:600; font-size:1rem; white-space:nowrap;
+  box-shadow:0 18px 40px -16px rgba(10,31,61,.62), 0 2px 10px rgba(10,31,61,.18);
+  transition:transform .35s var(--ease), background .25s var(--ease);
+}
+.fab:hover{ transform:translateY(-3px); background:var(--blue-deep); }
+.fab svg{ width:19px; height:19px; flex:none; }
+@media(min-width:761px){ .fab{ display:inline-flex; } }
+@media(prefers-reduced-motion:reduce){ .fab:hover{ transform:none; } }
+
 .callbar{
   position:fixed; z-index:880; left:0; right:0; bottom:0; display:none;
   background:var(--navy); color:#fff; padding:10px 14px calc(10px + env(safe-area-inset-bottom));
@@ -1284,6 +1301,9 @@ figcaption{
 
 /* ---------- Footer ---------- */
 .foot{ background:var(--navy); color:#fff; padding:clamp(56px,8vh,90px) var(--gut) 34px; }
+/* the floating call button sits over whatever is at the bottom of the
+   viewport, and at the end of a page that is the social row */
+@media(min-width:761px){ .foot{ padding-bottom:104px; } }
 .foot-in{ max-width:var(--maxw); margin-inline:auto; }
 .foot-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:clamp(26px,3vw,46px); }
 @media(max-width:900px){ .foot-grid{ grid-template-columns:1fr 1fr; } }

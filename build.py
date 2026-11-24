@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "133"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "136"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -140,6 +140,10 @@ def nav(depth, active=""):
     </nav>
   </div>
 </header>
+
+<a class="fab" href="tel:{SITE['tel_href']}" aria-label="Call {SITE['tel']}, talk to an expert">
+  {icon('phone')} Talk To An Expert
+</a>
 
 <div class="callbar">
   <a class="c1" href="tel:{SITE['tel_href']}">{icon('phone')} Call now</a>
