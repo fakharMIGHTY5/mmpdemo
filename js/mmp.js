@@ -70,12 +70,12 @@
       return 'The quickest way to reach us is straight on the phone. Call ' +
         '<a href="tel:' + tel(1) + '" style="' + LINK + '">' + tel() + '</a> ' +
         'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
-        'info@moisturemasterpros.com</a> and we will pick it up the same working day.';
+        'info@moisturemasterpros.com</a> and we will get back to you promptly during business hours.';
     }
     return 'Nothing reached the team, so please do not wait on us. Call ' +
       '<a href="tel:' + tel(1) + '" style="' + LINK + '">' + tel() + '</a> ' +
       'or email <a href="mailto:info@moisturemasterpros.com" style="' + LINK + '">' +
-      'info@moisturemasterpros.com</a> and we will pick it up straight away.';
+      'info@moisturemasterpros.com</a> and we will get back to you promptly during business hours.';
   }
 
   function failCopy(root, reason) {
@@ -1856,7 +1856,7 @@
         done.style.marginTop = '0';
         done.innerHTML = r.ok
           ? '<b>' + ICON_OK + 'Message sent</b>' +
-            '<p>Thanks ' + first + ', someone will come back to you the same working day. ' +
+            '<p>Thanks ' + first + ', we will get back to you promptly during business hours. ' +
             'If water is moving right now, call ' + tel() + ' rather than waiting.</p>'
           : '<b>' + ICON_NO + (r.reason === 'none' ? 'Give us a call instead' : 'That did not go through') + '</b>' +
             '<p>' + failBody(r.reason).replace(/var\(--blue\)/g, 'var(--sky)') + '</p>';
