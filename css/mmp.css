@@ -891,17 +891,20 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 /* ============================================================
    Reviews
    ============================================================ */
-.revs{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.6vw,22px); align-items:start; }
+/* stretch, not start: three quotes of different lengths left the row ragged */
+.revs{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.6vw,22px); align-items:stretch; }
 @media(max-width:960px){ .revs{ grid-template-columns:1fr; } }
 .rev{
   padding:clamp(28px,3vw,38px); border-radius:22px; background:var(--white);
   border:1px solid var(--line); transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  display:flex; flex-direction:column;
 }
 .rev:hover{ transform:translateY(-3px); box-shadow:0 22px 48px -30px rgba(10,31,61,.45); }
 .rev .stars{ display:flex; gap:3px; color:var(--gold); margin-bottom:16px; }
 .rev .stars svg{ width:15px; height:15px; }
 .rev p{ margin:0 0 18px; font-size:.95rem; line-height:1.62; color:var(--ink); }
 .rev cite{
+  display:block; margin-top:auto;   /* sits on the floor of the card, not under the quote */
   font-style:normal; font-family:var(--fm); font-size:.57rem; letter-spacing:.18em;
   text-transform:uppercase; color:var(--ink-3);
 }
