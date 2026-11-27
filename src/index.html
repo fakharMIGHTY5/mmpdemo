@@ -17,69 +17,69 @@
   </div>
 </section>
 
-<!-- ============ THE MOLD TEST ============ -->
-<section class="panel panel-auto paper">
-  <div class="inner">
-    <div class="mid" data-r style="margin-bottom:clamp(36px,5vh,56px)">
-      <p class="kicker">Try it yourself</p>
-      <h2 class="d2 narrow" style="margin-inline:auto">Anyone can scrub a wall.</h2>
-      <p class="t1 narrow-w" style="margin:20px auto 0">Clean it off, then find out where the water was getting in. That second part is the whole job, and it is the part most people skip.</p>
+<!-- ============ NON-INTRUSIVE, AND THE FOUR STEPS ============ -->
+<section class="panel panel-auto">
+  <div class="inner ni">
+
+    <div class="ni-say" data-r>
+      <p class="kicker">How we look inside a wall</p>
+      <h2 class="d2">Because we use state of the art thermal imaging technology, our inspections are <em>non-intrusive</em>.</h2>
+      <p class="t1 ni-sub">No exploratory holes and no guesswork. The camera reads the temperature difference wet material leaves behind, so we find the water with the wall still closed.</p>
+
+      <!-- The photograph goes here once it is made: a technician holding the
+           thermal camera to a wall with the owner watching. Drop the figure
+           below back in and point the src at the file.
+      <figure class="ni-shot">
+        <img src="assets/img/thermal-nonintrusive.jpg" width="1280" height="854" loading="lazy"
+             alt="A Moisture Master Pros technician holding a thermal imaging camera to a wall while the homeowner looks on">
+      </figure>
+      -->
     </div>
 
-    <div class="game" data-game data-r data-d="1">
-      <div class="game-card">
-        <div class="game-stage">
-          <canvas aria-hidden="true"></canvas>
-          <span class="game-brush"><img src="assets/ui/mark.png" alt=""></span>
+    <div class="ni-steps" data-r data-d="1">
+      <h3 class="ni-h3">The steps in our process</h3>
 
-          <div class="game-cut">
-            <div class="cut-in" data-probe-area>
-              <svg viewBox="0 0 640 400" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Cross-section of a row property">
-                <rect x="96" y="60" width="448" height="284" fill="#fff"/>
-                <path d="M88 60h464v-12H88z" fill="var(--blue-pale)"/>
-                <path d="M88 48h26V20H88zM526 48h26V20h-26z" fill="#D7E7FB"/>
-                <path d="M84 20h34M522 20h34" stroke-width="3"/>
-                <path d="M114 34h412" opacity=".26" stroke-dasharray="6 6"/>
-                <path d="M112 60v284" opacity=".45"/>
-                <path d="M96 60v284M544 60v284M96 344h448"/>
-                <path d="M96 164h448M96 256h448"/>
-                <path d="M528 186h16v46h-16z" fill="var(--blue-pale)"/>
-                <path d="M396 344V60M412 344V60" opacity=".35"/>
-                <path d="M10 344h620" stroke-width="2.4"/>
-                <path d="M546 344c26 0 46 5 84 14" opacity=".35"/>
+      <div class="ring">
+        <svg viewBox="0 0 360 360" role="img" aria-labelledby="ring-title">
+          <title id="ring-title">Our process runs in four steps, clockwise from the top: inspection, leak detection, remediation, restoration.</title>
 
-                <path class="flow" d="M104 34 L104 72 C104 82 128 86 156 86"
-                      stroke="var(--blue)" stroke-width="3.4" fill="none" opacity="0"/>
+          <circle class="ring-track" cx="180" cy="180" r="112"/>
+          <circle class="ring-draw"  cx="180" cy="180" r="112"/>
 
-                <g class="stain">
-                  <ellipse cx="170" cy="86" rx="40" ry="12" fill="var(--red)" opacity=".2" stroke="none"/>
-                  <ellipse cx="170" cy="86" rx="24" ry="7" fill="var(--red)" opacity=".34" stroke="none"/>
-                </g>
-                <text x="170" y="116" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" letter-spacing="1.8" fill="currentColor" stroke="none" opacity=".5">THE STAIN</text>
-              </svg>
+          <!-- Which way round it goes, which is the part Lynn asked for. -->
+          <path class="ring-arrow" style="--i:0" d="M -4 -5 L 3 0 L -4 5" transform="translate(259.2 100.8) rotate(45)"/>
+          <path class="ring-arrow" style="--i:1" d="M -4 -5 L 3 0 L -4 5" transform="translate(259.2 259.2) rotate(135)"/>
+          <path class="ring-arrow" style="--i:2" d="M -4 -5 L 3 0 L -4 5" transform="translate(100.8 259.2) rotate(225)"/>
+          <path class="ring-arrow" style="--i:3" d="M -4 -5 L 3 0 L -4 5" transform="translate(100.8 100.8) rotate(315)"/>
 
-              <div class="heat" data-heat></div>
-              <div class="probe" data-probe>
-                <span class="probe-n"><b data-read>0</b>%</span>
-                <span class="probe-tag" data-cue>Sweep the wall</span>
-              </div>
-            </div>
-          </div>
+          <g class="ring-node" style="--i:0;--ox:180px;--oy:68px">
+            <circle class="rn-bg" cx="180" cy="68" r="52"/>
+            <text class="rn-n" x="180" y="56">01</text>
+            <text class="rn-t" x="180" y="78">Inspection</text>
+          </g>
 
-          <div class="game-say"></div>
-        </div>
+          <g class="ring-node" style="--i:1;--ox:292px;--oy:180px">
+            <circle class="rn-bg" cx="292" cy="180" r="52"/>
+            <text class="rn-n" x="292" y="162">02</text>
+            <text class="rn-t" x="292" y="184">Leak</text>
+            <text class="rn-t" x="292" y="201">Detection</text>
+          </g>
 
-        <div class="game-ui">
-          <span class="lb" data-round>Step 1 &middot; clean the wall</span>
-          <span class="game-track"><i data-bar></i></span>
-          <span class="lb"><b data-pct>0%</b></span>
-        </div>
-        <p class="game-hint" data-hint
-           data-two="<b>Move the meter over the wall. The reading climbs as you get closer, then click to log the finding.</b> The stain is on the top floor and worst after wind-driven rain.">
-          <b>Drag across the wall to scrub it clean.</b>
-        </p>
+          <g class="ring-node" style="--i:2;--ox:180px;--oy:292px">
+            <circle class="rn-bg" cx="180" cy="292" r="52"/>
+            <text class="rn-n" x="180" y="280">03</text>
+            <text class="rn-t" x="180" y="302">Remediation</text>
+          </g>
+
+          <g class="ring-node" style="--i:3;--ox:68px;--oy:180px">
+            <circle class="rn-bg" cx="68" cy="180" r="52"/>
+            <text class="rn-n" x="68" y="168">04</text>
+            <text class="rn-t" x="68" y="190">Restoration</text>
+          </g>
+        </svg>
       </div>
     </div>
+
   </div>
 </section>
 

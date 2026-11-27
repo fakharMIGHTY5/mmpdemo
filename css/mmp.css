@@ -1161,6 +1161,92 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .navy .form label,.blue .form label{ color:rgba(255,255,255,.65); }
 .navy .form-note,.blue .form-note{ color:rgba(255,255,255,.55); }
 
+/* ============================================================
+   Non-intrusive, and the four steps
+   The claim on the left, the loop on the right, and as much
+   white space as the grid will give them.
+   ============================================================ */
+.ni{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,96px); align-items:center;
+}
+/* A notch down from a full display heading, so the claim and the loop
+   carry about the same weight across the two columns. */
+.ni-say .d2{
+  margin:18px 0 0; max-width:17ch;
+  font-size:clamp(1.75rem,3.1vw,2.7rem);
+}
+/* The one word Lynn wanted carried, so it is the only coloured thing here,
+   and it does not get broken across two lines. */
+.ni-say em{ font-style:normal; color:var(--blue); white-space:nowrap; }
+.ni-sub{ margin-top:clamp(20px,2.6vh,28px); max-width:42ch; }
+.ni-shot{ margin:clamp(26px,3.4vh,38px) 0 0; border-radius:20px; overflow:hidden; }
+.ni-shot img{ display:block; width:100%; height:auto; }
+
+.ni-h3{
+  font-family:var(--fd); font-weight:700; font-size:clamp(1.2rem,1.8vw,1.55rem);
+  letter-spacing:-.02em; color:var(--ink); text-align:center;
+  margin:0 0 clamp(16px,2.2vh,26px);
+}
+.ring{ max-width:460px; margin-inline:auto; }
+.ring svg{ display:block; width:100%; height:auto; overflow:visible; }
+
+.ring-track{ fill:none; stroke:var(--line); stroke-width:2; }
+
+/* 2 pi r, r = 112. The ring draws itself once, from the top, clockwise. */
+.ring-draw{
+  fill:none; stroke:var(--blue); stroke-width:2.5; stroke-linecap:round;
+  stroke-dasharray:704; stroke-dashoffset:704;
+  transform:rotate(-90deg); transform-box:view-box; transform-origin:180px 180px;
+}
+.in .ring-draw{ animation:ringDraw 2.3s var(--ease) .1s forwards; }
+@keyframes ringDraw{ to{ stroke-dashoffset:0; } }
+
+.ring-arrow{
+  fill:none; stroke:var(--blue); stroke-width:2.2;
+  stroke-linecap:round; stroke-linejoin:round; opacity:0;
+}
+.in .ring-arrow{
+  animation:ringFade .5s var(--ease) forwards;
+  animation-delay:calc(.52s + var(--i) * .56s);
+}
+@keyframes ringFade{ to{ opacity:1; } }
+
+/* Each stop lands just as the line reaches it, so the thing reads as one
+   movement rather than four separate entrances. */
+.ring-node{
+  opacity:0; transform:scale(.84);
+  transform-box:view-box; transform-origin:var(--ox) var(--oy);
+}
+.in .ring-node{
+  animation:nodeIn .6s var(--ease) forwards;
+  animation-delay:calc(.24s + var(--i) * .56s);
+}
+@keyframes nodeIn{ to{ opacity:1; transform:scale(1); } }
+
+.rn-bg{ fill:var(--white); stroke:var(--line); stroke-width:1.6; }
+.rn-n{
+  font:700 11px/1 var(--fm); letter-spacing:.14em;
+  fill:var(--blue); text-anchor:middle;
+}
+.rn-t{
+  font:700 14px/1 var(--fd); letter-spacing:-.01em;
+  fill:var(--ink); text-anchor:middle;
+}
+
+@media(max-width:900px){
+  .ni{ grid-template-columns:1fr; gap:clamp(34px,5vh,52px); }
+  .ni-say .d2{ max-width:20ch; }
+  .ring{ max-width:380px; }
+}
+
+/* Nothing moves for anyone who has asked for that, it simply arrives. */
+@media (prefers-reduced-motion: reduce){
+  .ring-draw{ stroke-dashoffset:0; animation:none; }
+  .ring-node{ opacity:1; transform:none; animation:none; }
+  .ring-arrow{ opacity:1; animation:none; }
+}
+
 /* ---------- standalone assessment ---------- */
 .quizbox{
   background:var(--white); border:1px solid var(--line); border-radius:26px;
