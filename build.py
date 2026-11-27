@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "143"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "144"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
@@ -723,7 +723,7 @@ def svc_form(s, depth=1):
     <div class="mid" data-r style="margin-bottom:clamp(26px,3.5vh,38px)">
       <p class="kicker">Ask about this</p>
       <h2 class="d3">Tell us what you are seeing.</h2>
-      <p class="t1" style="margin:16px auto 0;max-width:46ch">Someone who knows {html.escape(s['short'].lower())} comes back to you the same working day.</p>
+      <p class="t1" style="margin:16px auto 0;max-width:46ch">Someone who knows {html.escape(s['short'].lower())} will come back to you.</p>
     </div>
     <form class="form svc-form" data-lead data-r data-d="1" novalidate>
       <input type="hidden" name="service" value="{html.escape(s['title'])}">
@@ -882,7 +882,7 @@ def build_service(s):
     <div data-r>
       <p class="kicker">Next step</p>
       <h2 class="d2" style="margin-bottom:20px">Start with your ZIP code.</h2>
-      <p class="t1" style="margin-bottom:clamp(28px,4vh,40px)">We will tell you straight away whether this is something we can take on at your address.</p>
+      <p class="t1" style="margin-bottom:clamp(28px,4vh,40px)">We will tell you whether this is something we can take on at your address.</p>
     </div>
     <div class="zip" data-zip data-zip-next="{rel(d,'contact-us.html')}" data-r data-d="1">
       <form class="zip-form">

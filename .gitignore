@@ -9,3 +9,6 @@ MMP Website Copy Review.docx
 __pycache__/
 _ref/
 MMP Website.zip
+
+# local preview config, points at a machine specific path
+.claude/

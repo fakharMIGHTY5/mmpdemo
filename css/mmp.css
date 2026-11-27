@@ -760,7 +760,9 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .zip-out b{ display:flex; align-items:center; gap:9px; font-size:1rem; font-weight:700; letter-spacing:-.02em; }
 .zip-out b svg{ width:17px; height:17px; flex:none; }
 .zip-out p{ margin:7px 0 0; font-size:.92rem; line-height:1.55; color:rgba(255,255,255,.75); }
-.zip.light .zip-out p{ color:var(--ink-2); }
+.zip.light .zip-out p,.zip-out.light p{ color:var(--ink-2); }
+/* The box is built by the script on light panels too, where it has the
+   light class but no .zip.light wrapper to inherit from. */
 .zip-out .row{ margin-top:14px; }
 .zip-out .b{ height:46px; font-size:.92rem; }
 @keyframes popIn{ from{ opacity:0; transform:translateY(10px) } to{ opacity:1; transform:none } }
@@ -1126,6 +1128,36 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 }
 .form .check input{ width:19px; height:19px; accent-color:var(--blue); flex:none; margin-top:2px; }
 .form-note{ margin:0; font-size:.84rem; color:var(--ink-3); line-height:1.55; }
+
+/* The heading and the form are one thought, so the panel does not start
+   its own full run of padding underneath the hero. */
+.cu-top + .panel{ padding-top:clamp(16px,2.6vh,30px); }
+
+/* The contact page is one form and nothing else, so it reads as a single
+   card rather than fields floating on the panel. */
+.cu-form{
+  padding:clamp(24px,3.4vw,40px); background:var(--white);
+  border:1px solid var(--line); border-radius:24px;
+  box-shadow:0 40px 90px -70px rgba(11,21,36,.5);
+}
+.cu-form .row{ margin-top:6px; }
+@media(max-width:560px){ .cu-form .b-lg{ width:100%; justify-content:center; } }
+
+/* A label is a flex column, so a bare span would drop the optional tag
+   onto a line of its own. Wrapping the caption keeps them together. */
+.form label .lbl{ display:block; }
+
+/* Marks a field as optional without shouting about it. */
+.form label .opt{
+  font:500 9px/1 var(--fm); letter-spacing:.14em; color:var(--ink-3); margin-left:7px;
+}
+
+/* The honeypot. Off screen rather than display:none, because a bot that
+   checks for display:none skips the field and the trap never springs. */
+.hp{
+  position:absolute; left:-9999px; top:auto;
+  width:1px; height:1px; overflow:hidden;
+}
 .navy .form label,.blue .form label{ color:rgba(255,255,255,.65); }
 .navy .form-note,.blue .form-note{ color:rgba(255,255,255,.55); }
 

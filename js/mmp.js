@@ -1826,16 +1826,71 @@
      ========================================================= */
   $$('form[data-lead]').forEach(function (form) {
     if (form.closest('[data-funnel]')) return;
+
+    /* The answer box is white on dark by default, which is right inside a
+       navy band and wrong on a white panel. Pick by what the form sits on
+       rather than leaving every light page with a dark green card. */
+    var onDark = !!form.closest('.navy, .blue, [data-nav="navy"]');
+
+    /* Which button on the site sent them here. Nobody is asked to choose a
+       path any more, but the one they pressed still says what they came
+       for, so it rides along on the lead. */
+    var pathField = $('[name=path]', form);
+    if (pathField && !pathField.value) {
+      var wanted = new URLSearchParams(location.search).get('path') || '';
+      if (/^[a-z-]{1,24}$/.test(wanted)) pathField.value = wanted;
+    }
+
+    /* A ZIP typed into a gate elsewhere on the site is already known, so
+       carry it over rather than asking for it twice. */
+    var zipField = $('[name=zip]', form);
+    var areaNote = $('[data-area-note]', form);
+    if (zipField && !zipField.value) {
+      var pre = readZip().zip;
+      if (pre) zipField.value = pre;
+    }
+
+    /* Outside the coverage map is worth saying out loud, but it must not
+       stop the send. They still get a reply, and the board gets told. */
+    function areaOf() {
+      if (!zipField) return null;
+      var z = String(zipField.value || '').trim();
+      if (!/^\d{5}$/.test(z)) return null;
+      return lookupZip(z);
+    }
+    function paintArea() {
+      if (!areaNote) return;
+      var res = areaOf();
+      var off = res && (res.state === 'out' || res.state === 'soon');
+      areaNote.classList.toggle('show', !!off);
+      if (!off) { areaNote.innerHTML = ''; return; }
+      areaNote.innerHTML = '<b>' + ICON_SOON +
+        (res.state === 'soon' ? 'Florida is coming soon' : 'That ZIP is outside our service area') +
+        '</b><p>' + (res.state === 'soon'
+          ? 'We are opening in Florida but crews are not working there yet. Send this anyway, a video consultation works today and we will tell you the moment we are on the ground.'
+          : 'Crews do not cover that address yet. Send this anyway, we will tell you what we can do from here and let you know when we reach you.') +
+        '</p>';
+    }
+    if (zipField && areaNote) {
+      zipField.addEventListener('input', paintArea);
+      zipField.addEventListener('blur', paintArea);
+      paintArea();
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
       var data = Object.fromEntries(new FormData(form).entries());
+      /* So whoever picks it up off the board sees it before they dial. */
+      var res = areaOf();
+      if (res && res.state === 'out') data.area = 'OUTSIDE SERVICE AREA';
+      if (res && res.state === 'soon') data.area = 'FLORIDA, not staffed yet';
       busy(form, true);
       sendLead(data).then(function (r) {
         busy(form, false);
         var first = data.name ? String(data.name).split(' ')[0].replace(/[<>&]/g, '') : '';
         var done = document.createElement('div');
-        done.className = 'zip-out ' + (r.ok ? 'ok' : 'no') + ' show';
+        done.className = 'zip-out ' + (onDark ? '' : 'light ') + (r.ok ? 'ok' : 'no') + ' show';
         done.style.marginTop = '0';
         done.innerHTML = r.ok
           ? '<b>' + ICON_OK + 'Message sent</b>' +

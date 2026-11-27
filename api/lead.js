@@ -18,7 +18,7 @@
  */
 
 const ORDER = [
-  'name', 'phone', 'email', 'zip', 'path', 'service', 'property',
+  'name', 'phone', 'email', 'zip', 'area', 'path', 'service', 'property',
   'own', 'urgency', 'when', 'describe', 'message', 'source', 'page'
 ];
 
@@ -116,6 +116,7 @@ function summary(d) {
            (d.zip || 'their area') + '.';
   }
   const bits = [];
+  if (d.area) bits.push(d.area);
   if (d.service) bits.push(d.service);
   if (d.urgency) bits.push(d.urgency);
   if (d.message) bits.push(d.message);
