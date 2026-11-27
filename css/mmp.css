@@ -324,10 +324,6 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 
 /* ---------- Phone-sized corrections ---------- */
 @media(max-width:760px){
-  /* Two controls side by side do not fit at 375px; the row becomes a stack. */
-  .zip-form{ flex-direction:column; border-radius:24px; padding:10px; }
-  .zip-form input{ text-align:center; height:52px; padding:0 14px; }
-  .zip-form .b{ width:100%; }
   .zip-out .row .b{ width:100%; }
 
   /* There is no cursor to sweep with, and the bare thermal patch with no
@@ -493,16 +489,6 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .trio p{ margin:0; font-size:.98rem; line-height:1.65; color:var(--ink-2); max-width:34ch; }
 
 
-.ways{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:clamp(28px,4vh,40px); }
-@media(max-width:760px){ .ways{ grid-template-columns:1fr; } }
-.ways a{
-  display:block; text-align:left; padding:18px 22px; border-radius:16px;
-  background:rgba(255,255,255,.07); border:1px solid var(--line-inv);
-  transition:background .25s, border-color .25s, transform .25s var(--ease);
-}
-.ways a:hover{ background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.4); transform:translateY(-2px); }
-.ways b{ display:block; font-size:.98rem; font-weight:600; color:#fff; }
-.ways span{ display:block; margin-top:5px; font-size:.84rem; color:rgba(255,255,255,.62); }
 
 /* ============================================================
    THE MOLD TEST — the interactive bit
@@ -723,6 +709,21 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .zip.light .zip-form input{ color:var(--ink); }
 .zip.light .zip-form input::placeholder{ color:var(--ink-3); }
 .zip.light .zip-note{ color:var(--ink-3); }
+
+/* Phone sized corrections for the ZIP gate.
+   These have to live AFTER the rules above, not up with the other phone
+   corrections: the selectors match with the same specificity, so the later
+   one wins and the earlier block was being thrown away.
+
+   flex:none matters most. The base rule gives the input flex:1, which is a
+   flex-basis of 0 on the main axis. Turning the form into a column puts the
+   main axis vertical, so that basis governed the height and the box
+   collapsed to the 19px of its own text on every phone. */
+@media(max-width:760px){
+  .zip-form{ flex-direction:column; border-radius:24px; padding:10px; }
+  .zip-form input{ flex:none; height:52px; padding:0 14px; text-align:center; }
+  .zip-form .b{ width:100%; }
+}
 
 .zip-out{
   margin-top:16px; border-radius:16px; padding:18px 22px; text-align:left;
@@ -1424,6 +1425,10 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   color:var(--ink-3); margin:0 0 22px;
 }
 .crumb a:hover{ color:var(--blue); }
+@media(max-width:760px){
+  .crumb{ font-size:.68rem; letter-spacing:.14em; }
+  .crumb a{ display:inline-block; padding-block:7px; }
+}
 .phead .row{ row-gap:12px; }
 
 /* ---------- Two-column split ---------- */

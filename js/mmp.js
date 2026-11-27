@@ -1846,7 +1846,8 @@
     var zipField = $('[name=zip]', form);
     var areaNote = $('[data-area-note]', form);
     if (zipField && !zipField.value) {
-      var pre = readZip().zip;
+      var fromUrl = new URLSearchParams(location.search).get('zip') || '';
+      var pre = /^\d{5}$/.test(fromUrl) ? fromUrl : readZip().zip;
       if (pre) zipField.value = pre;
     }
 

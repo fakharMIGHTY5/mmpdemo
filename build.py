@@ -23,7 +23,7 @@ OUT = ROOT
 LEAD_ENDPOINT = "/api/lead"
 LEAD_CC = "info@moisturemasterpros.com"
 
-ASSET_V = "148"   # bump to bust the CSS/JS cache after a change
+ASSET_V = "151"   # bump to bust the CSS/JS cache after a change
 
 SITE = {
     "name": "Moisture Master Pros",
